@@ -1,8 +1,8 @@
 import 'package:biznugget/utils/constants.dart';
 
-class Dimension {
-  static final double screenHeight = Constants.screenHeight;
-  static final double screenWidth = Constants.screenWidth;
+class Dimensions {
+  static final double height = Constants.screenHeight;
+  static final double width = Constants.screenWidth;
 
   /**
    *
@@ -15,50 +15,54 @@ class Dimension {
 
 
   /**height and width */
-  static double height5 = screenHeight / 168.8;
-  static double width5 = screenWidth / 168.8;
 
-  static double height10 = screenHeight / 84.4;
-  static double width10 = screenWidth / 84.4;
+  // height and width
+  static final double height5 = height / 173.4;
+  static final double width5 = width / 82.2;
 
-  static double height15 = screenHeight / 56.6;
-  static double width15 = screenWidth / 56.6;
+  static final double height10 = height / 86.7;
+  static final double width10 = width / 41.1;
 
-  static double height20 = screenHeight / 42.2;
-  static double width20 = screenWidth / 42.2;
+  static final double height15 = height / 57.8;
+  static final double width15 = width / 27.4;
 
-  static double height30 = screenHeight / 28.1;
-  static double width30 = screenWidth / 28.1;
+  static final double height20 = height / 43.4;
+  static final double width20 = width / 20.5;
 
-  static double height45 = screenHeight / 18.7;
-  static double width45 = screenWidth / 18.7;
+  static final double height25 = height / 34.5;
+  static final double width25 = width / 16.4;
 
-  static double height50 = screenHeight / 16.8;
-  static double width50 = screenWidth / 16.8;
+  static final double height30 = height / 28.8;
+  static final double width30 = width / 13.8;
 
-  static double height60 = screenHeight / 14.1;
-  static double width60 = screenWidth / 14.1;
-
-  static double height70 = screenHeight / 12.1;
-  static double width70 = screenWidth / 12.1;
-
-  static double height300 = screenHeight / 2.8;
-  static double width300 = screenWidth / 2.8;
+  static final double height35 = height / 24.7;
+  static final double width35 = width / 11.9;
 
   /**Fonts */
-  static double font12 = screenHeight / 70.3;
-  static double font14 = screenHeight / 60.57;
-  static double font16 = screenHeight / 52.7;
-  static double font18 = screenHeight / 46.78;
-  static double font20 = screenHeight / 42.2;
-  static double font26 = screenHeight / 32.46;
+
+  static double font8 = height / 105.4;
+  static double font10 = height / 84.4;
+  static double font12 = height / 70.3;
+  static double font14 = height / 59.4;
+  static double font16 = height / 50.9;
+  static double font18 = height / 44.2;
+  static double font20 = height / 38.7;
+  static double font22 = height / 34.5;
+  static double font24 = height / 30.9;
+
+
 
   /**Radius */
-  static double radius5 = screenHeight / 168.8;
-  static double radius10 = screenHeight / 84.4;
-  static double radius15 = screenHeight / 56.6;
-  static double radius20 = screenHeight / 42.2;
-  static double radius30 = screenHeight / 28.13;
+  static final double radius5 = height / 173.4;
+  static final double radius10 = height / 86.7;
+  static final double radius15 = height / 57.8;
+  static final double radius20 = height / 43.4;
+  static final double radius25 = height / 34.5;
+  static final double radius30 = height / 28.8;
+  static final double radius35 = height / 24.7;
+  static final double radius40 = height / 21.7;
+  static final double radius45 = height / 19.3;
+  static final double radius50 = height / 17.3;
 
   /**Icon size */
 
