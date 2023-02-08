@@ -1,7 +1,7 @@
-import 'package:biznugget/features/wishlist/data/models/item_model.dart';
+import 'package:biznugget/common/widgets/search_bar.dart';
+import 'package:biznugget/common/models/item_model.dart';
 import 'package:biznugget/features/wishlist/presentation/bloc/wishlist_bloc.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_card_widget.dart';
-import 'package:biznugget/features/wishlist/presentation/widgets/search_bar.dart';
 import 'package:biznugget/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +21,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         body: Padding(
           padding: EdgeInsets.only(
             top: Dimensions.radius20,
@@ -38,7 +39,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                     SizedBox(height: Dimensions.radius25),
                     Expanded(
                       child: _buildListView(
-                          itmesList:
+                          itemsList:
                               BlocProvider.of<WishlistBloc>(context).items),
                     ),
                   ],
@@ -69,12 +70,22 @@ class _WishlistScreenState extends State<WishlistScreen> {
     );
   }
 
-  ListView _buildListView({required List<ItemModel> itmesList}) {
+  ListView _buildListView({required List<ItemModel> itemsList}) {
     return ListView.builder(
-      itemCount: itmesList.length,
+      itemCount: itemsList.length,
       itemBuilder: (context, index) {
-        return CustomCardWidget(
-          item: itmesList[index],
+        return InkWell(
+          onTap: () {
+
+          },
+          child: CustomCardWidget(
+            item: itemsList[index],
+            onTap: () {
+              BlocProvider.of<WishlistBloc>(context).add(
+                WishlistRemove(index: index),
+              );
+            },
+          ),
         );
       },
     );

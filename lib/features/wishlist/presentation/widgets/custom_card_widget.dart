@@ -1,46 +1,120 @@
-import 'package:biznugget/features/wishlist/data/models/item_model.dart';
+import 'package:biznugget/common/widgets/big_text.dart';
+import 'package:biznugget/common/widgets/custom_icon_button_widget.dart';
+import 'package:biznugget/common/models/item_model.dart';
+import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
 import 'package:biznugget/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  CustomCardWidget({Key? key, required this.item}) : super(key: key);
+  const CustomCardWidget({
+    Key? key,
+    required this.item,
+    required this.onTap,
+  }) : super(key: key);
 
-  ItemModel item;
+  final ItemModel item;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        bottom: Dimensions.height10,
-        left: Dimensions.height10,
-        right: Dimensions.height10,
-      ),
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
+        height: Dimensions.height150,
+        width: double.infinity,
+        margin: EdgeInsets.only(
+          top: Dimensions.height10,
+          right: Dimensions.height10,
+          left: Dimensions.height10,
+          bottom: Dimensions.height10,
+        ),
+        padding: EdgeInsets.only(
+          top: Dimensions.height10,
+          right: Dimensions.height15,
+          left: Dimensions.height15,
+          bottom: Dimensions.height10,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(Dimensions.height10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.4),
+              spreadRadius: 2,
+              blurRadius: 2,
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            // product image
+            CustomImageWidget(imageUrl: item.imageUrl),
+            SizedBox(width: Dimensions.width10),
+            // product name, description and price
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  // name and description
+                  _itemNameAndDescription(),
+                  // price and button
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // price and sale
+                      _price(),
+                      // delete button
+                      CustomIconButtonWidget(
+                        icon: Icons.delete_forever_sharp,
+                        onTap: onTap,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+  }
+
+  /// item name and description
+  Column _itemNameAndDescription() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        BigText(
+          text: item.name,
+          size: Dimensions.font18,
+          fontWeight: FontWeight.bold,
+        ),
+        SizedBox(height: Dimensions.height5),
+        BigText(
+          text: item.description,
+          size: Dimensions.font16,
+          color: Colors.grey,
+        ),
+      ],
+    );
+  }
+
+  /// row of item price and sale
+  _price() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        if (item.sale != null)
+          BigText(
+            text: "\$${item.sale}",
+            size: Dimensions.font18,
+            fontWeight: FontWeight.bold,
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            item.name,
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          SizedBox(height: 8.0),
-          Text(
-            'Price: \$${item.price.toStringAsFixed(2)} \nDescription: ${item.description}',
-          ),
-        ],
-      ),
+        SizedBox(width: Dimensions.width15),
+        BigText(
+          text: '\$${item.price}',
+          size: item.sale != null ? Dimensions.font16 : Dimensions.font18,
+          color: item.sale != null ? Colors.grey : Colors.black,
+          decoration: item.sale != null ? TextDecoration.lineThrough : null,
+        ),
+      ],
     );
   }
 }

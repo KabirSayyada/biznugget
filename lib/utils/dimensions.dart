@@ -16,7 +16,6 @@ class Dimensions {
 
   /**height and width */
 
-  // height and width
   static final double height5 = height / 173.4;
   static final double width5 = width / 82.2;
 
@@ -37,6 +36,18 @@ class Dimensions {
 
   static final double height35 = height / 24.7;
   static final double width35 = width / 11.9;
+
+  static final double height100 = height / 8.4;
+  static final double width100 = width / 3.6;
+
+  static final double height150 = height / 5.6;
+  static final double width150 = width / 2.7;
+
+  static final double height200 = height / 4.2;
+  static final double width200 = width / 2.1;
+
+
+
 
   /**Fonts */
 

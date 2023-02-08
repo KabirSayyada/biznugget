@@ -12,5 +12,5 @@ class WishlistAdd extends WishlistEvent {
 class WishlistRemove extends WishlistEvent {
   final int index;
 
-  WishlistRemove(this.index);
+  WishlistRemove({required this.index});
 }

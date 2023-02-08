@@ -1,9 +1,13 @@
 import 'package:biznugget/features/splash_screen/presentation/pages/splash_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/bloc/wishlist_bloc.dart';
+import 'package:biznugget/utils/bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+
+  Bloc.observer = MyBlocObserver();
+
   runApp(const MyApp());
 }
 

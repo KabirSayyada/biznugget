@@ -8,10 +8,6 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Constants.screenHeight = MediaQuery.of(context).size.height;
     Constants.screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Center(
-        child: Text('Splash Screen'),
-      ),
-    );
+    return Scaffold();
   }
 }
