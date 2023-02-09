@@ -21,7 +21,7 @@ class AppRoutes {
       case Routes.randomQuoteRoute:
         return MaterialPageRoute(builder: ((context) {
           return BlocProvider(
-            create: (context) => WishlistItemsCubit()..fetchAllWishlistItems(),
+            create: (context) => WishlistItemsCubit(),
             child: WishlistScreen(),
           );
         }));

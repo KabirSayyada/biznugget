@@ -1,5 +1,7 @@
 import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchBar extends StatelessWidget {
   final TextEditingController _searchController = TextEditingController();
@@ -16,8 +18,14 @@ class SearchBar extends StatelessWidget {
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(Dimensions.radius30),
       ),
-      child: TextField(
+      child: TextFormField(
         controller: _searchController,
+        onSaved: (value) {
+          _filterItems(context, value);
+        },
+        onChanged: (value) {
+          _filterItems(context, value);
+        },
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.search,
@@ -29,4 +37,11 @@ class SearchBar extends StatelessWidget {
       ),
     );
   }
+
+
+_filterItems (BuildContext context, value) {
+  BlocProvider.of<WishlistItemsCubit>(context).filterWishlistItems(searchQuery: value);
+}
+
+
 }

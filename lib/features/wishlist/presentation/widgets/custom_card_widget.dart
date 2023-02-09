@@ -3,6 +3,7 @@ import 'package:biznugget/core/common/widgets/custom_icon_button_widget.dart';
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/wishlist/presentation/widgets/price_widget.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
@@ -48,7 +49,7 @@ class CustomCardWidget extends StatelessWidget {
             // product image
             CustomImageWidget(imageUrl: item.imageUrl),
             SizedBox(width: Dimensions.width10),
-            // product name, description and price
+            // product name, description, price and delete button
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -61,7 +62,7 @@ class CustomCardWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // price and sale
-                      _price(),
+                      PriceWidget(price: item.price, sale: item.sale),
                       // delete button
                       CustomIconButtonWidget(
                         icon: Icons.delete_forever_sharp,
@@ -96,25 +97,4 @@ class CustomCardWidget extends StatelessWidget {
     );
   }
 
-  /// row of item price and sale
-  _price() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        if (item.sale != null)
-          BigText(
-            text: "\$${item.sale}",
-            size: Dimensions.font18,
-            fontWeight: FontWeight.bold,
-          ),
-        SizedBox(width: Dimensions.width15),
-        BigText(
-          text: '\$${item.price}',
-          size: item.sale != null ? Dimensions.font16 : Dimensions.font18,
-          color: item.sale != null ? Colors.grey : Colors.black,
-          decoration: item.sale != null ? TextDecoration.lineThrough : null,
-        ),
-      ],
-    );
-  }
 }

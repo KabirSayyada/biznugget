@@ -12,6 +12,7 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
   WishlistItemsCubit() : super(WishlistItemsInitial());
 
   List<ItemModel> items = [];
+  List<ItemModel> filterdItems = [];
 
   /// Fetch all wishlist items from local storage
   fetchAllWishlistItems() async {
@@ -21,10 +22,10 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
       Hive.openBox<ItemModel>(AppStrings.kWishlistBoxInLocalStorage)
           .then((value) {
         items = value.values.toList();
-        print(value.values.toList().length);
-        print(items.length);
+        filterdItems = items;
+        emit(WishlistItemsSuccess());
       });
-      emit(WishlistItemsSuccess());
+      print(items);
     } catch (e) {
       emit(WishlistItemsFailure(
         message: e.toString(),
@@ -33,10 +34,11 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
   }
 
   /// Add Item to Wishlist
-  Future<void> addToWishlist(ItemModel item) async {
+  Future<void> addToWishlist({required ItemModel item}) async {
     emit(WishlistItemsLoading());
     try {
       items.add(item);
+      filterdItems = items;
 
       /// add item to local storage
       await SaveWishlistItems.saveWishlistItemLocally(item);
@@ -54,10 +56,27 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
     emit(WishlistItemsLoading());
     try {
       items.removeAt(index);
+      filterdItems = items;
 
       /// Update Local WishList
       await RemoveWishlistItemLocally.removeWishlistItemLocally(index);
 
+      emit(WishlistItemsSuccess());
+    } catch (e) {
+      emit(WishlistItemsFailure(
+        message: e.toString(),
+      ));
+    }
+  }
+
+  /// filter wishlist items according to search query
+  filterWishlistItems({required String searchQuery}) {
+    emit(WishlistItemsLoading());
+    try {
+      filterdItems = items
+          .where((element) =>
+              element.name.toLowerCase().contains(searchQuery.toLowerCase()))
+          .toList();
       emit(WishlistItemsSuccess());
     } catch (e) {
       emit(WishlistItemsFailure(
