@@ -8,7 +8,7 @@ part of 'item_model.dart';
 
 class ItemModelAdapter extends TypeAdapter<ItemModel> {
   @override
-  final int typeId = 1;
+  final int typeId = 0;
 
   @override
   ItemModel read(BinaryReader reader) {
@@ -17,28 +17,37 @@ class ItemModelAdapter extends TypeAdapter<ItemModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ItemModel(
-      name: fields[0] as String,
-      price: fields[2] as double,
-      description: fields[1] as String,
-      imageUrl: fields[4] as String,
-      sale: fields[3] as double?,
+      id: fields[0] as int,
+      name: fields[1] as String,
+      price: fields[3] as double,
+      description: fields[2] as String,
+      imageUrl: fields[5] as String,
+      sale: fields[4] as double?,
+      rate: fields[6] as double?,
+      reviews: fields[7] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ItemModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(8)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.description)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.price)
+      ..write(obj.description)
       ..writeByte(3)
-      ..write(obj.sale)
+      ..write(obj.price)
       ..writeByte(4)
-      ..write(obj.imageUrl);
+      ..write(obj.sale)
+      ..writeByte(5)
+      ..write(obj.imageUrl)
+      ..writeByte(6)
+      ..write(obj.rate)
+      ..writeByte(7)
+      ..write(obj.reviews);
   }
 
   @override

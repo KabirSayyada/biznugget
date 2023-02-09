@@ -13,7 +13,6 @@ class Dimensions {
    *
    **/
 
-
   /**height and width */
 
   static final double height5 = height / 173.4;
@@ -28,6 +27,9 @@ class Dimensions {
   static final double height20 = height / 43.4;
   static final double width20 = width / 20.5;
 
+  static final double height22 = height / 38.7;
+  static final double width22 = width / 17.6;
+
   static final double height25 = height / 34.5;
   static final double width25 = width / 16.4;
 
@@ -37,17 +39,41 @@ class Dimensions {
   static final double height35 = height / 24.7;
   static final double width35 = width / 11.9;
 
+  static final double height40 = height / 21.7;
+  static final double width40 = width / 10.4;
+
+  static final double height50 = height / 17.0;
+  static final double width50 = width / 8.2;
+
+  static final double height55 = height / 15.3;
+  static final double width55 = width / 7.3;
+
+  static final double height60 = height / 14.1;
+  static final double width60 = width / 6.7;
+
   static final double height100 = height / 8.4;
   static final double width100 = width / 3.6;
+
+  static final double height115 = height / 7.4;
+  static final double width115 = width / 3.1;
+
+  static final double height120 = height / 7.0;
+  static final double width120 = width / 2.9;
+
+  static final double height125 = height / 6.7;
+  static final double width125 = width / 2.8;
+
+  static final double height167 = height / 5.0;
+  static final double width167 = width / 2.0;
 
   static final double height150 = height / 5.6;
   static final double width150 = width / 2.7;
 
+  static final double height160 = height / 5.3;
+  static final double width160 = width / 2.5;
+
   static final double height200 = height / 4.2;
   static final double width200 = width / 2.1;
-
-
-
 
   /**Fonts */
 
@@ -60,8 +86,6 @@ class Dimensions {
   static double font20 = height / 38.7;
   static double font22 = height / 34.5;
   static double font24 = height / 30.9;
-
-
 
   /**Radius */
   static final double radius5 = height / 173.4;
@@ -83,7 +107,4 @@ class Dimensions {
   static final double iconSize25 = height / 34.5;
   static final double iconSize30 = height / 28.91;
   static final double iconSize35 = height / 24.7;
-
-
-
 }

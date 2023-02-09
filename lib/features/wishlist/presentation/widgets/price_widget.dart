@@ -17,19 +17,19 @@ class PriceWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        if (sale != null)
-          BigText(
-            text: "\$${sale}",
-            size: Dimensions.font18,
-            fontWeight: FontWeight.bold,
-          ),
-        SizedBox(width: Dimensions.width15),
         BigText(
           text: '\$${price}',
           size: sale != null ? Dimensions.font16 : Dimensions.font18,
           color: sale != null ? Colors.grey : Colors.black,
           decoration: sale != null ? TextDecoration.lineThrough : null,
         ),
+        SizedBox(width: Dimensions.width15),
+        if (sale != null)
+          BigText(
+            text: "\$${sale}",
+            size: Dimensions.font18,
+            fontWeight: FontWeight.bold,
+          ),
       ],
     );
   }

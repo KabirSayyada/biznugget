@@ -1,47 +1,55 @@
+import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchBar extends StatelessWidget {
+  SearchBar({super.key});
+
   final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-        top: Dimensions.height10,
+      margin: EdgeInsets.only(
         right: Dimensions.height10,
         left: Dimensions.height10,
       ),
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(Dimensions.radius30),
+      padding: EdgeInsets.only(
+        top: Dimensions.height5,
+        bottom: Dimensions.height5,
       ),
       child: TextFormField(
         controller: _searchController,
-        onSaved: (value) {
-          _filterItems(context, value);
-        },
         onChanged: (value) {
           _filterItems(context, value);
         },
         decoration: InputDecoration(
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.search,
-            color: Colors.grey[800],
+            color: AppColors.hintColor,
           ),
-          hintText: 'Search',
-          border: InputBorder.none,
+          hintText: 'Search your wishlist products',
+          hintStyle: const TextStyle(
+            color: AppColors.hintColor,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
+            borderSide: const BorderSide(
+              color: AppColors.primaryColor1,
+            ),
+          ),
         ),
       ),
     );
   }
 
-
-_filterItems (BuildContext context, value) {
-  BlocProvider.of<WishlistItemsCubit>(context).filterWishlistItems(searchQuery: value);
-}
-
-
+  _filterItems(BuildContext context, value) {
+    BlocProvider.of<WishlistItemsCubit>(context)
+        .filterWishlistItems(searchQuery: value);
+  }
 }
