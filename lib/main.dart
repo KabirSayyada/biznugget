@@ -1,31 +1,17 @@
-import 'package:biznugget/features/splash_screen/presentation/pages/splash_screen.dart';
-import 'package:biznugget/features/wishlist/presentation/bloc/wishlist_bloc.dart';
-import 'package:biznugget/utils/bloc_observer.dart';
+import 'package:biznugget/app.dart';
+import 'package:biznugget/core/common/models/item_model/item_model.dart';
+import 'package:biznugget/bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+Future<void> main() async {
 
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(ItemModelAdapter());
   Bloc.observer = MyBlocObserver();
 
-  runApp(const MyApp());
+  runApp(const Biznugget());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<WishlistBloc>(create: (context) => WishlistBloc()),
-        /// add your BlocPrvider here
-      ],
-      child: MaterialApp(
-        title: 'Biznugget-App',
-        home: SplashScreen(),
-      ),
-    );
-  }
-}

@@ -1,8 +1,8 @@
-import 'package:biznugget/common/widgets/search_bar.dart';
-import 'package:biznugget/common/models/item_model.dart';
-import 'package:biznugget/features/wishlist/presentation/bloc/wishlist_bloc.dart';
+import 'package:biznugget/core/common/models/item_model/item_model.dart';
+import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_card_widget.dart';
-import 'package:biznugget/utils/dimensions.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/wishlist/presentation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +21,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         body: Padding(
           padding: EdgeInsets.only(
             top: Dimensions.radius20,
@@ -29,10 +28,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
             bottom: Dimensions.radius20,
             left: Dimensions.radius10,
           ),
-          child: BlocBuilder<WishlistBloc, WishlistState>(
+          child: BlocBuilder<WishlistItemsCubit, WishlistItemsState>(
             builder: (context, state) {
               /// Initial state and success state
-              if (state is WishlistSuccess || state is WishlistInitial) {
+              if (state is WishlistItemsInitial ||
+                  state is WishlistItemsSuccess) {
                 return Column(
                   children: <Widget>[
                     SearchBar(),
@@ -40,19 +40,20 @@ class _WishlistScreenState extends State<WishlistScreen> {
                     Expanded(
                       child: _buildListView(
                           itemsList:
-                              BlocProvider.of<WishlistBloc>(context).items),
+                              BlocProvider.of<WishlistItemsCubit>(context)
+                                  .items),
                     ),
                   ],
                 );
 
-                /// loadint state
-              } else if (state is WishlistLoading) {
+                /// loading state
+              } else if (state is WishlistItemsLoading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
 
                 /// failure state
-              } else if (state is WishlistFailure) {
+              } else if (state is WishlistItemsFailure) {
                 return Center(
                   child: Text('error : ${state.message}'),
                 );
@@ -76,14 +77,13 @@ class _WishlistScreenState extends State<WishlistScreen> {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-
+            /// todo : navigate to product details page
           },
           child: CustomCardWidget(
             item: itemsList[index],
             onTap: () {
-              BlocProvider.of<WishlistBloc>(context).add(
-                WishlistRemove(index: index),
-              );
+              BlocProvider.of<WishlistItemsCubit>(context)
+                  .removeFromWishlist(index: index);
             },
           ),
         );

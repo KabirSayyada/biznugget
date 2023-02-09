@@ -1,4 +1,4 @@
-import 'package:biznugget/utils/constants.dart';
+import 'package:biznugget/core/utils/constants.dart';
 
 class Dimensions {
   static final double height = Constants.screenHeight;
@@ -76,6 +76,14 @@ class Dimensions {
   static final double radius50 = height / 17.3;
 
   /**Icon size */
+  static final double iconSize5 = height / 173.4;
+  static final double iconSize10 = height / 86.7;
+  static final double iconSize15 = height / 57.8;
+  static final double iconSize20 = height / 43.4;
+  static final double iconSize25 = height / 34.5;
+  static final double iconSize30 = height / 28.91;
+  static final double iconSize35 = height / 24.7;
+
 
 
 }

@@ -1,3 +1,4 @@
+import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomIconButtonWidget extends StatelessWidget {
@@ -21,7 +22,7 @@ class CustomIconButtonWidget extends StatelessWidget {
       child: Icon(
         icon,
         color: color ?? Colors.red[600],
-        size: size ?? 30,
+        size: size ?? Dimensions.iconSize35,
       ),
     );
   }
