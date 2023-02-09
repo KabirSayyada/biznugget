@@ -1,4 +1,5 @@
 import 'package:biznugget/config/routes/app_routes.dart';
+import 'package:biznugget/config/themes/app_theme.dart';
 import 'package:biznugget/core/utils/strings.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +14,11 @@ class Biznugget extends StatelessWidget {
       providers: [
         BlocProvider<WishlistItemsCubit>(
             create: (context) => WishlistItemsCubit()..fetchAllWishlistItems()),
-
-        /// add your BlocPrvider here
+            // add other bloc/cubit providers here
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         title: AppStrings.appName,
+        theme: appTheme(),
         onGenerateRoute: AppRoutes.onGenerateRoute,
       ),
     );

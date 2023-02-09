@@ -5,11 +5,11 @@ abstract class WishlistItemsState {}
 
 class WishlistItemsInitial extends WishlistItemsState {}
 
-class WishlistItemsLoading extends WishlistItemsInitial {}
+class WishlistItemsLoading extends WishlistItemsState {}
 
-class WishlistItemsSuccess extends WishlistItemsInitial {}
+class WishlistItemsSuccess extends WishlistItemsState {}
 
-class WishlistItemsFailure extends WishlistItemsInitial {
+class WishlistItemsFailure extends WishlistItemsState {
   final String message;
 
   WishlistItemsFailure({required this.message});
