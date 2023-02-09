@@ -1,5 +1,5 @@
-import 'package:biznugget/common/widgets/big_text.dart';
-import 'package:biznugget/utils/dimensions.dart';
+import 'package:biznugget/core/common/widgets/big_text.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonWidget extends StatelessWidget {

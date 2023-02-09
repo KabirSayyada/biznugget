@@ -1,8 +1,8 @@
-import 'package:biznugget/common/widgets/big_text.dart';
-import 'package:biznugget/common/widgets/custom_icon_button_widget.dart';
-import 'package:biznugget/common/models/item_model.dart';
+import 'package:biznugget/core/common/widgets/big_text.dart';
+import 'package:biznugget/core/common/widgets/custom_icon_button_widget.dart';
+import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
-import 'package:biznugget/utils/dimensions.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
