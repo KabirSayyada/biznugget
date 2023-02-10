@@ -1,15 +1,40 @@
+import 'package:biznugget/features/start_up/model/onboarding_model.dart';
+import 'package:biznugget/features/start_up/presentation/onboarding_screen.dart';
+import 'package:biznugget/features/start_up/presentation/widgets/onboarding_tile.dart';
 import 'package:biznugget/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    Constants.screenHeight = MediaQuery.of(context).size.height;
-    Constants.screenWidth = MediaQuery.of(context).size.width;
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
+class _SplashScreenState extends State<SplashScreen> {
+  Future<void> decideNavigation() async {
+    await Future.delayed(
+      const Duration(seconds: 3),
+      () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => OnboardingScreen()
+          // OnboardingTile(
+          //   onboardingItem: onboardingModelData[0],
+          // ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    decideNavigation();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
