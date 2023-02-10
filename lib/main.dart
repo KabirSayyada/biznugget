@@ -1,4 +1,4 @@
-import 'package:biznugget/features/splash_screen/presentation/pages/splash_screen.dart';
+import 'package:biznugget/features/start_up/presentation/splash_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/bloc/wishlist_bloc.dart';
 import 'package:biznugget/utils/bloc_observer.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +14,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
-  @override
+    @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<WishlistBloc>(create: (context) => WishlistBloc()),
         /// add your BlocPrvider here
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Biznugget-App',
         home: SplashScreen(),
       ),
