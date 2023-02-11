@@ -25,7 +25,6 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
         filterdItems = items;
         emit(WishlistItemsSuccess());
       });
-      print(items);
     } catch (e) {
       emit(WishlistItemsFailure(
         message: e.toString(),

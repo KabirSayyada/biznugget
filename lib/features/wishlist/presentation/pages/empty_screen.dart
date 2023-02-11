@@ -1,12 +1,10 @@
-import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
 import 'package:biznugget/core/common/widgets/small_text.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
+import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EmptyScreen extends StatelessWidget {
   const EmptyScreen({Key? key}) : super(key: key);
@@ -49,8 +47,15 @@ class EmptyScreen extends StatelessWidget {
             onTap: () => _onTap(context),
             height: Dimensions.height40,
             width: Dimensions.width115,
-            /// gradient: AppColors.gradient,
-          ),
+            gradient: AppColors.customGradient(
+              color1: AppColors.primaryColor1,
+              color2: AppColors.gradientColor,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stop1: 0.25,
+              stop2: 1.0,
+            ),
+          )
         ],
       ),
     );
@@ -58,6 +63,5 @@ class EmptyScreen extends StatelessWidget {
 
   _onTap(BuildContext context) {
     /// TODO: navigate to home screen
-
   }
 }

@@ -1,4 +1,5 @@
 import 'package:biznugget/core/common/widgets/big_text.dart';
+import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class CustomButtonWidget extends StatelessWidget {
   double? size;
   double? height;
   double? width;
+  Gradient? gradient;
 
   CustomButtonWidget({
     Key? key,
@@ -18,6 +20,7 @@ class CustomButtonWidget extends StatelessWidget {
     this.size,
     this.height,
     this.width,
+    this.gradient,
   }) : super(key: key);
 
   @override
@@ -34,6 +37,7 @@ class CustomButtonWidget extends StatelessWidget {
           vertical: Dimensions.radius5,
         ),
         decoration: BoxDecoration(
+          gradient: gradient,
           color: color ?? Colors.blue,
           borderRadius: BorderRadius.circular(Dimensions.radius5),
         ),

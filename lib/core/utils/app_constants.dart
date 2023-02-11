@@ -1,9 +1,10 @@
 import 'package:biznugget/core/utils/colors.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class Constants {
+class AppConstants {
   static double screenHeight = 0;
   static double screenWidth = 0;
 
@@ -11,23 +12,24 @@ class Constants {
   static void showErrorDialog(
       {required BuildContext context, required String msg}) {
     showDialog(
-        context: context,
-        builder: (context) => CupertinoAlertDialog(
-              title: Text(
-                msg,
-                style: const TextStyle(color: Colors.black, fontSize: 16),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: TextButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      textStyle: const TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.bold)),
-                  child: const Text('Ok'),
-                )
-              ],
-            ));
+      context: context,
+      builder: (context) => CupertinoAlertDialog(
+        title: Text(
+          msg,
+          style: const TextStyle(color: Colors.black, fontSize: 16),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+                textStyle:
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+            child: const Text('Ok'),
+          )
+        ],
+      ),
+    );
   }
 
   /// This method is used to show a toast message
@@ -40,6 +42,4 @@ class Constants {
         gravity: gravity ?? ToastGravity.BOTTOM);
   }
 
-
-  /// todo : show snack bar
 }

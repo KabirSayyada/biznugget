@@ -39,6 +39,11 @@ dependencies:
   hive: ^2.2.3
   hive_flutter:
   fluttertoast: ^8.1.2
+  searchbar_animation: ^0.0.4
+  persistent_bottom_nav_bar: ^5.0.2
+  convex_bottom_bar: ^3.2.0
+  getwidget: ^2.0.4
+
 
 
 dev_dependencies:
