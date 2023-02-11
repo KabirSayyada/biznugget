@@ -30,91 +30,101 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(
-              height: 48,
-            ),
-            const Text(
-              'Choose Account Type',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w400,
-                color: AppColor.primaryColor2,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              const SizedBox(
+                height: 70,
               ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Flexible(
-              flex: 2,
-              child: PageView.builder(
-                scrollDirection: Axis.horizontal,
-                controller: _pageController,
-                physics: const BouncingScrollPhysics(),
-                onPageChanged: _onPageChanged,
-                itemCount: onboardingModelData.length,
-                itemBuilder: (ctx, index) => SingleChildScrollView(
-                    child: OnboardingTile(
-                  onboardingItem: onboardingModelData[index],
-                )),
-              ),
-            ),
-            AnimatedSmoothIndicator(
-              activeIndex: _currentPage,
-              count: onboardingModelData.length,
-              onDotClicked: (index) {
-                _pageController.jumpToPage(index);
-              },
-              effect: const JumpingDotEffect(
-                dotColor: AppColor.dotColor,
-                activeDotColor: AppColor.onboardingColor,
-                dotWidth: 10,
-                dotHeight: 10,
-              ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () => _pageController.jumpToPage(
-                    onboardingModelData.length,
-                  ),
-                  child: const Text('Skip'),
+              const Text(
+                'Choose Account Type',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.primaryColor2,
                 ),
-                InkWell(
-                  onTap: () => _pageController.nextPage(
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.bounceInOut,
-                  ),
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          12,
-                        ),
-                        color: AppColor.onboardingColor),
-                    child: const Text(
-                      'Next',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+              ),
+              const SizedBox(
+                height: 35,
+              ),
+              Flexible(
+                flex: 3,
+                
+                child: PageView.builder(
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  physics: const BouncingScrollPhysics(),
+                  onPageChanged: _onPageChanged,
+                  itemCount: onboardingModelData.length,
+                  itemBuilder: (ctx, index) => SingleChildScrollView(
+                    child: OnboardingTile(
+                      onboardingItem: onboardingModelData[index],
                     ),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-          ],
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              AnimatedSmoothIndicator(
+                activeIndex: _currentPage,
+                count: onboardingModelData.length,
+                onDotClicked: (index) {
+                  _pageController.jumpToPage(index);
+                },
+                effect: const JumpingDotEffect(
+                  dotColor: AppColor.dotColor,
+                  activeDotColor: AppColor.onboardingColor,
+                  dotWidth: 10,
+                  dotHeight: 10,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () => _pageController.jumpToPage(
+                      onboardingModelData.length,
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                      child: Text('Skip'),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => _pageController.nextPage(
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.bounceInOut,
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 18, vertical: 8),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            12,
+                          ),
+                          color: AppColor.onboardingColor),
+                      child: const Text(
+                        'Next',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+            ],
+          ),
         ),
       ),
     );

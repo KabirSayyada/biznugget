@@ -1,8 +1,6 @@
-import 'package:biznugget/features/start_up/model/onboarding_model.dart';
 import 'package:biznugget/features/start_up/presentation/onboarding_screen.dart';
-import 'package:biznugget/features/start_up/presentation/widgets/onboarding_tile.dart';
-import 'package:biznugget/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,18 +15,17 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
       () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (context) => OnboardingScreen()
-          // OnboardingTile(
-          //   onboardingItem: onboardingModelData[0],
-          // ),
-        ),
+        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
       ),
     );
   }
 
+  void waitSVG() {
+    Future.delayed(const Duration(seconds: 2));
+  }
   @override
   void initState() {
+    waitSVG();
     decideNavigation();
     super.initState();
   }
@@ -45,12 +42,13 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            tileMode: TileMode.clamp,
+            // tileMode: TileMode.clamp,
           ),
         ),
         alignment: Alignment.center,
-        child: Image.asset(
-          'assets/images/app_logo.png',
+        child: SvgPicture.asset(
+          'assets/svg/app_logo.svg',
+          color: Colors.white,
         ),
       ),
     );

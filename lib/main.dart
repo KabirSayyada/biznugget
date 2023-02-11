@@ -4,8 +4,8 @@ import 'package:biznugget/utils/bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
 
+void main() {
   Bloc.observer = MyBlocObserver();
 
   runApp(const MyApp());
@@ -14,11 +14,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<WishlistBloc>(create: (context) => WishlistBloc()),
+
         /// add your BlocPrvider here
       ],
       child: const MaterialApp(
@@ -29,3 +30,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

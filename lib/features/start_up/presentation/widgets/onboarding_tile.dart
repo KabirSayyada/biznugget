@@ -1,6 +1,7 @@
 import 'package:biznugget/features/start_up/model/onboarding_model.dart';
 import 'package:biznugget/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class OnboardingTile extends StatelessWidget {
   final OnboardingModel onboardingItem;
@@ -15,32 +16,31 @@ class OnboardingTile extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         const SizedBox(
-          height: 24,
+          height: 16,
         ),
         Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(249),
-            boxShadow: const [
+          decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+            boxShadow: [
               BoxShadow(
-                offset: Offset(0, 4),
-                blurRadius: 4,
+                offset: Offset(0, 2),
+                blurRadius: 2,
                 color: Color.fromRGBO(0, 0, 0, 0.15),
               ),
             ],
-            image: DecorationImage(
-              image: AssetImage(
-                onboardingItem.imageUrl,
-              ),
-              fit: BoxFit.cover,
-            ),
           ),
           width: 315,
           height: 315,
+          child: SvgPicture.asset(
+            onboardingItem.imageUrl,
+            fit: BoxFit.cover,
+          ),
         ),
         const SizedBox(
-          height: 24,
+          height: 32,
         ),
         Text(
           onboardingItem.title,
@@ -52,7 +52,7 @@ class OnboardingTile extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(
-          height: 16,
+          height: 24,
         ),
         Text(
           onboardingItem.desc,
