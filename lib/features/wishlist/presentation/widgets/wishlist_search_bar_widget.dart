@@ -4,8 +4,8 @@ import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchBar extends StatelessWidget {
-  SearchBar({super.key});
+class WishlistSearchBar extends StatelessWidget {
+  WishlistSearchBar({super.key});
 
   final TextEditingController _searchController = TextEditingController();
 

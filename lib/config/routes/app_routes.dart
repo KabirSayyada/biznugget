@@ -21,7 +21,7 @@ class AppRoutes {
       /// bottom navigation bar
       case Routes.initialRoute:
         return MaterialPageRoute(builder: (context) {
-          return const BottomNavigationBarPage();
+          return const HomeScreen();
         });
 
       /// wishlist

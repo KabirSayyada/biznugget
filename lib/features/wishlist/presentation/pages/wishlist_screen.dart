@@ -1,14 +1,14 @@
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/features/wishlist/presentation/pages/empty_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/pages/items_screen.dart';
-import 'package:biznugget/features/wishlist/presentation/widgets/search_bar.dart';
+import 'package:biznugget/features/wishlist/presentation/widgets/wishlist_search_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WishlistScreen extends StatelessWidget {
   WishlistScreen({super.key});
 
-  final SearchBar _searchBar = SearchBar();
+  final WishlistSearchBar _searchBar = WishlistSearchBar();
 
   @override
   Widget build(BuildContext context) {
