@@ -1,8 +1,8 @@
-import 'package:biznugget/core/utils/constants.dart';
+import 'package:biznugget/core/utils/app_constants.dart';
 
 class Dimensions {
-  static final double height = Constants.screenHeight;
-  static final double width = Constants.screenWidth;
+  static final double height = AppConstants.screenHeight;
+  static final double width = AppConstants.screenWidth;
 
   /**
    *

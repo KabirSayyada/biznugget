@@ -2,8 +2,8 @@ import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_app_bar_widget.dart';
-import 'package:biznugget/features/wishlist/presentation/widgets/custom_card_widget.dart';
-import 'package:biznugget/features/wishlist/presentation/widgets/search_bar.dart';
+import 'package:biznugget/features/wishlist/presentation/widgets/wishlist_custom_card_widget.dart';
+import 'package:biznugget/features/wishlist/presentation/widgets/wishlist_search_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +13,7 @@ class ItemsScreen extends StatelessWidget {
     required this.searchBar,
   });
 
-  final SearchBar searchBar;
+  final WishlistSearchBar searchBar;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class ItemsScreen extends StatelessWidget {
             onTap: () {
               /// todo : navigate to product details page
             },
-            child: CustomCardWidget(
+            child: WishlistCustomCard(
               item: items[index],
               index: index,
             ),

@@ -9,8 +9,8 @@ import 'package:biznugget/features/wishlist/presentation/widgets/price_widget.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomCardWidget extends StatelessWidget {
-  const CustomCardWidget({
+class WishlistCustomCard extends StatelessWidget {
+  const WishlistCustomCard({
     Key? key,
     required this.item,
     required this.index,
