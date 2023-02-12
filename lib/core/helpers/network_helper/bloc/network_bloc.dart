@@ -1,4 +1,4 @@
-import 'package:biznugget/core/utils/network_helper/presentation/bloc/network_observer.dart';
+import 'package:biznugget/core/helpers/network_helper/bloc/network_observer.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 

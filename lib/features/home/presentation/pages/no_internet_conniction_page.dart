@@ -53,5 +53,7 @@ class NoInternetConnectionPage extends StatelessWidget {
     );
   }
 
-  _onTap(BuildContext context) {}
+  _onTap(BuildContext context) {
+    /// todo: implement the logic to check the internet connection
+  }
 }
