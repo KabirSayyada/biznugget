@@ -2,10 +2,13 @@ import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
 import 'package:biznugget/core/common/widgets/custom_icon_button_widget.dart';
+import 'package:biznugget/core/common/widgets/small_text.dart';
+import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc.dart';
-import 'package:biznugget/features/home/presentation/widgets/home_custom_card_decoration.dart';
+import 'package:biznugget/features/home/presentation/widgets/home_custom_card_widget/home_custom_card_decoration.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_custom_icon_button_widget.dart';
+import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -26,52 +29,7 @@ class HomeCustomCard extends StatelessWidget {
           Container(
             decoration: HomeCustomCardDecoration()
                 .decoration(index: index, context: context),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                /// Title
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    item.name,
-                    style: TextStyle(
-                      fontSize: Dimensions.font16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-
-                /// image of item
-                Expanded(
-                  flex: 2,
-                  child: _itemImage(),
-                ),
-
-                /// item details
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    width: double.infinity,
-                    padding: _paddingOfItemDetailsColumn(),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        /// title
-                        BigText(
-                          text: item.name,
-                          size: Dimensions.font16,
-                          maxLines: 2,
-                        ),
-
-                        /// row of button and (price and sale)
-                        _price(),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            child: CardBody(item: item),
           ),
           GoToDetailsButton(index: index),
         ],
@@ -101,35 +59,54 @@ class HomeCustomCard extends StatelessWidget {
               : null,
     );
   }
+}
+
+class CardBody extends StatelessWidget {
+  const CardBody({Key? key, required this.item}) : super(key: key);
+
+  final ItemModel item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: _paddingOfItemDetailsColumn(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// sub category
+          SmallText(text: item.name, color: AppColors.hintColor, size: 14),
+          SizedBox(height: Dimensions.height7),
+          /// Title
+          BigText(
+              text: item.name,
+              size: Dimensions.font16,
+              fontWeight: FontWeight.w600,
+              maxLines: 2),
+
+          /// image of item
+          Center(
+            child: CustomImageWidget(
+              assetImagePath: item.imageUrl,
+              imgHeight: Dimensions.height100,
+              imgWidth: Dimensions.width100,
+            ),
+          ),
+
+          /// item details
+          _price(),
+        ],
+      ),
+    );
+  }
 
   /// padding of item details column
   EdgeInsets _paddingOfItemDetailsColumn() {
     return EdgeInsets.only(
-      top: Dimensions.radius10,
+      top: Dimensions.radius15,
       left: Dimensions.radius15,
       right: Dimensions.radius15,
-      bottom: Dimensions.radius10,
-    );
-  }
-
-  /// item image
-  Container _itemImage() {
-    return Container(
-      margin: EdgeInsets.only(
-        top: Dimensions.radius10,
-        left: Dimensions.radius5,
-        right: Dimensions.radius5,
-      ),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(item.imageUrl),
-          fit: BoxFit.fitHeight,
-        ),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(Dimensions.radius10),
-          topRight: Radius.circular(Dimensions.radius10),
-        ),
-      ),
+      bottom: Dimensions.radius15,
     );
   }
 
@@ -156,6 +133,7 @@ class HomeCustomCard extends StatelessWidget {
   }
 }
 
+/// button to go to details page
 class GoToDetailsButton extends StatelessWidget {
   const GoToDetailsButton({Key? key, required this.index}) : super(key: key);
 
@@ -163,15 +141,16 @@ class GoToDetailsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color? bgColor = HomeCustomCardDecoration().cardColors(index: index, isIcon: true);
+    Color? bgColor =
+        HomeCustomCardDecoration().cardColors(index: index, isIcon: true);
     Color? iconColor = HomeCustomCardDecoration().cardColors(index: index);
     return Align(
         alignment: Alignment.bottomRight,
         child: bgColor != null
             ? HomeCustomIconButtonWidget(
-          height: Dimensions.height35,
-          width: Dimensions.width35,
-                  radius: Dimensions.height5,
+                height: Dimensions.height35,
+                width: Dimensions.width35,
+                radius: Dimensions.height5,
                 icon: Icons.add,
                 iconColor: iconColor,
                 iconSize: Dimensions.iconSize20,

@@ -17,21 +17,21 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
     // some random items
     ItemModel(
       id: 1,
-      name: 'Item 1',
+      name: 'BalenciagaSpeed',
       description: 'Item 1 Description',
       price: 100,
       imageUrl: AppImages.item1,
     ),
     ItemModel(
       id: 2,
-      name: 'Item 2',
+      name: 'Jordan ZoomFreak 3',
       description: 'Item 2 Description',
       price: 90,
       imageUrl: AppImages.item2,
     ),
     ItemModel(
       id: 3,
-      name: 'Item 3',
+      name: 'Colored AdidasSprint',
       description: 'Item 3 Description',
       price: 80,
       imageUrl: AppImages.item3,

@@ -1,6 +1,6 @@
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc.dart';
-import 'package:biznugget/features/home/presentation/widgets/home_custom_card_widget.dart';
+import 'package:biznugget/features/home/presentation/widgets/home_custom_card_widget/home_custom_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +10,7 @@ class HomeItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         BlocProvider(
           create: (context) => HomeScreenBloc()..add(FetchAllItems()),
@@ -20,7 +21,7 @@ class HomeItemsScreen extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is FetchAllItemsSuccess) {
-                return HomeAllItemsGridview();
+                return const HomeAllItemsGridview();
               } else if (state is FetchAllItemsFailure) {
                 return const Center(
                   child: Text("Something went wrong"),
@@ -48,12 +49,12 @@ class HomeAllItemsGridview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
-        padding: const EdgeInsets.all(10),
+        padding: _padding(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: Dimensions.itemCardRatio,
-          mainAxisSpacing: Dimensions.height10,
-          crossAxisSpacing: Dimensions.width10,
+          mainAxisSpacing: Dimensions.height25,
+          crossAxisSpacing: Dimensions.width30,
         ),
         itemCount: BlocProvider.of<HomeScreenBloc>(context).items.length,
         itemBuilder: (context, index) {
@@ -64,5 +65,14 @@ class HomeAllItemsGridview extends StatelessWidget {
         },
       ),
     );
+  }
+
+  EdgeInsets _padding() {
+    return EdgeInsets.only(
+          left: Dimensions.width20,
+          right: Dimensions.width25,
+          top: Dimensions.height25,
+          bottom: Dimensions.height10
+      );
   }
 }
