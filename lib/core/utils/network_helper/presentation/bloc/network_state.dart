@@ -9,3 +9,5 @@ class NetworkInitial extends NetworkState {}
 class NetworkSuccess extends NetworkState {}
 
 class NetworkFailure extends NetworkState {}
+
+class NetworkLoading extends NetworkState {}

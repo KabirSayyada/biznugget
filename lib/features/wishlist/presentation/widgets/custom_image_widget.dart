@@ -16,6 +16,8 @@ class CustomImageWidget extends StatelessWidget {
     this.surroundingRadius,
     this.surroundingHeight,
     this.surroundingWidth,
+    this.margin,
+    this.padding,
   }) : super(key: key);
 
   final String? assetImagePath;
@@ -29,6 +31,8 @@ class CustomImageWidget extends StatelessWidget {
   final double? surroundingRadius;
   final double? surroundingHeight;
   final double? surroundingWidth;
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +40,7 @@ class CustomImageWidget extends StatelessWidget {
       onTap: onTap,
       /// the surrounding container
       child: Container(
+        padding: padding,
         alignment: Alignment.center,
         height: surroundingHeight,
         width: surroundingWidth,
@@ -47,7 +52,7 @@ class CustomImageWidget extends StatelessWidget {
         child: Container(
           height: imgHeight ?? Dimensions.height120,
           width: imgWidth ?? Dimensions.height120,
-          margin: EdgeInsets.only(
+          margin: margin ?? EdgeInsets.only(
             top: Dimensions.radius10,
             bottom: Dimensions.radius10,
             left: Dimensions.radius5,

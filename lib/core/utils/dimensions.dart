@@ -64,6 +64,9 @@ class Dimensions {
   static final double height100 = height / 8.4;
   static final double width100 = width / 3.6;
 
+  static final double height105 = height / 8.1;
+  static final double width105 = width / 3.4;
+
   static final double height115 = height / 7.4;
   static final double width115 = width / 3.1;
 
