@@ -9,6 +9,9 @@ class AppColors {
   static const Color searchBarBorderColor = Color(0xFFD9D9D9);
   static const Color gradientColor = Color(0xFF7D89FF);
 
+  static const Color cardBorderColor1 = Color(0xFF01C3CC);
+  static const Color cardBorderColor2 = Color(0xFF3F56F2);
+  static const Color cardBorderColor3 = Color(0xFF830D3F);
 
 
 
