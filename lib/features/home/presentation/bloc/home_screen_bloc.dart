@@ -122,9 +122,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
     ),
   ];
 
-
   HomeScreenBloc() : super(HomeItemsScreenInitial()) {
     on<HomeScreenEvent>((event, emit) async {
+      /// Fetch All Items
       if (event is FetchAllItems) {
         emit(FetchAllItemsLoading());
         try {
@@ -136,6 +136,8 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
         } catch (e) {
           emit(FetchAllItemsFailure(message: e.toString()));
         }
+
+        /// Fetch Popular Items
       } else if (event is FetchPopularItems) {
         emit(FetchPopularItemsLoading());
         try {
@@ -147,6 +149,8 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
         } catch (e) {
           emit(FetchAllItemsFailure(message: e.toString()));
         }
+
+        /// Fetch Categories
       } else if (event is FetchCategories) {
         emit(FetchCategoriesLoading());
         try {
