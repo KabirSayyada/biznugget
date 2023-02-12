@@ -13,6 +13,8 @@ class AppColors {
   static const Color cardBorderColor2 = Color(0xFF3F56F2);
   static const Color cardBorderColor3 = Color(0xFF830D3F);
 
+  static const Color homeSliderDotsColor = Color(0xFFD2D2D2);
+
 
 
   static mainGradient () {

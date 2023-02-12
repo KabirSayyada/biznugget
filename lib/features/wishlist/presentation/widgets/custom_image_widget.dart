@@ -18,6 +18,7 @@ class CustomImageWidget extends StatelessWidget {
     this.surroundingWidth,
     this.margin,
     this.padding,
+    this.gradient,
   }) : super(key: key);
 
   final String? assetImagePath;
@@ -33,6 +34,7 @@ class CustomImageWidget extends StatelessWidget {
   final double? surroundingWidth;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
+  final Gradient? gradient;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +67,7 @@ class CustomImageWidget extends StatelessWidget {
               fit: BoxFit.fitHeight,
             ),
             borderRadius: BorderRadius.circular(radius ?? 0),
+            gradient: gradient,
           ),
         ),
       ),

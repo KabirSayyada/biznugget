@@ -1,6 +1,6 @@
 import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/features/home/presentation/pages/home_items_screen.dart';
-import 'package:biznugget/features/home/presentation/pages/no_internet_conniction_page.dart';
+import 'package:biznugget/features/home/presentation/pages/no_internet_conniction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
