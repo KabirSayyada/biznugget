@@ -1,6 +1,8 @@
 import 'package:biznugget/core/utils/strings.dart';
 import 'package:biznugget/features/bottom_navigation_bar/presentation/pages/bottom_navigation_bar_page.dart';
+import 'package:biznugget/features/details/presentation/pages/details_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
+import 'package:biznugget/features/splash_screen/presentation/pages/splash_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/features/wishlist/presentation/pages/wishlist_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,7 @@ class Routes {
   static const String AdvertiseScreenRoute = '/AdvertiseScreen';
   static const String MessagesScreenRoute = '/MessagesScreen';
   static const String ProfileScreenRoute = '/ProfileScreen';
+  static const String DetailsScreenRoute = '/DetailsScreen';
 }
 
 class AppRoutes {
@@ -21,7 +24,7 @@ class AppRoutes {
       /// bottom navigation bar
       case Routes.initialRoute:
         return MaterialPageRoute(builder: (context) {
-          return const HomeScreen();
+          return const SplashScreen();
         });
 
       /// wishlist
@@ -55,6 +58,12 @@ class AppRoutes {
       case Routes.ProfileScreenRoute:
         return MaterialPageRoute(builder: ((context) {
           return HomeScreen();
+        }));
+
+      /// DetailsScreen
+      case Routes.DetailsScreenRoute:
+        return MaterialPageRoute(builder: ((context) {
+          return DetailsScreen();
         }));
 
       default:

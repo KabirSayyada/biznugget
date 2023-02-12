@@ -13,10 +13,20 @@ class Dimensions {
    *
    **/
 
+  /** custom heights **/
+
+  static final double itemCardRatio = (width / width160) / (height / height250) * 0.8;
+
   /**height and width */
+
+  static final double height3 = height / 281.3;
+  static final double width3 = width / 131.1;
 
   static final double height5 = height / 173.4;
   static final double width5 = width / 82.2;
+
+  static final double height7 = height / 121.0;
+  static final double width7 = width / 58.8;
 
   static final double height10 = height / 86.7;
   static final double width10 = width / 41.1;
@@ -54,6 +64,9 @@ class Dimensions {
   static final double height100 = height / 8.4;
   static final double width100 = width / 3.6;
 
+  static final double height105 = height / 8.1;
+  static final double width105 = width / 3.4;
+
   static final double height115 = height / 7.4;
   static final double width115 = width / 3.1;
 
@@ -74,6 +87,12 @@ class Dimensions {
 
   static final double height200 = height / 4.2;
   static final double width200 = width / 2.1;
+
+  static final double height250 = height / 3.4;
+  static final double width250 = width / 1.7;
+
+  static final double height300 = height / 2.8;
+  static final double width300 = width / 1.4;
 
   /**Fonts */
 

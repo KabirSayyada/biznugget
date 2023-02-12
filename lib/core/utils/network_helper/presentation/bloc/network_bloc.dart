@@ -9,6 +9,7 @@ part 'network_state.dart';
 
 class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   NetworkBloc._() : super(NetworkInitial()) {
+    emit(NetworkLoading());
     on<NetworkObserve>(_observe);
     on<NetworkNotify>(_notifyStatus);
   }
