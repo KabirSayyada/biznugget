@@ -5,7 +5,7 @@ import 'package:biznugget/core/common/widgets/custom_icon_button_widget.dart';
 import 'package:biznugget/core/common/widgets/small_text.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc.dart';
+import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_custom_card_widget/home_custom_card_decoration.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_custom_icon_button_widget.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';

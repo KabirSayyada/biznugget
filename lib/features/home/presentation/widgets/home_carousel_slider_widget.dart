@@ -1,8 +1,8 @@
 import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc.dart';
-import 'package:biznugget/features/home/presentation/bloc/popular_items_slider_index_cubit/popular_items_slider_index_cubit.dart';
+import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
+import 'package:biznugget/features/home/presentation/cubits/popular_items_slider_index_cubit/popular_items_slider_index_cubit.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';

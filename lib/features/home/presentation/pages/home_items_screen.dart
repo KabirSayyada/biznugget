@@ -1,6 +1,6 @@
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc.dart';
-import 'package:biznugget/features/home/presentation/bloc/popular_items_slider_index_cubit/popular_items_slider_index_cubit.dart';
+import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
+import 'package:biznugget/features/home/presentation/cubits/popular_items_slider_index_cubit/popular_items_slider_index_cubit.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_all_items_gridview_widget.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_carousel_slider_widget.dart';
 import 'package:flutter/material.dart';

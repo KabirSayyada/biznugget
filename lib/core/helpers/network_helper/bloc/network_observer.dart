@@ -1,4 +1,4 @@
-import 'package:biznugget/core/utils/network_helper/presentation/bloc/network_bloc.dart';
+import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
