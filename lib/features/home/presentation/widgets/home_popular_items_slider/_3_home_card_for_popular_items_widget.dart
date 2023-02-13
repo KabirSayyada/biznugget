@@ -18,7 +18,6 @@ class HomeCardForPopularItemsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: _margin(),
       padding: EdgeInsets.symmetric(
         horizontal: Dimensions.width25,
         vertical: Dimensions.height10,
@@ -43,16 +42,6 @@ class HomeCardForPopularItemsWidget extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  /// this is the card margin :D
-  EdgeInsets _margin() {
-    return EdgeInsets.only(
-      top: Dimensions.height10,
-      bottom: Dimensions.height10,
-      left: Dimensions.width10,
-      right: Dimensions.width10,
     );
   }
 

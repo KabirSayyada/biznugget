@@ -52,6 +52,9 @@ class Dimensions {
   static final double height40 = height / 21.7;
   static final double width40 = width / 10.4;
 
+  static final double height47 = height / 18.0;
+  static final double width47 = width / 8.8;
+
   static final double height50 = height / 17.0;
   static final double width50 = width / 8.2;
 
@@ -111,6 +114,7 @@ class Dimensions {
   static final double radius10 = height / 86.7;
   static final double radius15 = height / 57.8;
   static final double radius20 = height / 43.4;
+  static final double radius22 = height / 38.7;
   static final double radius25 = height / 34.5;
   static final double radius30 = height / 28.8;
   static final double radius35 = height / 24.7;

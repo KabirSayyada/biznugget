@@ -28,21 +28,27 @@ class BottomNavigationBarCubit extends Cubit<BottomNavigationBarState> {
     switch (index) {
       case 0:
         currentScreen = HomeScreen();
+        emit(BottomNavigationBarSelected());
         break;
       case 1:
         currentScreen = WishlistScreen();
+        emit(BottomNavigationBarSelected());
         break;
       case 2:
         currentScreen = AdvertiseScreen();
+        emit(BottomNavigationBarSelected());
         break;
       case 3:
         currentScreen = MessagesScreen();
+        emit(BottomNavigationBarSelected());
         break;
       case 4:
         currentScreen = ProfileScreen();
+        emit(BottomNavigationBarSelected());
         break;
       default:
         currentScreen = HomeScreen();
+        emit(BottomNavigationBarSelected());
     }
     emit(BottomNavigationBarSelected());
   }

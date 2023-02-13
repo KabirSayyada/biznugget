@@ -9,6 +9,8 @@ import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_custom_card_widget/home_custom_card_decoration.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_all_items_gridview_widgets/home_custom_icon_button_widget.dart';
+import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
+import 'package:biznugget/features/wishlist/presentation/pages/wishlist_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class HomeCustomCard extends StatelessWidget {
                 .decoration(index: index, context: context),
             child: CardBody(item: item),
           ),
-          GoToDetailsButton(index: index),
+          AddToWishListButton(index: index, item: item),
         ],
       ),
     );
@@ -135,10 +137,11 @@ class CardBody extends StatelessWidget {
 }
 
 /// button to go to details page
-class GoToDetailsButton extends StatelessWidget {
-  const GoToDetailsButton({Key? key, required this.index}) : super(key: key);
+class AddToWishListButton extends StatelessWidget {
+  const AddToWishListButton({Key? key, required this.index, required this.item}) : super(key: key);
 
   final int index;
+  final ItemModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -159,11 +162,13 @@ class GoToDetailsButton extends StatelessWidget {
                 onTap: () {
 
                   /// show toast
-                  AppConstants.showToast(msg: 'Hello samuel');
-
+                  AppConstants.showToast(msg: 'Added to your wishlist');
+                  BlocProvider.of<WishlistItemsCubit>(context).addToWishlist(item: item);
 
                 },
               )
-            : CustomIconButtonWidget(icon: Icons.add_box, onTap: () {}));
+            : CustomIconButtonWidget(icon: Icons.add_box, onTap: () {
+              BlocProvider.of<WishlistItemsCubit>(context).addToWishlist(item: item);
+        }));
   }
 }

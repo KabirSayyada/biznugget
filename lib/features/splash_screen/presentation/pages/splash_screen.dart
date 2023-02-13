@@ -1,11 +1,7 @@
-import 'package:biznugget/config/routes/app_routes.dart';
-import 'package:biznugget/core/common/models/item_model/item_model.dart';
-import 'package:biznugget/core/utils/assets_manager.dart';
+import 'package:biznugget/features/bottom_navigation_bar/presentation/pages/bottom_navigation_bar_page.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
-import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,7 +12,7 @@ class SplashScreen extends StatelessWidget {
     AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
     return
-        HomeScreen();
+        BottomNavigationBarPage();
 
         /// temporary code :D
         /// temporary code :D
