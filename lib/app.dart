@@ -1,3 +1,4 @@
+import 'package:biznugget/features/home/business_acc_home/presentation/cubits/advertise_cubit/advertise_cubit.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/cubits/sell_or_buy_cubit/sell_or_buy_cubit.dart';
 import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:biznugget/config/routes/app_routes.dart';
@@ -33,6 +34,9 @@ class Biznugget extends StatelessWidget {
 
         /// sell or buy cubit
         BlocProvider<SellOrBuyCubit>(create: (context) => SellOrBuyCubit()),
+
+        /// ADVERTISE Cubit
+        BlocProvider<AdvertiseCubit>(create: (context) => AdvertiseCubit()),
 
         /// add other bloc/cubit providers here
       ],

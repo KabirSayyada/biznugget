@@ -1,4 +1,5 @@
 import 'package:biznugget/core/common/widgets/big_text.dart';
+import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/home/business_acc_home/data/models/sb_article_model.dart';
 import 'package:flutter/material.dart';

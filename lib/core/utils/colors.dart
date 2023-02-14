@@ -31,6 +31,21 @@ class AppColors {
     );
   }
 
+  static Gradient secondGradient () {
+    return const LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        primaryColor1,
+        AppColors.gradientColor,
+      ],
+      stops: [
+        0.25,
+        1.0,
+      ],
+    );
+  }
+
   static customGradient({
     required Color color1,
     required Color color2,

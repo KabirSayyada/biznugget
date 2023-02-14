@@ -21,26 +21,17 @@ class SBCustomAppBar extends StatelessWidget {
           child: Container(
             height: Dimensions.height47,
             width: Dimensions.width47,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(Dimensions.radius10),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.secondaryColor.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: const Offset(1, 1), // changes position of shadow
-                ),
-              ],
-            ),
+            decoration: _menuIconContainerDecoration(),
             // change icon according to the drawer state
             child: _showDrawer(),
           ),
         ),
+        // title
         BigText(
             text: 'Welcome Biznugget!',
             size: Dimensions.font18,
             fontWeight: FontWeight.w800),
+        // profile image
         GestureDetector(
           onTap: () {
             /// todo : go to profile screen
@@ -52,6 +43,22 @@ class SBCustomAppBar extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  // menu icon container decoration
+  BoxDecoration _menuIconContainerDecoration() {
+    return BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(Dimensions.radius10),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.secondaryColor.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: const Offset(1, 1), // changes position of shadow
+              ),
+            ],
+          );
   }
 
   // change icon according to the drawer state

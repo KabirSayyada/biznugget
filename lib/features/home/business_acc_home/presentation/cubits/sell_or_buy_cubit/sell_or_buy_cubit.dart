@@ -9,6 +9,7 @@ part 'sell_or_buy_state.dart';
 class SellOrBuyCubit extends Cubit<SellOrBuyState> {
   SellOrBuyCubit() : super(SellOrBuyInitial());
 
+
   final List<SBInstructionModel> instructions = [
     SBInstructionModel(
       title: 'Create your store',
