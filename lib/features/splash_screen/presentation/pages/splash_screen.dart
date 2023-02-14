@@ -1,4 +1,6 @@
 import 'package:biznugget/features/bottom_navigation_bar/presentation/pages/bottom_navigation_bar_page.dart';
+import 'package:biznugget/features/home/business_acc_home/presentation/pages/_1_buy_or_sell_screen.dart';
+import 'package:biznugget/features/home/presentation/pages/home_items_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
 import 'package:biznugget/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,7 @@ class SplashScreen extends StatelessWidget {
     AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
     return
-        BottomNavigationBarPage();
+      SellOrBuyScreen();
 
         /// temporary code :D
         /// temporary code :D

@@ -5,13 +5,12 @@ import 'package:biznugget/core/common/widgets/small_text.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
+import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeCardForPopularItemsWidget extends StatelessWidget {
   const HomeCardForPopularItemsWidget({Key? key, required this.item})
       : super(key: key);
-
 
   final ItemModel item;
 
@@ -29,11 +28,9 @@ class HomeCardForPopularItemsWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
-          /// Details
+          // Details
           Expanded(child: PopularItemsDetails(item: item)),
-
-          /// image
+          // image
           CustomImageWidget(
             assetImagePath: AppImages.item3,
             // BlocProvider.of<HomeScreenBloc>(context).items[itemIndex].imageUrl,
@@ -78,7 +75,7 @@ class PopularItemsDetails extends StatelessWidget {
         ),
         SizedBox(height: Dimensions.height10),
         BigText(
-          text:item.name,
+          text: item.name,
           color: Colors.white,
           size: Dimensions.font20,
           fontWeight: FontWeight.w600,

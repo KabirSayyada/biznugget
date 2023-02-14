@@ -17,6 +17,13 @@ class BottomNavigationBarPage extends StatelessWidget {
         body: _buildBody(state, context),
         /// bottom navigation bar
         bottomNavigationBar: ConvexAppBar(
+          gradient: RadialGradient(
+            colors: [
+              AppColors.primaryColor1,
+              AppColors.gradientColor2,
+            ],
+            radius: 8,
+          ),
           items: BlocProvider.of<BottomNavigationBarCubit>(context)
               .tabsOfBottomNavigationBar,
           initialActiveIndex: 0, //optiona

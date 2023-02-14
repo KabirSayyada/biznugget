@@ -11,7 +11,7 @@ import 'package:biznugget/features/home/presentation/widgets/home_custom_card_wi
 import 'package:biznugget/features/home/presentation/widgets/home_all_items_gridview_widgets/home_custom_icon_button_widget.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/features/wishlist/presentation/pages/wishlist_screen.dart';
-import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
+import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 

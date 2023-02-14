@@ -1,3 +1,4 @@
+import 'package:biznugget/features/home/business_acc_home/presentation/cubits/sell_or_buy_cubit/sell_or_buy_cubit.dart';
 import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:biznugget/config/routes/app_routes.dart';
 import 'package:biznugget/config/themes/app_theme.dart';
@@ -15,7 +16,6 @@ class Biznugget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-
         /// bottom navigation bar provider
         BlocProvider<BottomNavigationBarCubit>(
             create: (context) => BottomNavigationBarCubit()),
@@ -29,9 +29,10 @@ class Biznugget extends StatelessWidget {
             create: (context) => NetworkBloc()..add(NetworkObserve())),
 
         /// home bloc
-        BlocProvider<HomeScreenBloc>(
-            create: (context) => HomeScreenBloc()),
+        BlocProvider<HomeScreenBloc>(create: (context) => HomeScreenBloc()),
 
+        /// sell or buy cubit
+        BlocProvider<SellOrBuyCubit>(create: (context) => SellOrBuyCubit()),
 
         /// add other bloc/cubit providers here
       ],

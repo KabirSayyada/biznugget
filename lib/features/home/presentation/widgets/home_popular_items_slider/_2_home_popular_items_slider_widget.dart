@@ -3,7 +3,7 @@ import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:biznugget/features/home/presentation/cubits/popular_items_slider_index_cubit/popular_items_slider_index_cubit.dart';
 import 'package:biznugget/features/home/presentation/widgets/home_popular_items_slider/_3_home_card_for_popular_items_widget.dart';
-import 'package:biznugget/features/wishlist/presentation/widgets/custom_image_widget.dart';
+import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
