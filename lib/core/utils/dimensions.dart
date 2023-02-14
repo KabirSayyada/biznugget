@@ -64,6 +64,9 @@ class Dimensions {
   static final double height60 = height / 14.1;
   static final double width60 = width / 6.7;
 
+  static final double height65 = height / 13.0;
+  static final double width65 = width / 6.2;
+
   static final double height100 = height / 8.4;
   static final double width100 = width / 3.6;
 
@@ -78,6 +81,9 @@ class Dimensions {
 
   static final double height125 = height / 6.7;
   static final double width125 = width / 2.8;
+
+  static final double height128 = height / 6.6;
+  static final double width128 = width / 2.7;
 
   static final double height167 = height / 5.0;
   static final double width167 = width / 2.0;
@@ -130,4 +136,5 @@ class Dimensions {
   static final double iconSize25 = height / 34.5;
   static final double iconSize30 = height / 28.91;
   static final double iconSize35 = height / 24.7;
+
 }

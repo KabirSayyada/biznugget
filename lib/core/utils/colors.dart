@@ -18,17 +18,16 @@ class AppColors {
   static const Color gradientColor2 = Color(0xFF3C5BF0);
 
   static mainGradient() {
-    return const LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
+    return const RadialGradient(
       colors: [
         primaryColor1,
-        AppColors.gradientColor,
+        primaryColor2,
       ],
       stops: [
         0.25,
         1.0,
       ],
+      radius: 3,
     );
   }
 

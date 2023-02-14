@@ -26,14 +26,12 @@ class SBSliderIndicator extends StatelessWidget {
             duration: duration,
             activeIndex: BlocProvider.of<SellOrBuyCubit>(context).selectedIndex,
             count: BlocProvider.of<SellOrBuyCubit>(context).instructions.length,
-            effect: ScrollingDotsEffect(
+            effect: WormEffect(
               spacing: Dimensions.width10,
               dotHeight: Dimensions.height15,
               dotWidth: Dimensions.width15,
-              activeDotScale: 1.5,
               dotColor: AppColors.homeSliderDotsColor,
               activeDotColor: Colors.white,
-              fixedCenter: true,
             ),
             onDotClicked: (index) {
               BlocProvider.of<SellOrBuyCubit>(context)

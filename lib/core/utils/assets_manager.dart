@@ -13,5 +13,6 @@ class AppImages {
   static const String logo = '$imgPath/logo.jpg';
   static const String networkAlertIcon = '$imgPath/network_alert_icon.png';
   static const String menuIcon = '$imgPath/menu_icon.png';
+  static const String closeIcon = '$imgPath/close_icon.png';
 
 }

@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 
 class SmallText extends StatelessWidget {
   final String text;
-  Color? color;
-  double size;
-  double height;
-  TextAlign? textAlign;
+  final Color? color;
+  final double size;
+  final double height;
+  final TextAlign? textAlign;
+  final int? maxLines;
 
-  SmallText({
+
+  const SmallText({
     Key? key,
-    this.color = const Color(0xFFCCC7C1),
     required this.text,
+    this.color = const Color(0xFFCCC7C1),
     this.size = 0,
     this.height = 1.2,
-    this.textAlign,
+    this.textAlign, this.maxLines,
   }) : super(key: key);
 
   @override
@@ -22,6 +24,7 @@ class SmallText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign ?? TextAlign.start,
+      maxLines: maxLines,
       style: TextStyle(
           color: color,
           fontSize: size == 0 ? Dimensions.font12 : size,
