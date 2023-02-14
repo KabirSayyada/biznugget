@@ -109,6 +109,9 @@ class Dimensions {
   static final double height300 = height / 2.8;
   static final double width300 = width / 1.4;
 
+  static final double height400 = height / 2.1;
+  static final double width400 = width / 1.1;
+
   /**Fonts */
 
   static double font8 = height / 105.4;

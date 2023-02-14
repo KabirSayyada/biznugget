@@ -8,9 +8,10 @@ import 'package:multi_select_flutter/util/multi_select_item.dart';
 part 'advertise_state.dart';
 
 class AdvertiseCubit extends Cubit<AdvertiseState> {
-  AdvertiseCubit() : super(AdvertiseInitial());
+  AdvertiseCubit() : super(AdvertiseSelected());
 
-  /// This is the list of categories that will be displayed in the multi select dialog
+  /// categories
+  // This is the list of categories that will be displayed in the multi select dialog
   final List<CategoryModel> _categories = [
     CategoryModel(name: 'SERVICES', subCategories: [
       // services sub categories
@@ -66,12 +67,13 @@ class AdvertiseCubit extends Cubit<AdvertiseState> {
           (category) => MultiSelectItem<CategoryModel>(category, category.name))
       .toList();
 
-  /// This is the list of selected categories
+
+  // This is the list of selected categories
   final List<CategoryModel> _selectedCategories = [];
 
   get selectedCategories => _selectedCategories;
 
-  /// add or remove a category from the selected categories list
+  // add or remove a category from the selected categories list
   void editCategories(values) {
     _selectedCategories.clear();
     for (var element in values) {
@@ -79,5 +81,53 @@ class AdvertiseCubit extends Cubit<AdvertiseState> {
       emit(AdvertiseSelected());
     }
   }
+
+  /// sub categories for the selected category
+
+  bool isEmpty = true;
+
+  // This is the list of sub categories that will be displayed in the multi select dialog
+  List<MultiSelectItem<SubCategoryModel>> subCategories = [];
+
+  loadSubCategories() {
+    List<SubCategoryModel> tempSubCategories = [];
+    for (var category in _selectedCategories) {
+      for (var subCategory in category.subCategories!) {
+        tempSubCategories.add(subCategory);
+      }
+    }
+    subCategories = tempSubCategories.map((subCategory) =>
+        MultiSelectItem<SubCategoryModel>(subCategory, subCategory.name)).toList();
+    emit(AdvertiseSelected());
+    if (subCategories.isEmpty) {
+      isEmpty = true;
+    } else {
+      isEmpty = false;
+    }
+    return tempSubCategories;
+  }
+
+
+
+  // This is the list of selected sub categories
+  final List<SubCategoryModel> _selectedSubCategories = [];
+
+  get selectedSubCategories => _selectedSubCategories;
+
+  // add or remove a sub category from the selected sub categories list
+  void editSubCategories(values) {
+    _selectedSubCategories.clear();
+    for (var element in values) {
+      _selectedSubCategories.add(element.value);
+      emit(AdvertiseSelected());
+    }
+  }
+
+  // remove a sub category from the selected sub categories list
+  void removeSubCategory(SubCategoryModel subCategory) {
+    _selectedSubCategories.remove(subCategory);
+    emit(AdvertiseSelected());
+  }
+
 
 }

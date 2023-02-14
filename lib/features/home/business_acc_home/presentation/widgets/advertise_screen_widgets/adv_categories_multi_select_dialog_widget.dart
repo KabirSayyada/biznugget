@@ -2,7 +2,6 @@ import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/cubits/advertise_cubit/advertise_cubit.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
@@ -13,10 +12,8 @@ import 'package:multi_select_flutter/util/multi_select_list_type.dart';
 class ADVCategoriesMultiSelectDialog extends StatelessWidget {
   const ADVCategoriesMultiSelectDialog({
     Key? key,
-    required this.label,
   }) : super(key: key);
 
-  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +25,16 @@ class ADVCategoriesMultiSelectDialog extends StatelessWidget {
           .toList(),
       // list style
       listType: MultiSelectListType.LIST,
-      // add selected categories to the list
+      // add/remove selected categories to/from the list
       onConfirm: (values) {
         BlocProvider.of<AdvertiseCubit>(context).editCategories(values);
+        BlocProvider.of<AdvertiseCubit>(context).loadSubCategories();
       },
       // style and decoration
       /// button
       // title
       buttonText: Text(
-        label,
+        'CATEGORIES',
         style: TextStyle(
           color: Colors.white,
           fontSize: Dimensions.font14,
@@ -53,14 +51,18 @@ class ADVCategoriesMultiSelectDialog extends StatelessWidget {
 
       /// chip style
       chipDisplay: MultiSelectChipDisplay(
+        items: BlocProvider.of<AdvertiseCubit>(context)
+            .categories
+            .map((cate) => MultiSelectItem(cate, cate.value.name))
+            .toList(),
         chipColor: AppColors.primaryColor1,
-        textStyle: TextStyle(color: Colors.white),
+        textStyle: const TextStyle(color: Colors.white),
       ),
 
       /// dialog
       // title
       title: BigText(
-        text: label,
+        text: 'CATEGORIES',
         color: Colors.black,
         size: Dimensions.font16,
         fontWeight: FontWeight.w500,

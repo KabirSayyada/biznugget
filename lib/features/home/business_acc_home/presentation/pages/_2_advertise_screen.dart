@@ -4,13 +4,16 @@ import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/home/business_acc_home/presentation/cubits/advertise_cubit/advertise_cubit.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/widgets/advertise_screen_widgets/adv_categories_multi_select_dialog_widget.dart';
+import 'package:biznugget/features/home/business_acc_home/presentation/widgets/advertise_screen_widgets/adv_custom_text_form_field_widget.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/widgets/advertise_screen_widgets/adv_subcategories_dialog_widget.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/widgets/buy_or_sell_screen_widgets/sb_drawer.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class AdvertiseScreen extends StatelessWidget {
@@ -18,19 +21,9 @@ class AdvertiseScreen extends StatelessWidget {
 
   final AdvancedDrawerController _advancedDrawerController =
       AdvancedDrawerController();
-  static final List<CategoryModel> _categories = [
-    CategoryModel(name: 'Services'),
-    CategoryModel(name: 'Products'),
-    CategoryModel(name: 'freelance'),
-    CategoryModel(name: 'Jobs'),
-  ];
-  final categories = _categories
-      .map(
-          (category) => MultiSelectItem<CategoryModel>(category, category.name))
-      .toList();
-  List<CategoryModel> _selectedCategories = [];
-
-  // final _multiSelectKey = GlobalKey<FormFieldState>();
+  final _formKey = GlobalKey<FormState>();
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,35 +43,33 @@ class AdvertiseScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: Dimensions.height15),
-
-                /// custom app bar
+                // custom app bar
                 SBCustomAppBar(
                     advancedDrawerController: _advancedDrawerController),
-                SizedBox(height: Dimensions.height60),
-                const ADVCategoriesMultiSelectDialog(label: 'CATEGORIES'),
-                SizedBox(height: Dimensions.height35),
-                ADVSubCategoriesDialog(label: 'SUB CATEGORIES'),
-                TextFormField(
-                  maxLength: 100,
-                  decoration: InputDecoration(
-                    labelText: 'Title',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(Dimensions.radius5),
-                    ),
-                  ),
-                ),
-                SizedBox(height: Dimensions.height35),
-                SizedBox(
-                  height: Dimensions.height220,
-                  child: TextFormField(
-                    maxLines: 20,
-                    keyboardType: TextInputType.multiline,
-                    maxLength: 10000,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(Dimensions.radius5),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          SizedBox(height: Dimensions.height60),
+                          // categories
+                          const ADVCategoriesMultiSelectDialog(),
+                          SizedBox(height: Dimensions.height35),
+                          // sub categories
+                          _subCategories(),
+                          SizedBox(height: Dimensions.height35),
+                          // title
+                          ADVCustomTextFormFieldWidget(maxLength: 100, controller: _titleController),
+                          SizedBox(height: Dimensions.height25),
+                          // description
+                          SizedBox(
+                            height: Dimensions.height220,
+                            child: ADVCustomTextFormFieldWidget(
+                                maxLines: 20, maxLength: 10000, controller: _descriptionController),
+                          ),
+                        ],
                       ),
-                      hintText: 'Description',
                     ),
                   ),
                 ),
@@ -88,5 +79,29 @@ class AdvertiseScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  BlocBuilder<AdvertiseCubit, AdvertiseState> _subCategories() {
+    return BlocBuilder<AdvertiseCubit, AdvertiseState>(
+                        builder: (context, state) {
+                          return Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              AbsorbPointer(
+                                absorbing: BlocProvider.of<AdvertiseCubit>(context)
+                                    .isEmpty,
+                                child: ADVSubCategoriesDialog(),
+                              ),
+                              if (BlocProvider.of<AdvertiseCubit>(context)
+                                  .isEmpty)
+                                Container(
+                                  height: Dimensions.height35,
+                                  width: double.infinity,
+                                  color: Colors.black.withOpacity(0.5),
+                                ),
+                            ],
+                          );
+                        },
+                      );
   }
 }
