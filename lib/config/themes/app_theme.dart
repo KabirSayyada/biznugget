@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 ThemeData appTheme() {
   return ThemeData(
+    fontFamily: 'Great sailor',
     primaryColor: AppColors.primaryColor1,
     hintColor: AppColors.hintColor,
     brightness: Brightness.light,

@@ -31,7 +31,6 @@ class Biznugget extends StatelessWidget {
         // BlocProvider<HomeScreenBloc>(
         //     create: (context) => HomeScreenBloc()),
 
-
         /// add other bloc/cubit providers here
       ],
       child: MaterialApp(
