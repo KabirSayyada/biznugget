@@ -1,7 +1,3 @@
-import 'package:biznugget/core/common/models/item_model/category_model.dart';
-import 'package:biznugget/core/common/models/item_model/item_model.dart';
-import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
-import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/cubits/advertise_cubit/advertise_cubit.dart';
@@ -14,7 +10,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class AdvertiseScreen extends StatelessWidget {
   AdvertiseScreen({Key? key}) : super(key: key);
@@ -60,13 +55,16 @@ class AdvertiseScreen extends StatelessWidget {
                           _subCategories(),
                           SizedBox(height: Dimensions.height35),
                           // title
-                          ADVCustomTextFormFieldWidget(maxLength: 100, controller: _titleController),
+                          ADVCustomTextFormFieldWidget(
+                              maxLength: 100, controller: _titleController),
                           SizedBox(height: Dimensions.height25),
                           // description
                           SizedBox(
                             height: Dimensions.height220,
                             child: ADVCustomTextFormFieldWidget(
-                                maxLines: 20, maxLength: 10000, controller: _descriptionController),
+                                maxLines: 20,
+                                maxLength: 10000,
+                                controller: _descriptionController),
                           ),
                         ],
                       ),
@@ -83,25 +81,23 @@ class AdvertiseScreen extends StatelessWidget {
 
   BlocBuilder<AdvertiseCubit, AdvertiseState> _subCategories() {
     return BlocBuilder<AdvertiseCubit, AdvertiseState>(
-                        builder: (context, state) {
-                          return Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              AbsorbPointer(
-                                absorbing: BlocProvider.of<AdvertiseCubit>(context)
-                                    .isEmpty,
-                                child: ADVSubCategoriesDialog(),
-                              ),
-                              if (BlocProvider.of<AdvertiseCubit>(context)
-                                  .isEmpty)
-                                Container(
-                                  height: Dimensions.height35,
-                                  width: double.infinity,
-                                  color: Colors.black.withOpacity(0.5),
-                                ),
-                            ],
-                          );
-                        },
-                      );
+      builder: (context, state) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            AbsorbPointer(
+              absorbing: BlocProvider.of<AdvertiseCubit>(context).isEmpty,
+              child: ADVSubCategoriesDialog(),
+            ),
+            if (BlocProvider.of<AdvertiseCubit>(context).isEmpty)
+              Container(
+                height: Dimensions.height35,
+                width: double.infinity,
+                color: Colors.black.withOpacity(0.5),
+              ),
+          ],
+        );
+      },
+    );
   }
 }

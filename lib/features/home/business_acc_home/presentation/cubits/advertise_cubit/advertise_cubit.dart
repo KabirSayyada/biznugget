@@ -69,17 +69,18 @@ class AdvertiseCubit extends Cubit<AdvertiseState> {
 
 
   // This is the list of selected categories
-  final List<CategoryModel> _selectedCategories = [];
+  List<CategoryModel> _selectedCategories = [];
 
   get selectedCategories => _selectedCategories;
 
   // add or remove a category from the selected categories list
   void editCategories(values) {
-    _selectedCategories.clear();
+    // _selectedCategories.clear();
     for (var element in values) {
       _selectedCategories.add(element.value);
-      emit(AdvertiseSelected());
     }
+    _selectedCategories = _selectedCategories.toSet().toList();
+    emit(AdvertiseSelected());
   }
 
   /// sub categories for the selected category
@@ -110,17 +111,18 @@ class AdvertiseCubit extends Cubit<AdvertiseState> {
 
 
   // This is the list of selected sub categories
-  final List<SubCategoryModel> _selectedSubCategories = [];
+  List<SubCategoryModel> _selectedSubCategories = [];
 
   get selectedSubCategories => _selectedSubCategories;
 
   // add or remove a sub category from the selected sub categories list
   void editSubCategories(values) {
-    _selectedSubCategories.clear();
+    // _selectedSubCategories.clear();
     for (var element in values) {
       _selectedSubCategories.add(element.value);
-      emit(AdvertiseSelected());
     }
+    _selectedSubCategories = _selectedSubCategories.toSet().toList();
+    emit(AdvertiseSelected());
   }
 
   // remove a sub category from the selected sub categories list
