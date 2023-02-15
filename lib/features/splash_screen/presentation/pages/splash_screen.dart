@@ -9,6 +9,8 @@ import 'package:biznugget/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../messages/presentation/messages_screen.dart';
+
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -17,14 +19,13 @@ class SplashScreen extends StatelessWidget {
     AppConstants.screenHeight = MediaQuery.of(context).size.height;
     AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return
-        HomeScreen();
+    return MessagesScreen();
 
-        /// temporary code :D
-        /// temporary code :D
-        /// temporary code :D
-        /// temporary code :D
-        /// temporary code :D
+    /// temporary code :D
+    /// temporary code :D
+    /// temporary code :D
+    /// temporary code :D
+    /// temporary code :D
 
     //     Scaffold(
     //   body: Center(
