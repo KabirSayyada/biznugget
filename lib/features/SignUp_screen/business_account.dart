@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class BusinessScreen extends StatefulWidget {
+  const BusinessScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<BusinessScreen> createState() => _BusinessScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _BusinessScreenState extends State<BusinessScreen> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -25,10 +24,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 alignment: Alignment.topLeft),
           ),
           child: Container(
+            padding: EdgeInsets.only(top: 15),
             decoration: const BoxDecoration(color: Colors.transparent),
             child: Column(
               children: [
-                Center(child: Image.asset('assets/images/logo1.png')),
+                Center(
+                  child: Image.asset(
+                    'assets/images/logo1.png',
+                    scale: 1.5,
+                  ),
+                ),
                 const Text(
                   'Sign Up!',
                   style: TextStyle(
@@ -38,6 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     fontFamily: "Great Sailor",
                   ),
                 ),
+                SizedBox(height: height * 0.02),
                 const Text(
                   'Create a new account',
                   style: TextStyle(
@@ -46,15 +52,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: Color(0xFF5C5757),
                       fontFamily: 'Great Sailor'),
                 ),
+                SizedBox(height: height * 0.03),
                 const Text(
-                  'Consumer Account',
+                  'Business Account',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: Color(0xFF830D3F),
                   ),
                 ),
-                SizedBox(height: height * 0.04),
+                SizedBox(height: height * 0.03),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
@@ -66,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            hintText: 'First name',
+                            hintText: 'Company name',
                             hintStyle: TextStyle(
                               color: Color(0xFFBCBCBC),
                             ),
@@ -81,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            hintText: 'Last name',
+                            hintText: 'Company Address',
                             hintStyle: TextStyle(
                               color: Color(0xFFBCBCBC),
                             ),
@@ -97,7 +104,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            hintText: 'Email',
+                            hintText: 'Company Email',
+                            hintStyle: TextStyle(
+                              color: Color(0xFFBCBCBC),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: height * 0.02),
+                      Container(
+                        height: height * 0.07,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            hintText: 'RC or Bn Number',
                             hintStyle: TextStyle(
                               color: Color(0xFFBCBCBC),
                             ),
@@ -113,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             hintText: 'Password',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Color(0xFFBCBCBC),
                             ),
                           ),
@@ -128,7 +150,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             hintText: 'Confirm Password',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Color(0xFFBCBCBC),
                             ),
                           ),
@@ -140,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: 142,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             colors: [
                               Color(0xFF01C3CC),
                               Color(0xFF3F56F2),
@@ -150,7 +172,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         child: TextButton(
-                          child: Text(
+                          child: const Text(
                             'Sign Up',
                             style: TextStyle(
                               color: Colors.white,
@@ -162,7 +184,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       SizedBox(height: height * 0.02),
-                      Divider(
+                      const Divider(
                         height: 1,
                         color: Color(0xFF830D3F),
                       ),
@@ -187,7 +209,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         TextButton(
                           onPressed: () {},
-                          child: Text(
+                          child: const Text(
                             'Log In',
                             style: TextStyle(
                               fontSize: 24,
