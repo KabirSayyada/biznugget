@@ -1,6 +1,6 @@
 import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/features/home/presentation/pages/home_items_screen.dart';
-import 'package:biznugget/features/home/presentation/pages/no_internet_conniction_page.dart';
+import 'package:biznugget/features/home/presentation/pages/no_internet_conniction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,13 +10,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocProvider(
-          create: (context) => NetworkBloc()..add(NetworkObserve()),
-          child: Scaffold(
-            body: BlocBuilder<NetworkBloc, NetworkState>(
-              builder: (context, state) => _checkState(state),
-            ),
-          )),
+      child: BlocProvider.value(
+        value: NetworkBloc()..add(NetworkObserve()),
+        child: Scaffold(
+          body: BlocBuilder<NetworkBloc, NetworkState>(
+            builder: (context, state) => _checkState(state),
+          ),
+        ),
+      ),
     );
   }
 
@@ -34,3 +35,4 @@ class HomeScreen extends StatelessWidget {
     }
   }
 }
+

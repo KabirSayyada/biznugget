@@ -4,15 +4,17 @@ import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonWidget extends StatelessWidget {
-  String text;
-  VoidCallback onTap;
-  Color? color;
-  double? size;
-  double? height;
-  double? width;
-  Gradient? gradient;
+  final String text;
+  final VoidCallback onTap;
+  final Color? color;
+  final double? size;
+  final double? height;
+  final double? width;
+  final Gradient? gradient;
+  final BoxBorder? border;
 
-  CustomButtonWidget({
+
+  const CustomButtonWidget({
     Key? key,
     required this.text,
     required this.onTap,
@@ -21,6 +23,7 @@ class CustomButtonWidget extends StatelessWidget {
     this.height,
     this.width,
     this.gradient,
+    this.border,
   }) : super(key: key);
 
   @override
@@ -38,8 +41,9 @@ class CustomButtonWidget extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           gradient: gradient,
-          color: color ?? Colors.blue,
+          color: color,
           borderRadius: BorderRadius.circular(Dimensions.radius5),
+          border: border,
         ),
         child: BigText(
           text: text,

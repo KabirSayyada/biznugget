@@ -21,6 +21,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 1 Description',
       price: 100,
       imageUrl: AppImages.item1,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 2,
@@ -28,6 +31,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 2 Description',
       price: 90,
       imageUrl: AppImages.item2,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 3,
@@ -35,6 +41,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 3 Description',
       price: 80,
       imageUrl: AppImages.item3,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 1,
@@ -42,6 +51,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 1 Description',
       price: 100,
       imageUrl: AppImages.item1,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 2,
@@ -49,6 +61,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 2 Description',
       price: 90,
       imageUrl: AppImages.item2,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 3,
@@ -56,6 +71,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 3 Description',
       price: 80,
       imageUrl: AppImages.item3,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 1,
@@ -63,6 +81,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 1 Description',
       price: 100,
       imageUrl: AppImages.item1,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 2,
@@ -70,6 +91,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 2 Description',
       price: 90,
       imageUrl: AppImages.item2,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 3,
@@ -77,6 +101,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 3 Description',
       price: 80,
       imageUrl: AppImages.item3,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 1,
@@ -84,6 +111,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 1 Description',
       price: 100,
       imageUrl: AppImages.item1,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 2,
@@ -91,6 +121,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 2 Description',
       price: 90,
       imageUrl: AppImages.item2,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 3,
@@ -98,6 +131,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 3 Description',
       price: 80,
       imageUrl: AppImages.item3,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 1,
@@ -105,6 +141,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 1 Description',
       price: 100,
       imageUrl: AppImages.item1,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 2,
@@ -112,6 +151,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 2 Description',
       price: 90,
       imageUrl: AppImages.item2,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
     ItemModel(
       id: 3,
@@ -119,6 +161,9 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       description: 'Item 3 Description',
       price: 80,
       imageUrl: AppImages.item3,
+      categories: ['services'],
+      subCategories: ['web development', 'mobile development'],
+
     ),
   ];
 

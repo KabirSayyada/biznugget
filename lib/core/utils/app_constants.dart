@@ -1,4 +1,3 @@
-import 'package:biznugget/core/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -35,15 +34,16 @@ class AppConstants {
   static void showToast(
       {required String msg, Color? color, ToastGravity? gravity}) {
     Fluttertoast.showToast(
-        toastLength: Toast.LENGTH_LONG,
         msg: msg,
-        backgroundColor: color ?? AppColors.primaryColor1,
-        gravity: gravity ?? ToastGravity.BOTTOM);
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
   }
-
 }
-
-
 
 /// images for testing
 // final List<String> imageList = [

@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 
 class BigText extends StatelessWidget {
   final String text;
-  Color? color;
-  double size;
-  TextOverflow overflow;
-  FontWeight fontWeight;
-  TextDecoration? decoration;
-  int? maxLines;
+  final Color? color;
+  final double size;
+  final TextOverflow overflow;
+  final FontWeight fontWeight;
+  final TextDecoration? decoration;
+  final int? maxLines;
+  final TextAlign? textAlign;
 
-  BigText({
+  const BigText({
     Key? key,
     this.color = const Color(0xFF332d2b),
     required this.text,
@@ -20,6 +21,8 @@ class BigText extends StatelessWidget {
     this.fontWeight = FontWeight.w400,
     this.decoration = TextDecoration.none,
     this.maxLines = 1,
+    this.textAlign,
+
   }) : super(key: key);
 
   @override
@@ -28,6 +31,7 @@ class BigText extends StatelessWidget {
       text,
       overflow: overflow,
       maxLines: maxLines,
+      textAlign: textAlign,
       style: TextStyle(
         color: color,
         fontSize: size == 0 ? Dimensions.font20 : size,

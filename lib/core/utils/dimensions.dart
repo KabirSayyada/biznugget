@@ -52,6 +52,9 @@ class Dimensions {
   static final double height40 = height / 21.7;
   static final double width40 = width / 10.4;
 
+  static final double height47 = height / 18.0;
+  static final double width47 = width / 8.8;
+
   static final double height50 = height / 17.0;
   static final double width50 = width / 8.2;
 
@@ -60,6 +63,9 @@ class Dimensions {
 
   static final double height60 = height / 14.1;
   static final double width60 = width / 6.7;
+
+  static final double height65 = height / 13.0;
+  static final double width65 = width / 6.2;
 
   static final double height100 = height / 8.4;
   static final double width100 = width / 3.6;
@@ -76,6 +82,9 @@ class Dimensions {
   static final double height125 = height / 6.7;
   static final double width125 = width / 2.8;
 
+  static final double height128 = height / 6.6;
+  static final double width128 = width / 2.7;
+
   static final double height167 = height / 5.0;
   static final double width167 = width / 2.0;
 
@@ -88,11 +97,20 @@ class Dimensions {
   static final double height200 = height / 4.2;
   static final double width200 = width / 2.1;
 
+  static final double height210 = height / 4.0;
+  static final double width210 = width / 2.0;
+
+  static final double height220 = height / 3.8;
+  static final double width220 = width / 1.9;
+
   static final double height250 = height / 3.4;
   static final double width250 = width / 1.7;
 
   static final double height300 = height / 2.8;
   static final double width300 = width / 1.4;
+
+  static final double height400 = height / 2.1;
+  static final double width400 = width / 1.1;
 
   /**Fonts */
 
@@ -111,6 +129,7 @@ class Dimensions {
   static final double radius10 = height / 86.7;
   static final double radius15 = height / 57.8;
   static final double radius20 = height / 43.4;
+  static final double radius22 = height / 38.7;
   static final double radius25 = height / 34.5;
   static final double radius30 = height / 28.8;
   static final double radius35 = height / 24.7;
@@ -126,4 +145,5 @@ class Dimensions {
   static final double iconSize25 = height / 34.5;
   static final double iconSize30 = height / 28.91;
   static final double iconSize35 = height / 24.7;
+
 }
