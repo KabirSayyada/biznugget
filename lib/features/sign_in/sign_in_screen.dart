@@ -1,8 +1,7 @@
-import 'package:biznugget/utils/dimensions.dart';
+
+import 'package:biznugget/core/common/widgets/custom_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../common/widgets/custom_formfield.dart';
 
 class SigninSreen extends StatefulWidget {
   const SigninSreen({super.key});
@@ -30,7 +29,7 @@ class _SigninSreenState extends State<SigninSreen> {
     final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        //unfocus the textfield if users click anywhere on the screen
+        //unfocuses the textfield if users click anywhere on the screen
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
