@@ -48,8 +48,7 @@ dependencies:
   expandable: ^5.0.1
   flutter_advanced_drawer: ^1.3.3
   multi_select_flutter: ^4.1.3
-
-
+  google_fonts: ^4.0.3 
 
 
 
@@ -92,12 +91,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Great Sailor
+      fonts:
+        - asset: assets/fonts/Great Sailor.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

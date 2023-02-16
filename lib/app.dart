@@ -34,7 +34,7 @@ class Biznugget extends StatelessWidget {
 
         /// sell or buy cubit
         BlocProvider<SellOrBuyCubit>(create: (context) => SellOrBuyCubit()),
-
+        
         /// ADVERTISE Cubit
         BlocProvider<AdvertiseCubit>(create: (context) => AdvertiseCubit()),
 
