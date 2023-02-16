@@ -12,6 +12,8 @@ class CustomButtonWidget extends StatelessWidget {
   final double? width;
   final Gradient? gradient;
   final BoxBorder? border;
+  final Color? textColor;
+
 
 
   const CustomButtonWidget({
@@ -24,6 +26,7 @@ class CustomButtonWidget extends StatelessWidget {
     this.width,
     this.gradient,
     this.border,
+    this.textColor,
   }) : super(key: key);
 
   @override
@@ -47,7 +50,7 @@ class CustomButtonWidget extends StatelessWidget {
         ),
         child: BigText(
           text: text,
-          color: Colors.white,
+          color: textColor ?? Colors.white,
           size: size ?? 16,
           fontWeight: FontWeight.w600,
         ),
