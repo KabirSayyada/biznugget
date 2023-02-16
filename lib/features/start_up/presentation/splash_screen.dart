@@ -23,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void waitSVG() {
     Future.delayed(const Duration(seconds: 2));
   }
+
   @override
   void initState() {
     waitSVG();
@@ -34,21 +35,35 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0XFF3F56F2),
-              Color.fromRGBO(1, 195, 204, 100),
+              const Color(0XFF3F56F2),
+              const Color(0XFF01C3CC).withOpacity(0),
+              const Color(0XFF830D3F).withOpacity(0),
+              const Color(0XFF830D3F).withOpacity(0),
             ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            // tileMode: TileMode.clamp,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            tileMode: TileMode.mirror,
+            stops: const [
+              0.4145,
+              0.8333,
+              0.9931,
+              0.9932,
+            ],
           ),
         ),
         alignment: Alignment.center,
-        child: SvgPicture.asset(
-          'assets/svg/app_logo.svg',
-          color: Colors.white,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.asset('assets/images/background_image.png'),
+            SvgPicture.asset(
+              'assets/svg/app_logo.svg',
+              color: Colors.black,
+            ),
+          ],
         ),
       ),
     );
