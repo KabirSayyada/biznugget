@@ -39,6 +39,8 @@ dependencies:
   go_router: ^6.0.6
   flutter_svg: ^2.0.0+1
   flutter_screenutil: ^5.6.1
+  getwidget: ^2.0.4
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

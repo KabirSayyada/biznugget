@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../utils/colors.dart';
 import '../data/models/post_content_model.dart';
@@ -13,6 +14,29 @@ class PostContent extends StatefulWidget {
 }
 
 class _PostContentState extends State<PostContent> {
+  navigate(int currentIndex) {
+    switch (currentIndex) {
+      case 0:
+        context.push("/createAd");
+        break;
+      case 1:
+        context.push("/createAd");
+        break;
+      case 2:
+        context.push("/postJob");
+        break;
+      case 3:
+        context.push("/createAd");
+        break;
+      case 4:
+        context.push("/createAd");
+        break;
+      case 5:
+        context.push("/createAd");
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +48,8 @@ class _PostContentState extends State<PostContent> {
             children: [
               Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
-                  height: 30.h,
-                  width: 30.w,
+                  // height: 30.h,
+                  // width: 30.w,
                   child: SvgPicture.asset(
                     "assets/svg/cancel.svg",
                     fit: BoxFit.fill,
@@ -45,10 +69,12 @@ class _PostContentState extends State<PostContent> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(15.0.sp),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //const SizedBox(height: 10,),
               Text(
                 "What do you want to do?",
                 style: TextStyle(
@@ -71,36 +97,41 @@ class _PostContentState extends State<PostContent> {
                       mainAxisSpacing: 20),
                   itemBuilder: (BuildContext context, int index) {
                     final content = contents[index];
-                    return Container(
-                      height: 135.h,
-                      width: 157.w,
-                      decoration: BoxDecoration(
-                        color: AppColor.grey001,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
-                            blurRadius: 3,
-                            offset: const Offset(
-                                0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(content.image),
-                          Divider(
-                            thickness: 2.5.h,
-                          ),
-                          Text(
-                            content.title,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
+                    return InkWell(
+                      onTap: () {
+                        navigate(index);
+                      },
+                      child: Container(
+                        height: 135.h,
+                        width: 157.w,
+                        decoration: BoxDecoration(
+                          color: AppColor.grey001,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 3,
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(child: SvgPicture.asset(content.image)),
+                            Divider(
+                              thickness: 2.5.h,
+                            ),
+                            Text(
+                              content.title,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }),
@@ -111,17 +142,3 @@ class _PostContentState extends State<PostContent> {
     );
   }
 }
-
-
-  // leading: Row(
-  //         children: [
-  //           Container(
-  //               margin: const EdgeInsets.symmetric(horizontal: 10),
-  //               height: 30,
-  //               width: 30,
-  //               child: SvgPicture.asset(
-  //                 "assets/svg/cancel.svg",
-  //                 fit: BoxFit.fill,
-  //               )),
-  //         ],
-  //       ),
