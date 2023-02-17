@@ -1,15 +1,28 @@
-import 'package:biznugget/features/splash_screen/presentation/pages/splash_screen.dart';
-import 'package:biznugget/features/wishlist/presentation/bloc/wishlist_bloc.dart';
+import 'package:biznugget/app.dart';
+import 'package:biznugget/core/common/models/item_model/item_model.dart';
+import 'package:biznugget/bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+<<<<<<< HEAD
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app_config/app_routes/app_router.dart';
+=======
+import 'package:hive_flutter/adapters.dart';
+>>>>>>> d2915714e68f6851a8bfc180c4f6f643d45733b3
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(ItemModelAdapter());
+  Bloc.observer = MyBlocObserver();
+
+
+  runApp(const Biznugget());
 }
 
+<<<<<<< HEAD
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -38,3 +51,5 @@ class MyApp extends StatelessWidget {
   });
   }
 }
+=======
+>>>>>>> d2915714e68f6851a8bfc180c4f6f643d45733b3
