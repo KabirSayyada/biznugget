@@ -36,6 +36,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_bloc: ^8.1.2
+<<<<<<< HEAD
+  go_router: ^6.0.6
+  flutter_svg: ^2.0.0+1
+  flutter_screenutil: ^5.6.1
+  getwidget: ^2.0.4
+  carousel_slider: ^4.2.1
+=======
   hive: ^2.2.3
   hive_flutter:
   searchbar_animation: ^0.0.4
@@ -55,6 +62,7 @@ dependencies:
   path_provider: ^2.0.12
   intl: ^0.18.0
   firebase_auth: ^4.2.2
+>>>>>>> d2915714e68f6851a8bfc180c4f6f643d45733b3
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +91,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+<<<<<<< HEAD
+    - assets/svg/
+=======
+>>>>>>> d2915714e68f6851a8bfc180c4f6f643d45733b3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
