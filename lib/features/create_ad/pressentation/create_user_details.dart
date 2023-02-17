@@ -81,33 +81,42 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                 children: [
                   InkWell(
                     onTap: () {
-                      context.push('/publishAd');
+                      context.pop();
                     },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: 34.h,
-                      width: 56.w,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            const Color(0xff01C3CC).withOpacity(0.3),
-                            const Color(0xff3F56F2).withOpacity(0.3),
-                          ],
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Next",
-                          style: TextStyle(
-                              fontSize: 12.sp, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
+
+                 child:   Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 18),
+                        // height: 30.h,
+                        // width: 30.w,
+                        child: SvgPicture.asset(
+                          "assets/svg/cancel.svg",
+                          fit: BoxFit.fill,
+                        )),
+                    // child: Container(
+                    //   margin: const EdgeInsets.symmetric(horizontal: 10),
+                    //   height: 34.h,
+                    //   width: 56.w,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: const BorderRadius.all(
+                    //       Radius.circular(5),
+                    //     ),
+                    //     gradient: LinearGradient(
+                    //       begin: Alignment.centerLeft,
+                    //       end: Alignment.centerRight,
+                    //       colors: [
+                    //         const Color(0xff01C3CC).withOpacity(0.3),
+                    //         const Color(0xff3F56F2).withOpacity(0.3),
+                    //       ],
+                    //     ),
+                    //   ),
+                    //   child: Center(
+                    //     child: Text(
+                    //       "Next",
+                    //       style: TextStyle(
+                    //           fontSize: 12.sp, fontWeight: FontWeight.w600),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
                 ],
               ),
@@ -115,7 +124,7 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
           )),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(16.0),
           child: Stack(
             children: [
               Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -134,28 +143,14 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                // Text(
-                //   "Name",
-                //   style:
-                //       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                // ),
+              
                 const InputField(
                   title: "Name",
                   //enabled: false,
                   hintText: 'Enter name',
                
                 ),
-                // SizedBox(
-                //   height: 6.h,
-                // ),
-                // Text(
-                //   "Phone Number",
-                //   style:
-                //       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                // ),
+             
                 InputField(
                   // enabled: false,
                   title: "Phone Number",
@@ -166,17 +161,8 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                     FilteringTextInputFormatter.digitsOnly
                   ], //
                 ),
-                SizedBox(
-                  height: 6.h,
-                ),
-                // Text(
-                //   "Email",
-                //   style:
-                //       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                // ),
-                // SizedBox(
-                //   height: 6.h,
-                // ),
+                
+         
              const InputField(
                   // enabled: false,
                   title: "Email" ,
@@ -186,12 +172,19 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                //
                 ),
                
-                SizedBox(
-                  height: 90.h,
+                InkWell(
+                  onTap: () {},
+                  child: SizedBox(
+                    height: 90.h,
+                  ),
                 ),
 
                 Button(title: 'Preview',
-                width: MediaQuery.of(context).size.width * 0.7.w),
+                width: MediaQuery.of(context).size.width * 0.7.w,
+                onTap: () {
+                  context.push('/publishAd');
+                },
+                ),
 
                   SizedBox(
                   height: MediaQuery.of(context).size.height * 0.2.h,

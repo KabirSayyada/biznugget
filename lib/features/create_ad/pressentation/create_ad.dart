@@ -90,11 +90,23 @@ class _CreateAdState extends State<CreateAd> {
           padding: const EdgeInsets.all(15.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              "Product name",
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SvgPicture.asset(
+                  'assets/svg/progress_bar_1.svg',
+                  width: MediaQuery.of(context).size.width.w * 0.8,
+                ),
+                Text(
+                  '1/3',
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+                ),
+              ],
             ),
+
             const InputField(
+              title: "Product name",
               hintText: 'Input product name',
             ),
             SizedBox(
@@ -125,49 +137,28 @@ class _CreateAdState extends State<CreateAd> {
               height: 10.h,
             ),
             SvgPicture.asset("assets/svg/add_photo.svg"),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              "Add video",
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 7.h,
-            ),
+
+            // SizedBox(
+            //   height: 7.h,
+            // ),
             const InputField(
+              title: "Add video",
               hintText: 'Link to YouTube, Vimeo, SWF file and MOV file',
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              "Description",
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 7.h,
-            ),
+
             const InputField(
+              title: "Description",
               hintText: 'Enter product description',
               maxLines: 7,
               minLines: 4,
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              "Target Location",
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 7.h,
-            ),
+
             InkWell(
               onTap: () {
                 context.push('/targetLocation');
               },
               child: const InputField(
+                title: "Target Location",
                 hintText: 'choose location',
                 suffixIcon: Icon(Icons.arrow_forward_ios_rounded),
                 enabled: false,

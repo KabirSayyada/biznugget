@@ -134,19 +134,13 @@ class _CreateCategoryState extends State<CreateCategory> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Text(
-                  "Category",
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                ),
+              
                 InkWell(
                   onTap: () {
                     context.push('/selectCategory');
                   },
                   child: const InputField(
+                    title: "Category",
                     enabled: false,
                     hintText: 'Select Category',
                     suffixIcon: Icon(
@@ -156,24 +150,13 @@ class _CreateCategoryState extends State<CreateCategory> {
                   ),
                 ),
 
-                
-                SizedBox(
-                  height: 6.h,
-                ),
                
-                Text(
-                  "Brand",
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                ),
                 
                   const InputField(
+                    title:  "Brand",
                    // enabled: false,
                     hintText: 'Input Brand',
-                    // suffixIcon: Icon(
-                    //   Icons.arrow_forward_ios_rounded,
-                    //   color: AppColor.black,
-                    // ),
+                
                   ),
               
 
@@ -218,15 +201,9 @@ class _CreateCategoryState extends State<CreateCategory> {
                       TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: const Color(0xff830D3F)),),
                   ],
                 ),
-                Text(
-                  "Price",
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
+              
                 InputField(
+                  title: "Price",
                   hintText: 'Input Amount',
                   suffixIcon: Container(
                     margin: const EdgeInsets.all(5),
