@@ -34,25 +34,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-     return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context , child) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<WishlistBloc>(create: (context) => WishlistBloc()),
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MultiBlocProvider(
+              providers: [
+                // BlocProvider<WishlistBloc>(create: (context) => WishlistBloc()),
 
-        /// add your BlocPrvider here
-      ],
-      child: 
-      
-      MaterialApp.router(
-        routerConfig: AppRouter.router,
-        debugShowCheckedModeBanner: false,
-        title: 'Biznugget-App',
-        //home: SplashScreen(),
-    ));
-  });
+                /// add your BlocPrvider here
+              ],
+              child: MaterialApp.router(
+                routerConfig: AppRouter.router,
+                debugShowCheckedModeBanner: false,
+                title: 'Biznugget-App',
+                //home: SplashScreen(),
+              ));
+        });
   }
 }
