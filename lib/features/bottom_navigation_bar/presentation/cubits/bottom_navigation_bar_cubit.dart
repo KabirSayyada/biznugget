@@ -1,6 +1,6 @@
 import 'package:biznugget/features/advertise/presentation/pages/advertise_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
-import 'package:biznugget/features/messages/presentation/pages/messages_screen.dart';
+import 'package:biznugget/features/messages/messages_screen.dart';
 import 'package:biznugget/features/profile/presentation/pages/profile_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/pages/wishlist_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
