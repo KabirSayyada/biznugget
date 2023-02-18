@@ -2,6 +2,7 @@ import 'package:biznugget/config/routes/app_routes.dart';
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/features/SignUp_screen/service_provider.dart';
+import 'package:biznugget/features/SignUp_screen/vendor_account.dart';
 import 'package:biznugget/features/details/presentation/pages/details_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
