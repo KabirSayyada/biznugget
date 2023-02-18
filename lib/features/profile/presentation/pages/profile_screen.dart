@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class MessagesScreen extends StatelessWidget {
-  const MessagesScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('messages'),
+        title: const Text('profile'),
       ),
       body: Center(
-        child: Text("messages"),
+        child: Text("profile"),
       ),
     );
   }

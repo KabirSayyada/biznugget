@@ -25,4 +25,9 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   void _notifyStatus(NetworkNotify event, emit) {
     event.isConnected ? emit(NetworkSuccess()) : emit(NetworkFailure());
   }
+
+  @override
+  Future<void> close() {
+    return super.close();
+  }
 }
