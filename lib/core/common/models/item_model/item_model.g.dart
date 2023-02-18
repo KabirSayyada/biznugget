@@ -25,6 +25,8 @@ class ItemModelAdapter extends TypeAdapter<ItemModel> {
       sale: fields[4] as double?,
       rate: fields[6] as double?,
       reviews: fields[7] as double?,
+      categories: [],
+      subCategories: [],
     );
   }
 

@@ -48,6 +48,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208653335885:android:c36c2e59b2ec834dea0b04",
+        "android_client_info": {
+          "package_name": "com.biznugget.biznugget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208653335885-il39ea6vmf05b9ndqaitptab8lkscda0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9NET7Waadgr34VxtQ2TY1K3n-M0G4uzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208653335885-il39ea6vmf05b9ndqaitptab8lkscda0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "208653335885-s4h3i8i1db7jivje50jhbrjrhua4juts.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.biznugget.biznugget"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

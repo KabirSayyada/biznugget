@@ -23,6 +23,9 @@ class ItemModel extends HiveObject {
   @HiveField(7)
   double? reviews;
 
+  final List<String> categories;
+  final List<String> subCategories;
+
   ItemModel({
     required this.id,
     required this.name,
@@ -32,6 +35,8 @@ class ItemModel extends HiveObject {
     this.sale,
     this.rate,
     this.reviews,
+    required this.categories,
+    required this.subCategories,
   });
 
   // to json
@@ -45,6 +50,8 @@ class ItemModel extends HiveObject {
       'rate': rate,
       'reviews': reviews,
       'id': id,
+      'category': categories,
+      'subCategory': subCategories,
     };
   }
 
@@ -59,6 +66,8 @@ class ItemModel extends HiveObject {
       sale: json['sale'],
       rate: json['rate'],
       reviews: json['reviews'],
+      categories: json['category'],
+      subCategories: json['subCategory'],
     );
   }
 }

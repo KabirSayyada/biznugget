@@ -1,5 +1,6 @@
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/bottom_navigation_bar/presentation/cubits/bottom_navigation_bar_cubit.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/custom_app_bar_widget.dart';
 import 'package:biznugget/features/wishlist/presentation/widgets/wishlist_custom_card_widget.dart';
@@ -26,6 +27,7 @@ class ItemsScreen extends StatelessWidget {
             children: [
               // custom app bar
               CustomAppBar(text: 'Wishlist', onTap: () {
+                BlocProvider.of<BottomNavigationBarCubit>(context).selectTab(0);
                 /// todo : navigate to cart page
               },),
               SizedBox(height: Dimensions.height50),
