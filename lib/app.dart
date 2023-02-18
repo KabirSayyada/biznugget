@@ -1,8 +1,8 @@
 import 'package:biznugget/features/home/business_acc_home/presentation/cubits/advertise_cubit/advertise_cubit.dart';
 import 'package:biznugget/features/home/business_acc_home/presentation/cubits/sell_or_buy_cubit/sell_or_buy_cubit.dart';
 import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
-import 'package:biznugget/config/routes/app_routes.dart';
-import 'package:biznugget/config/themes/app_theme.dart';
+import 'package:biznugget/config/app_routes.dart';
+import 'package:biznugget/config/app_theme.dart';
 import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/core/utils/strings.dart';
 import 'package:biznugget/features/bottom_navigation_bar/presentation/cubits/bottom_navigation_bar_cubit.dart';
@@ -34,7 +34,7 @@ class Biznugget extends StatelessWidget {
 
         /// sell or buy cubit
         BlocProvider<SellOrBuyCubit>(create: (context) => SellOrBuyCubit()),
-        
+
         /// ADVERTISE Cubit
         BlocProvider<AdvertiseCubit>(create: (context) => AdvertiseCubit()),
 
@@ -44,7 +44,7 @@ class Biznugget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: AppStrings.appName,
         theme: appTheme(),
-        onGenerateRoute: AppRoutes.onGenerateRoute,
+        onGenerateRoute: AppRoutes.routes,
       ),
     );
   }
