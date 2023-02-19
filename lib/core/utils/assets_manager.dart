@@ -15,4 +15,12 @@ class AppImages {
   static const String menuIcon = '$imgPath/menu_icon.png';
   static const String closeIcon = '$imgPath/close_icon.png';
 
+  /// Business Home screen slider images
+  static const String FirstBHSliderItem = '$imgPath/first_bh_slider_item.png';
+  static const String SecondBHSliderItem = '$imgPath/second_bh_slider_item.png';
+  static const String ThirdBHSliderItem = '$imgPath/third_bh_slider_item.png';
+  static const String FourthBHSliderItem = '$imgPath/fourth_bh_slider_item.png';
+  static const String FifthBHSliderItem = '$imgPath/fifth_bh_slider_item.png';
+
+
 }
