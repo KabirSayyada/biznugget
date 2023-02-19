@@ -15,7 +15,6 @@ class BHDrawer extends StatelessWidget {
       width: Dimensions.width / 1.15,
       height: Dimensions.height / 1.15,
       child: Drawer(
-        key: BlocProvider.of<BusinessHomeCubit>(context).drawerKey,
         backgroundColor: Colors.white.withOpacity(0),
         child: Container(
           decoration: BoxDecoration(
@@ -42,7 +41,8 @@ class BHDrawer extends StatelessWidget {
                 onTap: () {
                   /// todo : go to 'sell Buy' screen
                 },
-                leading: const Icon(Icons.menu_open_rounded, color: Colors.white),
+                leading:
+                    const Icon(Icons.menu_open_rounded, color: Colors.white),
                 title: const BigText(text: 'Main Menu', color: Colors.white),
               ),
               ListTile(
@@ -56,7 +56,8 @@ class BHDrawer extends StatelessWidget {
                 onTap: () {
                   /// todo : goto profile screen
                 },
-                leading: const Icon(Icons.account_circle_rounded, color: Colors.white),
+                leading: const Icon(Icons.account_circle_rounded,
+                    color: Colors.white),
                 title: const BigText(text: 'Profile', color: Colors.white),
               ),
               ListTile(

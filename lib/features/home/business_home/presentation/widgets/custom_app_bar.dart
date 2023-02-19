@@ -1,13 +1,16 @@
-import 'package:biznugget/features/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
 import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/core/utils/colors.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
-class SBCustomAppBar extends StatelessWidget {
-  const SBCustomAppBar({Key? key}) : super(key: key);
+class BHCustomAppBar extends StatelessWidget {
+  const BHCustomAppBar({
+    Key? key,
+    required this.drawerKey,
+  }) : super(key: key) ;
+
+  final GlobalKey<ScaffoldState> drawerKey;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +19,14 @@ class SBCustomAppBar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            BlocProvider.of<BusinessHomeCubit>(context)
-                .openDrawer();
+            drawerKey.currentState!.openDrawer();
           },
           child: Container(
             height: Dimensions.height47,
             width: Dimensions.width47,
             decoration: _menuIconContainerDecoration(),
             // change icon according to the drawer state
-            child: _drawerIcon(context),
+            child: Image.asset(AppImages.menuIcon),
           ),
         ),
         // title
@@ -60,15 +62,5 @@ class SBCustomAppBar extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  // change icon according to the drawer state
-  Image _drawerIcon(BuildContext context) {
-    return BlocProvider.of<BusinessHomeCubit>(context)
-            .drawerKey
-            .currentState!
-            .isDrawerOpen
-        ? Image.asset(AppImages.closeIcon)
-        : Image.asset(AppImages.menuIcon);
   }
 }

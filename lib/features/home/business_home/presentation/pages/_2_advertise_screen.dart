@@ -2,7 +2,8 @@ import 'package:biznugget/features/home/business_home/presentation/widgets/adver
 import 'package:biznugget/features/home/business_home/presentation/widgets/advertise_screen_widgets/adv_custom_text_form_field_widget.dart';
 import 'package:biznugget/features/home/business_home/presentation/widgets/advertise_screen_widgets/adv_subcategories_dialog_widget.dart';
 import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/advertise_cubit.dart';
-import 'package:biznugget/features/home/user_home/presentation/widgets/home_custom_app_bar_widget.dart';
+import 'package:biznugget/features/home/business_home/presentation/widgets/bh_drawer.dart';
+import 'package:biznugget/features/home/business_home/presentation/widgets/custom_app_bar.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -14,11 +15,16 @@ class AdvertiseScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
+  final GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
+  final AdvertiseCubit _advertiseCubit = AdvertiseCubit();
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _drawerKey,
+        drawer: const BHDrawer(),
         body: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: Dimensions.width20,
@@ -27,13 +33,19 @@ class AdvertiseScreen extends StatelessWidget {
             children: [
               SizedBox(height: Dimensions.height15),
               // custom app bar
-              const HomeCustomAppBar(),
+              SizedBox(
+                  height: Dimensions.height47,
+                  child: BHCustomAppBar(drawerKey: _drawerKey)),
               Expanded(
                 child: SingleChildScrollView(
                   child: Form(
                     key: _formKey,
                     child: Column(
                       children: [
+
+                        /// test multislect checkbox
+
+
                         SizedBox(height: Dimensions.height60),
                         // categories
                         const ADVCategoriesMultiSelectDialog(),
@@ -45,6 +57,8 @@ class AdvertiseScreen extends StatelessWidget {
                         ADVCustomTextFormFieldWidget(
                             maxLength: 100, controller: _titleController),
                         SizedBox(height: Dimensions.height25),
+
+                        /// test stream builder
                         // description
                         SizedBox(
                           height: Dimensions.height220,

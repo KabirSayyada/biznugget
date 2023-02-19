@@ -1,5 +1,5 @@
-import 'package:biznugget/features/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
 import 'package:biznugget/features/home/business_home/presentation/widgets/business_home_screen_widgets/bh_instructions/bh_instructions_card.dart';
+import 'package:biznugget/features/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:biznugget/core/utils/dimensions.dart';

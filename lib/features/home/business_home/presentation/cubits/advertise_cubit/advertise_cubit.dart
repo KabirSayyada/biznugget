@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:biznugget/core/common/models/item_model/category_model.dart';
 import 'package:biznugget/core/common/models/item_model/sub_category_model.dart';
 import 'package:bloc/bloc.dart';
@@ -9,6 +11,9 @@ part 'advertise_state.dart';
 
 class AdvertiseCubit extends Cubit<AdvertiseState> {
   AdvertiseCubit() : super(AdvertiseSelected());
+
+
+
 
   /// categories
   // This is the list of categories that will be displayed in the multi select dialog
@@ -62,26 +67,46 @@ class AdvertiseCubit extends Cubit<AdvertiseState> {
       SubCategoryModel(name: 'Other'),
     ]),
   ];
+  late final mainCategories = _categories.map((category) => category.name).toList();
   late final categories = _categories
-      .map(
-          (category) => MultiSelectItem<CategoryModel>(category, category.name))
+      .map((category) => MultiSelectItem<CategoryModel>(category, category.name))
       .toList();
 
 
   // This is the list of selected categories
   List<CategoryModel> _selectedCategories = [];
 
-  get selectedCategories => _selectedCategories;
+  List<CategoryModel> get selectedCategories => _selectedCategories;
 
-  // add or remove a category from the selected categories list
+  set setSelectedCategories(List<CategoryModel> value) {
+    _selectedCategories = value;
+  }
+
+
+  /// add or remove a category from the selected categories list
+  void itemChange(CategoryModel category, bool isSelected) {
+    if (isSelected) {
+      _selectedCategories.add(category);
+    } else {
+      _selectedCategories.remove(category);
+    }
+  }
+  //
+
+
   void editCategories(values) {
     // _selectedCategories.clear();
     for (var element in values) {
       _selectedCategories.add(element.value);
     }
+
     _selectedCategories = _selectedCategories.toSet().toList();
     emit(AdvertiseSelected());
   }
+
+
+
+
 
   /// sub categories for the selected category
 

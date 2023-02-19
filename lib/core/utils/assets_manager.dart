@@ -22,5 +22,17 @@ class AppImages {
   static const String FourthBHSliderItem = '$imgPath/fourth_bh_slider_item.png';
   static const String FifthBHSliderItem = '$imgPath/fifth_bh_slider_item.png';
 
+  static const String addYourProducts = '$imgPath/add_your_products.png';
+  static const String buySomeThing = '$imgPath/buy_some_thing.png';
+  static const String startSelling = '$imgPath/start_selling.png';
+
+
+  /// categories images
+  static const String services = '$imgPath/services.png';
+  static const String jobs = '$imgPath/jobs.png';
+  static const String category4 = '$imgPath/freelancing.png';
+
+
+
 
 }

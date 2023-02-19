@@ -21,24 +21,22 @@ class BusinessHomeCubit extends Cubit<BusinessHomeState> {
     InstructionModel(
       title: 'Add your products and services',
       description: 'Add your products and services to your store',
-      image: AppImages.SecondBHSliderItem,
+      image: AppImages.addYourProducts,
     ),
     InstructionModel(
       title: 'Start selling',
       description: 'Start selling your products for many people',
-      image: AppImages.ThirdBHSliderItem,
+      image: AppImages.startSelling,
     ),
     InstructionModel(
       title: 'Buy something',
       description: 'Start exploring our products and services',
-      image: AppImages.FourthBHSliderItem,
+      image: AppImages.buySomeThing,
     ),
-    InstructionModel(
-      title: 'Buy something',
-      description: 'Start exploring our products and services',
-      image: AppImages.FifthBHSliderItem,
-    ),
+
   ];
+
+  // const data for for buy and sell sections
   final List<ArticleModel> articles = [
     ArticleModel(
         title: 'Provide or sell something',
@@ -49,16 +47,6 @@ class BusinessHomeCubit extends Cubit<BusinessHomeState> {
         description:
             'Here you can find many products and services you can buy or rent, you can buy technological devices, clothes, rent an apartment and more, find several services'),
   ];
-
-
-  /// drawer key
-  final GlobalKey<ScaffoldState> _drawerKey = GlobalKey<ScaffoldState>();
-
-  void openDrawer() {
-    _drawerKey.currentState!.openDrawer();
-  }
-  GlobalKey<ScaffoldState> get drawerKey => _drawerKey;
-
 
   /// slider index
   int _selectedIndex = 0;

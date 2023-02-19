@@ -65,6 +65,7 @@ dependencies:
   easy_search_bar: ^2.4.2
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
     AppConstants.screenHeight = MediaQuery.of(context).size.height;
     AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return BusinessHomeScreen();
+    return AdvertiseScreen();
 
     /// temporary code :D
     /// temporary code :D
