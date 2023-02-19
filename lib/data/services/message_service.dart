@@ -31,6 +31,9 @@ class MessageService {
   }
 
   static final List<types.Message> messages = List.generate(20, (index) {
+    final date = (index == 0
+        ? DateTime.now()
+        : DateTime.now().subtract(Duration(days: index))).millisecondsSinceEpoch;
     switch (index % 3) {
       case 0:
         return types.TextMessage(
@@ -43,10 +46,7 @@ class MessageService {
           id: randomId,
           text:
           'The reviews are very good, I guess we shall see Layla, I have a good feeling about it.',
-          createdAt: (index == 0
-              ? DateTime.now()
-              : DateTime.now().subtract(Duration(days: index)))
-              .millisecondsSinceEpoch,
+          createdAt: date,
         );
       case 1:
         return types.TextMessage(
@@ -59,10 +59,7 @@ class MessageService {
           id: randomId,
           text:
           'The reviews are very good, I guess we shall see Layla, I have a good feeling about it.',
-          createdAt: DateTime
-              .now()
-              .subtract(Duration(days: index))
-              .millisecondsSinceEpoch,
+          createdAt: date,
         );
       default:
         return types.TextMessage(
@@ -75,10 +72,7 @@ class MessageService {
           id: randomId,
           text:
           'The reviews are very good, I guess we shall see Layla, I have a good feeling about it.',
-          createdAt: DateTime
-              .now()
-              .subtract(Duration(days: index))
-              .millisecondsSinceEpoch,
+          createdAt: date,
         );
     }
   });
