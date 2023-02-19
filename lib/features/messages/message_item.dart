@@ -13,11 +13,6 @@ class MessageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => Navigator.pushNamed(
-        context,
-        AppRoutes.message,
-        arguments: message,
-      ),
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(40),
         child: CachedNetworkImage(
