@@ -26,7 +26,7 @@ class MessagesScreen extends StatelessWidget {
               onTap: () => Navigator.pushNamed(
                 context,
                 AppRoutes.message,
-                arguments: MessageService.messages[index],
+                arguments: MessageService.messages[index].author,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(12),
