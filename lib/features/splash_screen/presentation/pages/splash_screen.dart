@@ -1,12 +1,14 @@
-import 'package:biznugget/config/routes/app_routes.dart';
+// import 'package:biznugget/config/routes/app_routes.dart';
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/features/SignUp_screen/service_provider.dart';
 import 'package:biznugget/features/details/presentation/pages/details_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
+import 'package:biznugget/features/profile/Profile_Page/consumer_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../SignUp_screen/consumer_account.dart';
 import '../../../messages/messages_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -14,10 +16,10 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppConstants.screenHeight = MediaQuery.of(context).size.height;
-    AppConstants.screenWidth = MediaQuery.of(context).size.width;
+    // AppConstants.screenHeight = MediaQuery.of(context).size.height;
+    // AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return const MessagesScreen();
+    return ConsumerProfile();
 
     /// temporary code :D
     /// temporary code :D

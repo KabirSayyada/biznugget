@@ -1,25 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
-class ConsumerProfile extends StatelessWidget {
-  const ConsumerProfile({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.only(top: 20, left: 10, right: 10),
-        decoration: BoxDecoration(
-          color: Color(0xFFFFFFFF),
-          border: Border.all(),
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20)),
-        ),
-        child: Column(
-          children: [
-            Align(
+/*
+Align(
               alignment: Alignment.topLeft,
               child: Container(
                 height: 40,
@@ -67,7 +47,7 @@ class ConsumerProfile extends StatelessWidget {
               ],
             ),
             Column(
-              children: [
+              children: const [
                 Text(
                   'Jennifer Orya',
                   style: TextStyle(
@@ -83,23 +63,6 @@ class ConsumerProfile extends StatelessWidget {
                     color: Color(0xFF8E8585),
                   ),
                 ),
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        child: Image.asset(
-                          'assets/images/leftside.png',
-                          scale: 2,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+            */
