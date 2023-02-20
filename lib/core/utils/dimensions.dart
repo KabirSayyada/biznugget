@@ -145,5 +145,8 @@ class Dimensions {
   static final double iconSize25 = height / 34.5;
   static final double iconSize30 = height / 28.91;
   static final double iconSize35 = height / 24.7;
+  static final double iconSize40 = height / 21.7;
+  static final double iconSize45 = height / 19.3;
+  static final double iconSize50 = height / 17.3;
 
 }

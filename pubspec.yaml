@@ -63,6 +63,9 @@ dependencies:
   timezone: ^0.9.0
   cached_network_image: ^3.2.3
   easy_search_bar: ^2.4.2
+  flutter_awesome_select: ^6.5.0
+  carbon_icons: ^0.0.1+2
+  font_awesome_flutter: ^10.4.0
 
 
 
