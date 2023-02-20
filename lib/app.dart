@@ -44,7 +44,8 @@ class Biznugget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: AppStrings.appName,
         theme: appTheme(),
-        onGenerateRoute: AppRoutes.routes,
+        routes: AppRoutes.routes,
+        onGenerateRoute: AppRoutes.generateRoute,
       ),
     );
   }
