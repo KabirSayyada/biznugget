@@ -1,11 +1,13 @@
 import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
-import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeCustomAppBar extends StatelessWidget {
-  const HomeCustomAppBar({Key? key}) : super(key: key);
+  const HomeCustomAppBar({Key? key, required this.scaffoldKey}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class HomeCustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: _onTap,
+            onTap:() => scaffoldKey.currentState!.openDrawer(),
             child: Container(
               height: Dimensions.height47,
               width: Dimensions.width47,
@@ -51,8 +53,4 @@ class HomeCustomAppBar extends StatelessWidget {
     );
   }
 
-  void _onTap() {
-    /// TODO: implement drawer
-    print('menu icon tapped');
-  }
 }

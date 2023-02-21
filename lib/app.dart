@@ -36,9 +36,6 @@ class Biznugget extends StatelessWidget {
         /// Business Home Cubit
         BlocProvider<BusinessHomeCubit>(create: (context) => BusinessHomeCubit()),
 
-        /// ADVERTISE Cubit
-        // BlocProvider<AdvertiseCubit>(create: (context) => AdvertiseCubit()),
-
         /// categories cubit
         BlocProvider<CategoriesCubit>(create: (context) => CategoriesCubit()),
 

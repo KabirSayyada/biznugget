@@ -6,8 +6,8 @@ import 'package:biznugget/core/utils/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
-class BHDrawer extends StatelessWidget {
-  const BHDrawer({Key? key}) : super(key: key);
+class HSDrawer extends StatelessWidget {
+  const HSDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

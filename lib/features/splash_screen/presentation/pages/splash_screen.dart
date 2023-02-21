@@ -1,6 +1,8 @@
-import 'package:biznugget/core/utils/app_constants.dart';
-import 'package:biznugget/features/home/business_home/presentation/pages/_1_business_home_screen.dart';
 import 'package:biznugget/features/home/business_home/presentation/pages/_2_advertise_screen.dart';
+import 'package:biznugget/core/utils/app_constants.dart';
+import 'package:biznugget/features/home/home_control/presentation/home_control_screen.dart';
+import 'package:biznugget/features/home/user_home/presentation/pages/home_screen.dart';
+import 'package:biznugget/features/wishlist/presentation/pages/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -11,7 +13,7 @@ class SplashScreen extends StatelessWidget {
     AppConstants.screenHeight = MediaQuery.of(context).size.height;
     AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return AdvertiseScreen();
+    return HomeScreen();
 
     /// temporary code :D
     /// temporary code :D

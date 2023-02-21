@@ -17,7 +17,7 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          gradient: AppColors.secondGradient(),
+          gradient: AppColors.primaryGradient(),
           borderRadius: BorderRadius.circular(Dimensions.radius10),
         ),
         child: SmartSelect<String>.multiple(
@@ -67,6 +67,7 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
           // tile / button  builder
           tileBuilder: (context, state) {
             return S2Tile.fromState(
+              hideValue: true,
               state,
               // show two lines for title and subtitle
               // isTwoLine: true,
@@ -76,8 +77,8 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
                 color: Colors.white,
               ),
               trailing: Icon(
-                Icons.arrow_drop_down,
-                size: Dimensions.iconSize40,
+                Icons.keyboard_arrow_down,
+                size: Dimensions.iconSize30,
                 color: Colors.white,
               ),
               title: const BigText(

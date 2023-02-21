@@ -21,7 +21,7 @@ class SubCategoriesMultiSelectWidget extends StatelessWidget {
                 .isNotEmpty) {
           return Container(
             decoration: BoxDecoration(
-              gradient: AppColors.secondGradient(),
+              gradient: AppColors.primaryGradient(),
               borderRadius: BorderRadius.circular(Dimensions.radius10),
             ),
             child: SmartSelect<String>.multiple(
@@ -84,8 +84,8 @@ class SubCategoriesMultiSelectWidget extends StatelessWidget {
                     color: Colors.white,
                   ),
                   trailing: Icon(
-                    Icons.arrow_drop_down,
-                    size: Dimensions.iconSize40,
+                    Icons.keyboard_arrow_down,
+                    size: Dimensions.iconSize30,
                     color: Colors.white,
                   ),
                   title: const BigText(

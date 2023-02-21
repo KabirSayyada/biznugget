@@ -72,7 +72,7 @@ class CardBody extends StatelessWidget {
     return Padding(
       padding: _paddingOfItemDetailsColumn(),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// sub category

@@ -1,17 +1,16 @@
-import 'dart:async';
-
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
-import 'package:biznugget/core/utils/colors.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+
 
 part 'home_screen_event.dart';
 
 part 'home_screen_state.dart';
 
 class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
+
   /// temporary data
   List<ItemModel> items = [
     // some random items
@@ -174,7 +173,7 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
         emit(FetchAllItemsLoading());
         try {
           /// todo : Fetch All Items from firebase
-          await Future.delayed(const Duration(seconds: 2), () {
+          await Future.delayed(const Duration(seconds: 1), () {
             emit(FetchAllItemsSuccess());
           });
           emit(FetchAllItemsSuccess());

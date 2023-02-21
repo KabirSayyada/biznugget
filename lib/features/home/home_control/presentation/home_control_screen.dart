@@ -11,6 +11,6 @@ class HomeControlScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// if business account return business home page else return user home page
-    return userType == 'business' ? BusinessHomeScreen() : const HomeScreen();
+    return userType == 'business' ? BusinessHomeScreen() : HomeScreen();
   }
 }
