@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:biznugget/app.dart';
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/bloc_observer.dart';
@@ -14,7 +15,16 @@ import 'package:hive_flutter/adapters.dart';
 import 'app_config/app_routes/app_router.dart';
 
 <<<<<<< HEAD
+=======
+import 'package:biznugget/core/common/models/item_model/item_model.dart';
+>>>>>>> 18bc0b57ced9dcbd28f66b144f8095833fe24799
 import 'core/services/notification_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:biznugget/bloc_observer.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:flutter/material.dart';
+import 'package:biznugget/app.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +48,7 @@ void main() {
   // setup notifications
   NotificationService.setup();
 }
+<<<<<<< HEAD
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -80,3 +91,5 @@ class MyApp extends StatelessWidget {
   }
 }
 
+=======
+>>>>>>> 18bc0b57ced9dcbd28f66b144f8095833fe24799
