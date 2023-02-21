@@ -1,4 +1,6 @@
 import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/advertise_cubit.dart';
+import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/categories_cubit/categories_cubit.dart';
+import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/sub_categories_cubit/sub_categories_cubit.dart';
 import 'package:flutter_awesome_select/flutter_awesome_select.dart';
 import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
@@ -9,13 +11,11 @@ import 'package:flutter/material.dart';
 class CategoriesMultiSelectWidget extends StatelessWidget {
   CategoriesMultiSelectWidget({super.key});
 
-  final AdvertiseCubit _advertiseCubit = AdvertiseCubit();
+  final CategoriesCubit _CategoriesCubit = CategoriesCubit();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AdvertiseCubit(),
-      child: Container(
+    return Container(
         decoration: BoxDecoration(
           gradient: AppColors.secondGradient(),
           borderRadius: BorderRadius.circular(Dimensions.radius10),
@@ -23,19 +23,23 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
         child: SmartSelect<String>.multiple(
           // data source / items to choose from
           title: 'Categories',
-          choiceItems: BlocProvider.of<AdvertiseCubit>(context)
+          choiceItems: BlocProvider.of<CategoriesCubit>(context)
               .allCategories
               .map((cate) => S2Choice<String>(
-                    value: cate.name,
-                    title: cate.name,
-                  ))
+            value: cate.name,
+            title: cate.name,
+          ))
               .toList(),
           onChange: (selected) {
-            BlocProvider.of<AdvertiseCubit>(context).changeSelectedCategoriesByName =
+            BlocProvider.of<CategoriesCubit>(context).changeSelectedCategoriesByName =
                 selected.value;
           },
           placeholder: '',
           modalType: S2ModalType.popupDialog,
+          onModalClose: (state, confirmed) {
+            BlocProvider.of<SubCategoriesCubit>(context).loadSubCategories(
+                BlocProvider.of<CategoriesCubit>(context).selectedCategories);
+          },
           // modal / dialog config
           modalConfig: S2ModalConfig(
             barrierColor: Colors.black.withOpacity(0.5),
@@ -53,7 +57,7 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
             // confirm button
             useConfirm: true,
             confirmLabel:
-                const Text('Done', style: TextStyle(color: Colors.white)),
+            const Text('Done', style: TextStyle(color: Colors.white)),
           ),
           // choice config
           choiceConfig: const S2ChoiceConfig(
@@ -84,41 +88,41 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
           },
           // choice list tile builder
           choiceBuilder: (context, state, choice) {
-            return BlocBuilder<AdvertiseCubit, AdvertiseState>(
+            return BlocBuilder<CategoriesCubit, CategoriesState>(
               builder: (context, state) {
-                if (state is CategorySelected) {
+                if (state is CategoriesState) {
                   return InkWell(
                     onTap: () {
                       // opposite value
-                      BlocProvider.of<AdvertiseCubit>(context)
-                              .allCategories[_advertiseCubit
-                                  .getIndexOfCategoryByName(choice.title!)]
-                              .isSelected =
-                          !BlocProvider.of<AdvertiseCubit>(context)
-                              .allCategories[_advertiseCubit
-                                  .getIndexOfCategoryByName(choice.title!)]
-                              .isSelected!;
+                      BlocProvider.of<CategoriesCubit>(context)
+                          .allCategories[_CategoriesCubit
+                          .getIndexOfCategoryByName(choice.title!)]
+                          .isSelected =
+                      !BlocProvider.of<CategoriesCubit>(context)
+                          .allCategories[_CategoriesCubit
+                          .getIndexOfCategoryByName(choice.title!)]
+                          .isSelected!;
                       List<String> selectedItems =
-                          BlocProvider.of<AdvertiseCubit>(context)
-                              .allCategories
-                              .where((element) => element.isSelected!)
-                              .map((e) => e.name)
-                              .toList();
-                      BlocProvider.of<AdvertiseCubit>(context)
+                      BlocProvider.of<CategoriesCubit>(context)
+                          .allCategories
+                          .where((element) => element.isSelected!)
+                          .map((e) => e.name)
+                          .toList();
+                      BlocProvider.of<CategoriesCubit>(context)
                           .changeSelectedCategoriesByName = selectedItems;
                     },
                     child: ListTile(
-                      leading: BlocProvider.of<AdvertiseCubit>(context)
+                      leading: BlocProvider.of<CategoriesCubit>(context)
                           .allCategories[
-                              _advertiseCubit.getIndexOfCategoryByName(choice.title!)]
+                      _CategoriesCubit.getIndexOfCategoryByName(choice.title!)]
                           .icon,
                       title: Text(choice.title!),
                       trailing: AbsorbPointer(
                         absorbing: true,
                         child: Checkbox(
-                          value: BlocProvider.of<AdvertiseCubit>(context)
-                              .allCategories[_advertiseCubit
-                                  .getIndexOfCategoryByName(choice.title!)]
+                          value: BlocProvider.of<CategoriesCubit>(context)
+                              .allCategories[_CategoriesCubit
+                              .getIndexOfCategoryByName(choice.title!)]
                               .isSelected,
                           onChanged: (value) {},
                         ),
@@ -132,7 +136,7 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
             );
           },
         ),
-      ),
     );
   }
+
 }

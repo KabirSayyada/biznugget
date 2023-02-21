@@ -114,6 +114,10 @@ flutter:
     - family: Great Sailor
       fonts:
         - asset: assets/fonts/Great Sailor.ttf
+
+    - family: Core Sans C
+      fonts:
+        - asset: assets/fonts/core_sans_c.otf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

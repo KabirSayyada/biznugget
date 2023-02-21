@@ -18,7 +18,8 @@ class BHDrawer extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(0),
         child: Container(
           decoration: BoxDecoration(
-            color: AppColors.primaryColor1,
+            gradient: AppColors.secondGradient(),
+            // color: AppColors.primaryColor1,
             borderRadius: BorderRadius.circular(Dimensions.radius10),
           ),
           child: ListView(
