@@ -62,8 +62,8 @@ class ConsumerProfile extends StatelessWidget {
                     ),
                     ProfilePic(),
                     UserDetails(
-                      name: 'Jennifer Orya',
-                      userAccount: 'Consumer',
+                      name: 'Minebop LTD',
+                      userAccount: 'Business',
                     ),
                   ],
                 ),
