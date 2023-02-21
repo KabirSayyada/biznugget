@@ -1,6 +1,8 @@
 // import 'package:biznugget/config/routes/app_routes.dart';
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
+import 'package:biznugget/features/SignUp_screen/business_account.dart';
+import 'package:biznugget/features/SignUp_screen/freelance.dart';
 import 'package:biznugget/features/SignUp_screen/service_provider.dart';
 import 'package:biznugget/features/details/presentation/pages/details_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
@@ -19,7 +21,7 @@ class SplashScreen extends StatelessWidget {
     // AppConstants.screenHeight = MediaQuery.of(context).size.height;
     // AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return ConsumerProfile();
+    return FreelanceScreen();
 
     /// temporary code :D
     /// temporary code :D
