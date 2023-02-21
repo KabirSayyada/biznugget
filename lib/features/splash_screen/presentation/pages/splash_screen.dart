@@ -1,16 +1,9 @@
-// import 'package:biznugget/config/routes/app_routes.dart';
-import 'package:biznugget/core/common/models/item_model/item_model.dart';
-import 'package:biznugget/core/utils/assets_manager.dart';
-import 'package:biznugget/features/SignUp_screen/business_account.dart';
-import 'package:biznugget/features/SignUp_screen/freelance.dart';
-import 'package:biznugget/features/SignUp_screen/service_provider.dart';
-import 'package:biznugget/features/details/presentation/pages/details_screen.dart';
+import 'package:biznugget/core/utils/app_constants.dart';
+import 'package:biznugget/features/home/business_acc_home/presentation/pages/_2_advertise_screen.dart';
 import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
-import 'package:biznugget/features/profile/Profile_Page/consumer_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../SignUp_screen/consumer_account.dart';
 import '../../../messages/messages_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -21,7 +14,7 @@ class SplashScreen extends StatelessWidget {
     // AppConstants.screenHeight = MediaQuery.of(context).size.height;
     // AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return FreelanceScreen();
+    return const MessagesScreen();
 
     /// temporary code :D
     /// temporary code :D

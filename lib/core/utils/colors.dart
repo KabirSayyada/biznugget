@@ -17,29 +17,16 @@ class AppColors {
   static const Color gradientColor = Color(0xFF7D89FF);
   static const Color gradientColor2 = Color(0xFF3C5BF0);
 
-  static mainGradient() {
-    return const RadialGradient(
-      colors: [
-        primaryColor1,
-        primaryColor2,
-      ],
-      stops: [
-        0.25,
-        1.0,
-      ],
-      radius: 3,
-    );
-  }
 
-  static Gradient secondGradient () {
-    return const LinearGradient(
+  static Gradient primaryGradient () {
+    return LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
         primaryColor1,
-        AppColors.gradientColor,
+        primaryColor2.withOpacity(0.8),
       ],
-      stops: [
+      stops: const [
         0.25,
         1.0,
       ],

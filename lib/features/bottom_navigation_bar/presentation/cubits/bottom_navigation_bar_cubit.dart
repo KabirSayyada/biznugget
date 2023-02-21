@@ -1,8 +1,8 @@
-import 'package:biznugget/features/advertise/presentation/pages/advertise_screen.dart';
-import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
-import 'package:biznugget/features/messages/messages_screen.dart';
-import 'package:biznugget/features/profile/presentation/pages/profile_screen.dart';
+import 'package:biznugget/features/home/business_home/presentation/pages/_2_advertise_screen.dart';
+import 'package:biznugget/features/home/user_home/presentation/pages/home_screen.dart';
 import 'package:biznugget/features/wishlist/presentation/pages/wishlist_screen.dart';
+import 'package:biznugget/features/profile/presentation/pages/profile_screen.dart';
+import 'package:biznugget/features/messages/messages_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
