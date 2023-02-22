@@ -1,4 +1,5 @@
 import 'package:biznugget/features/start_up/presentation/onboarding_screen.dart';
+import 'package:biznugget/utils/navigators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,10 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> decideNavigation() async {
     await Future.delayed(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
-      ),
+      navigateReplace(context, const OnboardingScreen(),
+        ),
+
     );
   }
 
@@ -58,7 +58,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Image.asset('assets/images/background_image.png'),
+            Image.asset(
+              'assets/images/background_image.png',
+              fit: BoxFit.cover,
+            ),
             SvgPicture.asset(
               'assets/svg/app_logo.svg',
               color: Colors.black,
