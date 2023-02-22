@@ -66,6 +66,7 @@ dependencies:
   flutter_chat_ui: ^1.6.6
   font_awesome_flutter: ^10.4.0
   flutter_awesome_select: ^6.5.0
+  card_swiper: ^2.0.4
 
 
 dev_dependencies:
