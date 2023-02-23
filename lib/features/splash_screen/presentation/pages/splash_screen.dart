@@ -1,10 +1,4 @@
 import 'package:biznugget/core/utils/app_constants.dart';
-import 'package:biznugget/features/profile/Profile_Edit/business_edit.dart';
-import 'package:biznugget/features/profile/Profile_Edit/consumer_edit.dart';
-import 'package:biznugget/features/profile/Profile_Edit/freelance_edit.dart';
-import 'package:biznugget/features/profile/Profile_Edit/job_creator.dart';
-import 'package:biznugget/features/profile/Profile_Edit/service_provider.dart';
-import 'package:biznugget/features/profile/Profile_Edit/vendor_edit.dart';
 //import 'package:biznugget/features/home/business_acc_home/presentation/pages/_2_advertise_screen.dart';
 //import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
 import 'package:biznugget/features/profile/Profile_Page/consumer_profile.dart';
@@ -18,10 +12,10 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // AppConstants.screenHeight = MediaQuery.of(context).size.height;
-    // AppConstants.screenWidth = MediaQuery.of(context).size.width;
+    AppConstants.screenHeight = MediaQuery.of(context).size.height;
+    AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return const ServiceProviderEdit();
+    return const ConsumerProfile();
 
     /// temporary code :D
     /// temporary code :D
