@@ -36,7 +36,7 @@ class BusinessHomeCubit extends Cubit<BusinessHomeState> {
 
   ];
 
-  // const data for for buy and sell sections
+  // const data for buy and sell sections
   final List<ArticleModel> articles = [
     ArticleModel(
         title: 'Provide or sell something',
@@ -58,3 +58,6 @@ class BusinessHomeCubit extends Cubit<BusinessHomeState> {
     emit(BHSliderIndexSelected());
   }
 }
+
+
+

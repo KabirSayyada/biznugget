@@ -23,12 +23,12 @@ class SBInstructionsSlider extends StatelessWidget {
       child: Stack(
         children: [
           /// this is the slider
-          SBSlider(
+          SBSlider.BHSlider(
               controller: controller,
               duration: Duration(milliseconds: duration)),
 
           /// this is the indicator (slider indicator)
-          SBSliderIndicator(
+          BHSliderIndicator(
               controller: controller,
               duration: Duration(milliseconds: (duration / 2).round())),
         ],
@@ -40,7 +40,7 @@ class SBInstructionsSlider extends StatelessWidget {
 
 /// Slider and indicator
 class SBSlider extends StatelessWidget {
-  const SBSlider({
+  const SBSlider.BHSlider({
     super.key,
     required this.controller,
     required this.duration,
@@ -80,8 +80,8 @@ class SBSlider extends StatelessWidget {
 }
 
 /// this is the indicator (slider indicator)
-class SBSliderIndicator extends StatelessWidget {
-  const SBSliderIndicator({
+class BHSliderIndicator extends StatelessWidget {
+  const BHSliderIndicator({
     super.key,
     required this.duration,
     required this.controller,
