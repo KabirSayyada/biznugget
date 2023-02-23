@@ -9,7 +9,6 @@ class ImagesSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final List<String> imageList = [
       AppImages.item1,
       AppImages.item2,
