@@ -4,6 +4,7 @@ import 'package:biznugget/features/home/business_home/presentation/cubits/busine
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:biznugget/features/bottom_navigation_bar/presentation/cubits/bottom_navigation_bar_cubit.dart';
 import 'package:biznugget/features/home/user_home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
+import 'package:biznugget/features/wishlist/data/repositories/local_storage.dart';
 import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/core/utils/strings.dart';
 import 'package:biznugget/config/app_routes.dart';
@@ -24,7 +25,8 @@ class Biznugget extends StatelessWidget {
 
         /// wishlist provider
         BlocProvider<WishlistItemsCubit>(
-            create: (context) => WishlistItemsCubit()..fetchAllWishlistItems()),
+            create: (context) => WishlistItemsCubit(WishlistRepositoryImpl())
+              ..fetchAllWishlistItems()),
 
         /// Network provider
         BlocProvider<NetworkBloc>(
@@ -34,13 +36,15 @@ class Biznugget extends StatelessWidget {
         BlocProvider<HomeScreenBloc>(create: (context) => HomeScreenBloc()),
 
         /// Business Home Cubit
-        BlocProvider<BusinessHomeCubit>(create: (context) => BusinessHomeCubit()),
+        BlocProvider<BusinessHomeCubit>(
+            create: (context) => BusinessHomeCubit()),
 
         /// categories cubit
         BlocProvider<CategoriesCubit>(create: (context) => CategoriesCubit()),
 
         /// Sub categories cubit
-        BlocProvider<SubCategoriesCubit>(create: (context) => SubCategoriesCubit()),
+        BlocProvider<SubCategoriesCubit>(
+            create: (context) => SubCategoriesCubit()),
 
         /// add other bloc/cubit providers here
       ],
