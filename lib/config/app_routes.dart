@@ -2,6 +2,7 @@ import 'package:biznugget/features/home/business_home/presentation/pages/_2_adve
 import 'package:biznugget/features/home/home_control/presentation/home_control_screen.dart';
 import 'package:biznugget/features/home/user_home/presentation/pages/home_screen.dart';
 import 'package:biznugget/features/profile/presentation/pages/profile_screen.dart';
+import 'package:biznugget/features/wishlist/data/repositories/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,7 +28,7 @@ class AppRoutes {
         AppRoutes.initial: (_) =>  SplashScreen(),
         AppRoutes.wishlist: (_) => BlocProvider(
               create: (context) =>
-                  WishlistItemsCubit()..fetchAllWishlistItems(),
+                  WishlistItemsCubit(WishlistRepositoryImpl())..fetchAllWishlistItems(),
               child: WishlistScreen(),
             ),
         AppRoutes.home: (_) => const HomeControlScreen(),
