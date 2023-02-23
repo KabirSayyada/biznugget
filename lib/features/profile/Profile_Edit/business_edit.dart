@@ -25,6 +25,7 @@ class _BusinessProfileEditState extends State<BusinessProfileEdit> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: height,
         width: width,
