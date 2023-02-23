@@ -12,15 +12,17 @@ class UserDetails extends StatelessWidget {
         Text(
           name,
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.w400,
+            fontFamily: 'Great Sailor',
           ),
         ),
         Text(
           userAccount,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w400,
+            fontFamily: 'Great Sailor',
             color: Color(0xFF8E8585),
           ),
         ),
