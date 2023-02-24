@@ -10,13 +10,19 @@ import 'package:biznugget/features/payment/widget/nav_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PaymentInitScreen extends StatelessWidget {
+class PaymentInitScreen extends StatefulWidget {
   const PaymentInitScreen({super.key});
 
   @override
+  State<PaymentInitScreen> createState() => _PaymentInitScreenState();
+}
+
+class _PaymentInitScreenState extends State<PaymentInitScreen> {
+  bool isExpanded = false;
+  @override
   Widget build(BuildContext context) {
-    final height = context.height;
-    //final width = context.width;
+    final height = context.height * 1;
+    // final width = context.width * 1;
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -42,10 +48,9 @@ class PaymentInitScreen extends StatelessWidget {
               Column(
                 children: [
                   buildPaymentMethodBox(
+                    width: 35,
                     title: debitCredit,
-                    //TODO
-                    //change test icon to design icon
-                    icon: Icons.money,
+                    imageIcon: creditDebitImage,
                     onPressed: () {
                       context
                           .read<PaymentBloc>()
@@ -54,22 +59,22 @@ class PaymentInitScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   buildPaymentMethodBox(
+                    rigthPadding: 5,
+                    width: 25,
                     title: internetBanking,
-                    //TODO
-                    //change test icon to design icon
-                    icon: Icons.money,
                     onPressed: () {
                       context
                           .read<PaymentBloc>()
                           .add(const PaymentEventGoToInternetBanking());
                     },
+                    imageIcon: internetBankingImage,
                   ),
                   const SizedBox(height: 10),
                   buildPaymentMethodBox(
+                    rigthPadding: 5,
+                    width: 25,
                     title: paypal,
-                    //TODO
-                    //change test icon to design icon
-                    icon: Icons.money,
+                    imageIcon: paypalImage,
                     onPressed: () {
                       context
                           .read<PaymentBloc>()
@@ -77,10 +82,9 @@ class PaymentInitScreen extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 10),
-                  buidAnotherOption(),
+                  optionPaymentBox(),
                 ],
               ),
-              const SizedBox()
             ],
           ),
         ),
@@ -88,57 +92,153 @@ class PaymentInitScreen extends StatelessWidget {
     );
   }
 
-  //function to build payment method container
+  Widget optionPaymentBox() {
+    final List<CustomListTile> dropPaymentOptionBlocStateList = [];
+    for (String paymentOption in dropPaymentOptionStringList) {
+      dropPaymentOptionBlocStateList.add(CustomListTile(
+          title: paymentOption,
+          isPressed: (paymentOption) {
+            //TODO:implemet state for each bank option
+            print('This payment Option $paymentOption is clicked');
+          }));
+    }
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {
+            setState(() {
+              if (isExpanded == true) {
+                isExpanded = false;
+              } else if (isExpanded == false) {
+                isExpanded = true;
+              }
+            });
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
+            decoration: BoxDecoration(
+                border: isExpanded
+                    ? Border.all(color: kPaymentIconColor, width: 2)
+                    : null,
+                color: kPaymentWhiteColor,
+                borderRadius: BorderRadius.circular(kPaymentBorderRadius)),
+            child: Row(children: [
+              const PaymentTextWidget(title: addAnotherOption),
+              const Spacer(),
+              Container(
+                child: isExpanded
+                    ? const Icon(
+                        Icons.keyboard_arrow_up,
+                        size: kBackNavBtnRadius * 1.4,
+                        color: kBackNavBtnColor,
+                      )
+                    : const Icon(
+                        Icons.keyboard_arrow_down,
+                        size: kBackNavBtnRadius * 1.4,
+                        color: kBackNavBtnColor,
+                      ),
+              ),
+            ]),
+          ),
+        ),
+        Visibility(
+          visible: isExpanded,
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: const Offset(1, 3), // changes position of shadow
+                  ),
+                ],
+                color: kPaymentWhiteColor,
+                borderRadius: BorderRadius.circular(kPaymentBorderRadius)),
+            child: Column(
+              children: dropPaymentOptionBlocStateList,
+            ),
+          ),
+        )
+      ],
+    );
+  }
 
-  Container buildPaymentMethodBox(
-      {required String title,
-      required IconData icon,
-      required Function() onPressed}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      decoration: BoxDecoration(
-          color: kPaymentWhiteColor,
-          borderRadius: BorderRadius.circular(kPaymentBorderRadius)),
-      child: GestureDetector(
-        onTap: onPressed,
+  // function to build payment method container
+  Widget buildPaymentMethodBox({
+    required String title,
+    required String imageIcon,
+    required Function() onPressed,
+    double? height,
+    double? width,
+    double rigthPadding = 0.0,
+  }) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: CustomContainer(
         child: Row(children: [
           PaymentTextWidget(title: title),
           const Spacer(),
-          Icon(icon, color: kPaymentIconColor, size: kPaymentIconSize),
+          Padding(
+            padding: EdgeInsets.only(right: rigthPadding),
+            child: Image.asset(
+              imageIcon,
+              height: height,
+              width: width,
+            ),
+          ),
         ]),
       ),
     );
   }
+}
 
-  Widget buidAnotherOption() {
-    //this list will hold dynamic  String of payment coming from our constant file
-    final List<DropdownMenuItem> dropPaymentOptionBlocStateList = [];
-    for (String paymentOption in dropPaymentOptionStringList) {
-      dropPaymentOptionBlocStateList.add(
-        DropdownMenuItem(value: paymentOption, child: Text(paymentOption)),
-      );
-    }
+class CustomListTile extends StatelessWidget {
+  final Function(String) isPressed;
+  final String title;
+  const CustomListTile({
+    super.key,
+    required this.title,
+    required this.isPressed(title),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+      child: InkWell(
+        onTap: () => isPressed(title),
+        child: ListTile(
+          title: PaymentTextWidget(title: title),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomContainer extends StatelessWidget {
+  final Widget child;
+  final Border? border;
+  final double vertical;
+  final double horizointal;
+  const CustomContainer({
+    super.key,
+    required this.child,
+    this.vertical = 8,
+    this.horizointal = 16,
+    this.border,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      padding:
+          EdgeInsets.symmetric(vertical: vertical, horizontal: horizointal),
       decoration: BoxDecoration(
           color: kPaymentWhiteColor,
           borderRadius: BorderRadius.circular(kPaymentBorderRadius)),
-      child: Row(
-        children: [
-          const PaymentTextWidget(title: addAnotherOption),
-          const Spacer(),
-          DropdownButton(
-              icon: const Icon(
-                Icons.arrow_downward,
-                size: kBackNavBtnRadius,
-                color: kBackNavBtnColor,
-              ),
-              underline: const SizedBox(),
-              borderRadius: BorderRadius.circular(kPaymentBorderRadius),
-              items: dropPaymentOptionBlocStateList,
-              onChanged: (value) {}),
-        ],
-      ),
+      child: child,
     );
   }
 }
