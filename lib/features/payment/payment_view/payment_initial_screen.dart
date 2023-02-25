@@ -5,6 +5,7 @@ import 'package:biznugget/features/payment/constants/color_const.dart';
 import 'package:biznugget/features/payment/constants/list_payment_option.dart';
 import 'package:biznugget/features/payment/constants/payment_dimention.dart';
 import 'package:biznugget/features/payment/constants/string_const.dart';
+import 'package:biznugget/features/payment/widget/custom_container.dart';
 import 'package:biznugget/features/payment/widget/custom_text_widget.dart';
 import 'package:biznugget/features/payment/widget/nav_button.dart';
 import 'package:flutter/material.dart';
@@ -213,32 +214,6 @@ class CustomListTile extends StatelessWidget {
           title: PaymentTextWidget(title: title),
         ),
       ),
-    );
-  }
-}
-
-class CustomContainer extends StatelessWidget {
-  final Widget child;
-  final Border? border;
-  final double vertical;
-  final double horizointal;
-  const CustomContainer({
-    super.key,
-    required this.child,
-    this.vertical = 8,
-    this.horizointal = 16,
-    this.border,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding:
-          EdgeInsets.symmetric(vertical: vertical, horizontal: horizointal),
-      decoration: BoxDecoration(
-          color: kPaymentWhiteColor,
-          borderRadius: BorderRadius.circular(kPaymentBorderRadius)),
-      child: child,
     );
   }
 }
