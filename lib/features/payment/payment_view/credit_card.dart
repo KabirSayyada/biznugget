@@ -1,6 +1,8 @@
 import 'package:biznugget/core/utils/media_query_values.dart';
 import 'package:biznugget/features/payment/constants/color_const.dart';
 import 'package:biznugget/features/payment/constants/payment_dimention.dart';
+import 'package:biznugget/features/payment/constants/string_const.dart';
+import 'package:biznugget/features/payment/widget/custom_button.dart';
 import 'package:biznugget/features/payment/widget/custom_container.dart';
 import 'package:biznugget/features/payment/widget/custom_text_widget.dart';
 import 'package:biznugget/features/payment/widget/nav_button.dart';
@@ -29,7 +31,7 @@ class CreditCardScreen extends StatelessWidget {
               },
             ),
 
-            SizedBox(height: height / 16),
+            SizedBox(height: height / 25),
             const PaymentTextWidget(
               title: 'Total price',
             ),
@@ -39,7 +41,7 @@ class CreditCardScreen extends StatelessWidget {
               fontsize: 30,
               fontWeight: FontWeight.bold,
             ),
-            SizedBox(height: height / 22),
+            SizedBox(height: height / 35),
             const PaymentTextWidget(
               title: 'Payment method',
             ),
@@ -48,47 +50,97 @@ class CreditCardScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  buildOptionBox(
-                      imgString: 'lib/assets/images/biznugget/paypal.png',
-                      title: 'Paypal'),
+                  buildOptionBox(imgString: paypalImage, title: 'Paypal'),
                   buildCreditCardBox(),
                   buildOptionBox(
-                      imgString: 'lib/assets/images/biznugget/Vector.png',
-                      title: 'Bank'),
+                      imgString: internetBankingImage, title: 'Bank'),
                 ],
               ),
             ),
-            SizedBox(height: height / 25),
-            Row(
-              children: [
-                const PaymentTextWidget(
-                  title: 'Payment information',
-                  color: kBackNavBtnColor,
-                ),
-                const Spacer(),
-                InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    'Edit',
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Color.fromARGB(255, 25, 7, 188),
-                        fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ],
+            SizedBox(height: height / 35),
+            buildPaymentTextAndEdit(),
+
+            const SizedBox(
+              height: 10,
             ),
-            CustomContainer(
-                height: 40,
+            Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.2),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                ),
                 child: Row(
                   children: [
-                    Image.asset('lib/assets/images/biznugget/Group 2.png'),
-                    const TextField(),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Image.asset(
+                        'lib/assets/images/biznugget/Group 2.png',
+                        height: 25,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 50,
+                    ),
+                    const PaymentTextWidget(
+                      title: '3266  4546  ****  ****',
+                      fontWeight: FontWeight.w300,
+                      fontsize: 14,
+                    ),
                   ],
-                ))
+                )),
+            ///////////////
+            SizedBox(height: height / 45),
+            const PaymentTextWidget(
+              title: 'Promo code',
+              color: kBackNavBtnColor,
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.2),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: PaymentTextWidget(
+                    title: '3266 - 4546',
+                    fontWeight: FontWeight.w300,
+                    fontsize: 14,
+                  ),
+                )),
+            SizedBox(height: height / 10),
+            CustomButton(title: 'Pay', oppressed: () {}),
           ]),
         ),
       ),
+    );
+  }
+
+  buildPaymentTextAndEdit() {
+    return Row(
+      children: [
+        const PaymentTextWidget(
+          title: 'Payment information',
+          color: kBackNavBtnColor,
+        ),
+        const Spacer(),
+        InkWell(
+          onTap: () {},
+          child: const Text(
+            'Edit',
+            style: TextStyle(
+                fontSize: 12,
+                color: Color.fromARGB(255, 25, 7, 188),
+                fontWeight: FontWeight.w400),
+          ),
+        ),
+      ],
     );
   }
 
@@ -142,7 +194,7 @@ class CreditCardScreen extends StatelessWidget {
               const PaymentTextWidget(title: 'Credit'),
               const SizedBox(width: 15),
               Image.asset(
-                'lib/assets/images/biznugget/Vector (1).png',
+                creditDebitImage,
                 width: 40,
                 color: const Color(0xff4bd1d7).withOpacity(0.8),
               ),

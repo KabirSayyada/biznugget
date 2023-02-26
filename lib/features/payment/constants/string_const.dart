@@ -9,3 +9,5 @@ const internetBankingImage =
     'biznugget/lib/features/payment/assets/initial_screen_img/internet_banking_image.png';
 const paypalImage =
     'biznugget/lib/features/payment/assets/initial_screen_img/paypal_image.png';
+const masterCardImage =
+    'biznugget/lib/features/payment/assets/initial_screen_img/Group 2.png';
