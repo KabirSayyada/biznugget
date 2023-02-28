@@ -3,14 +3,14 @@ import 'package:biznugget/core/common/widgets/custom_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SigninSreen extends StatefulWidget {
-  const SigninSreen({super.key});
+class SigninScreen extends StatefulWidget {
+  const SigninScreen({super.key});
 
   @override
-  State<SigninSreen> createState() => _SigninSreenState();
+  State<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _SigninSreenState extends State<SigninSreen> {
+class _SigninScreenState extends State<SigninScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();

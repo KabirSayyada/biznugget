@@ -1,7 +1,6 @@
+//import 'package:biznugget/features/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../core/utils/strings.dart';
 import '../features/details/presentation/pages/details_screen.dart';
 import '../features/home/presentation/pages/home_screen.dart';
 import '../features/messages/message_screen.dart';
@@ -21,7 +20,7 @@ class AppRoutes {
   static const String details = '/details';
 
   static Map<String, Widget Function(BuildContext)> get routes => {
-        AppRoutes.initial: (_) => const SplashScreen(),
+        AppRoutes.initial: (_) => const SplashScreen(), //SigninScreen to test
         AppRoutes.wishlist: (_) => BlocProvider(
               create: (context) =>
                   WishlistItemsCubit()..fetchAllWishlistItems(),
