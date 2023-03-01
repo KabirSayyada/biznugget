@@ -75,7 +75,7 @@ class CreditCardScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0),
                       child: Image.asset(
-                        'lib/assets/images/biznugget/Group 2.png',
+                        masterCardImage,
                         height: 25,
                       ),
                     ),
