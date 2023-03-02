@@ -206,3 +206,8 @@ class CreditCardScreen extends StatelessWidget {
     );
   }
 }
+                     buildTextFielBox(
+                        title: 'Exp date',
+                        iHaveImageAndFormatter: false,
+                        hintText: 'Month / Year',
+                        width: width / 2.8),
