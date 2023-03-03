@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:biznugget/core/utils/media_query_values.dart';
 import 'package:biznugget/features/payment/constants/color_const.dart';
 import 'package:biznugget/features/payment/constants/payment_dimention.dart';
-import 'package:biznugget/features/payment/constants/string_const.dart';
+import 'package:biznugget/features/payment/constants/list_payment_option.dart';
 import 'package:biznugget/features/payment/widget/custom_button.dart';
 import 'package:biznugget/features/payment/widget/custom_container.dart';
 import 'package:biznugget/features/payment/widget/custom_text_widget.dart';
