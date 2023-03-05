@@ -97,7 +97,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
-    - biznugget/lib/features/payment/assets/initial_screen_img
+    - assets/payment_img/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

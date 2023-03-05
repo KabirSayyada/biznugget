@@ -1,3 +1,5 @@
+import 'package:biznugget/features/payment/payment_view/payment_initial_screen.dart';
+import 'package:biznugget/features/payment/payment_view/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,9 +21,10 @@ class AppRoutes {
   static const String message = '/message';
   static const String profile = '/profile';
   static const String details = '/details';
+  static const String payment = '/payment';
 
   static Map<String, Widget Function(BuildContext)> get routes => {
-        AppRoutes.initial: (_) => const SplashScreen(),
+        AppRoutes.initial: (_) => const PaymentScreen(),
         AppRoutes.wishlist: (_) => BlocProvider(
               create: (context) =>
                   WishlistItemsCubit()..fetchAllWishlistItems(),
@@ -33,11 +36,12 @@ class AppRoutes {
         AppRoutes.messages: (_) => const MessagesScreen(),
         AppRoutes.profile: (_) => const HomeScreen(),
         AppRoutes.details: (_) => const DetailsScreen(),
+        AppRoutes.payment: (_) => const PaymentScreen(),
       };
 
   static Route? generateRoute(RouteSettings settings) {
     return MaterialPageRoute(
-      builder: (context) =>  Scaffold(
+      builder: (context) => Scaffold(
         body: Center(
           child: Text(settings.name ?? ''),
         ),

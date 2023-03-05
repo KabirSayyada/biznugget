@@ -1,6 +1,9 @@
 import 'package:biznugget/core/utils/media_query_values.dart';
+import 'package:biznugget/features/payment/bloc/payment_event.dart';
+import 'package:biznugget/features/payment/bloc/paymet_bloc.dart';
 import 'package:biznugget/features/payment/constants/color_const.dart';
 import 'package:biznugget/features/payment/constants/payment_dimention.dart';
+import 'package:biznugget/features/payment/constants/string_const.dart';
 import 'package:biznugget/features/payment/widget/custom_button.dart';
 import 'package:biznugget/features/payment/widget/custom_text_widget.dart';
 import 'package:biznugget/features/payment/widget/nav_button.dart';
@@ -11,9 +14,12 @@ import 'package:flutter/services.dart'
         FilteringTextInputFormatter,
         LengthLimitingTextInputFormatter,
         TextInputFormatter;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CreditCardScreen extends StatefulWidget {
-  const CreditCardScreen({super.key});
+  const CreditCardScreen({
+    super.key,
+  });
 
   @override
   State<CreditCardScreen> createState() => _CreditCardScreenState();
@@ -62,12 +68,9 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               SizedBox(height: height / 22),
-              BackNavigationButton(
-                opressed: () {
-                  //TODO
-                  //to implent a route GoBack Event to any pay that directed us here
-                },
-              ),
+              BackNavigationButton(opressed: () {
+                // context.read<PaymentBloc>().add(const PaymentEventInitialize());
+              }),
               SizedBox(height: height / 16),
               const PaymentTextWidget(
                 title: 'Debit / Credit\nCard',
@@ -142,7 +145,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
               buildCheckButton(isChecked: true),
               SizedBox(height: height / 20),
               CustomButton(
-                  title: 'Add Card',
+                  title: 'Add CardG',
                   oppressed: () {
                     // if (_formKey.currentState!.validate()) {}
                   }),
@@ -168,7 +171,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
       children: [
         PaymentTextWidget(
           title: title,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w700,
           color: kBackNavBtnColor,
         ),
         const SizedBox(height: 10),
@@ -191,7 +194,8 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
               // top: 16,
             ),
             hintStyle: const TextStyle(
-              fontWeight: FontWeight.w300,
+              letterSpacing: 3,
+              fontWeight: FontWeight.w100,
               fontSize: 14,
             ),
             prefixIcon: iHaveImageAndFormatter
@@ -201,7 +205,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                     padding: const EdgeInsets.only(left: 10),
                     margin: const EdgeInsets.only(right: 25),
                     child: Image.asset(
-                      'lib/assets/images/biznugget/Group 2.png',
+                      creditDebitImage,
                       height: 40,
                       width: 50,
                     ),

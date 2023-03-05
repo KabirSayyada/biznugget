@@ -4,6 +4,7 @@ class PaymentTextWidget extends StatelessWidget {
   final String title;
   final Color? color;
   final double? fontsize;
+
   final FontWeight? fontWeight;
 
   const PaymentTextWidget(

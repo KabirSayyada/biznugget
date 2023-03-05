@@ -1,10 +1,15 @@
 import 'package:biznugget/core/utils/media_query_values.dart';
 import 'package:biznugget/features/payment/bloc/payment_event.dart';
+import 'package:biznugget/features/payment/bloc/payment_state.dart';
 import 'package:biznugget/features/payment/bloc/paymet_bloc.dart';
 import 'package:biznugget/features/payment/constants/color_const.dart';
 import 'package:biznugget/features/payment/constants/list_payment_option.dart';
 import 'package:biznugget/features/payment/constants/payment_dimention.dart';
 import 'package:biznugget/features/payment/constants/string_const.dart';
+import 'package:biznugget/features/payment/payment_view/add_payment_option.dart';
+import 'package:biznugget/features/payment/payment_view/credit_card.dart';
+import 'package:biznugget/features/payment/payment_view/internet_banking.dart';
+import 'package:biznugget/features/payment/payment_view/paypal_screen.dart';
 import 'package:biznugget/features/payment/widget/custom_container.dart';
 import 'package:biznugget/features/payment/widget/custom_text_widget.dart';
 import 'package:biznugget/features/payment/widget/nav_button.dart';
@@ -33,6 +38,9 @@ class _PaymentInitScreenState extends State<PaymentInitScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ///////////////////////////////////////////
+              // //main page ui continued here////
+
               SizedBox(height: height / 22),
               BackNavigationButton(
                 opressed: () {

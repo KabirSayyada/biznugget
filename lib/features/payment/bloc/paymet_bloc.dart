@@ -12,7 +12,9 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           emit(
             const PaymentStateInitaial(),
           );
-        } else {}
+        } else {
+          print('credit payment to be implented');
+        }
       },
     );
     //payment method is credit card
@@ -24,7 +26,9 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           emit(
             const PaymentStateCreditAndDebit(),
           );
-        } else {}
+        } else {
+          print('credit payment to be implented');
+        }
       },
     );
     on<PaymentEventGoToPayPal>(
@@ -35,7 +39,9 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           emit(
             const PaymentStatePayPal(),
           );
-        } else {}
+        } else {
+          print('paypal payment to be implented');
+        }
       },
     );
     on<PaymentEventGoToInternetBanking>(
@@ -46,7 +52,9 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           emit(
             const PaymentStateInternetBanking(),
           );
-        } else {}
+        } else {
+          print('internet payment to be implented');
+        }
       },
     );
 
@@ -58,7 +66,9 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           emit(
             const PaymentStateAddAnotherPaymentOption(),
           );
-        } else {}
+        } else {
+          print('credit payment to be implented');
+        }
       },
     );
   }
