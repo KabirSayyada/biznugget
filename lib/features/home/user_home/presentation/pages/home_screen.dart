@@ -1,12 +1,10 @@
-import 'package:biznugget/core/utils/app_constants.dart';
-import 'package:biznugget/features/home/user_home/presentation/widgets/home_custom_app_bar_widget.dart';
-import 'package:biznugget/features/home/user_home/presentation/pages/home_items_screen.dart';
-import 'package:biznugget/features/home/user_home/presentation/widgets/home_search_bar_widget.dart';
-import 'package:biznugget/features/home/user_home/presentation/widgets/hs_drawer.dart';
 import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:biznugget/features/home/user_home/presentation/pages/home_items_screen.dart';
+import 'package:biznugget/features/home/user_home/presentation/widgets/home_custom_app_bar_widget.dart';
+import 'package:biznugget/features/home/user_home/presentation/widgets/hs_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);

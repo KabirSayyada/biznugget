@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
-  const CustomFormField(
-      {super.key,
-      required this.textController,
-      required this.hintText,
-      this.labelText,
-      this.onSaved,
-      this.validator,
-      this.keyboardType, 
-      this.suffixIcon, required this.isObscure,});
+  const CustomFormField({
+    super.key,
+    required this.textController,
+    required this.hintText,
+    this.labelText,
+    this.onSaved,
+    this.validator,
+    this.keyboardType,
+    this.suffixIcon,
+    required this.isObscure,
+  });
+
   final TextEditingController textController;
   final String hintText;
   final Widget? suffixIcon;
   final String? labelText;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
-  final TextInputType? keyboardType; 
+  final TextInputType? keyboardType;
   final bool isObscure;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

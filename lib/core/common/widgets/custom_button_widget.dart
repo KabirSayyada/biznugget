@@ -1,5 +1,4 @@
 import 'package:biznugget/core/common/widgets/big_text.dart';
-import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +12,6 @@ class CustomButtonWidget extends StatelessWidget {
   final Gradient? gradient;
   final BoxBorder? border;
   final Color? textColor;
-
-
 
   const CustomButtonWidget({
     Key? key,

@@ -1,17 +1,16 @@
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/common/widgets/big_text.dart';
-import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
 import 'package:biznugget/core/common/widgets/custom_icon_button_widget.dart';
+import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:biznugget/core/common/widgets/small_text.dart';
 import 'package:biznugget/core/utils/app_constants.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:biznugget/features/home/user_home/presentation/widgets/home_all_items_gridview_widgets/home_custom_icon_button_widget.dart';
 import 'package:biznugget/features/home/user_home/presentation/widgets/home_custom_card_widget/home_custom_card_decoration.dart';
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCustomCard extends StatelessWidget {
   const HomeCustomCard({Key? key, required this.item, required this.index})
@@ -78,6 +77,7 @@ class CardBody extends StatelessWidget {
           /// sub category
           SmallText(text: item.name, color: AppColors.hintColor, size: 14),
           SizedBox(height: Dimensions.height7),
+
           /// Title
           BigText(
               text: item.name,
@@ -136,7 +136,8 @@ class CardBody extends StatelessWidget {
 
 /// button to go to details page
 class AddToWishListButton extends StatelessWidget {
-  const AddToWishListButton({Key? key, required this.index, required this.item}) : super(key: key);
+  const AddToWishListButton({Key? key, required this.index, required this.item})
+      : super(key: key);
 
   final int index;
   final ItemModel item;
@@ -158,15 +159,17 @@ class AddToWishListButton extends StatelessWidget {
                 iconSize: Dimensions.iconSize20,
                 bgColor: bgColor,
                 onTap: () {
-
                   /// show toast
                   AppConstants.showToast(msg: 'Added to your wishlist');
-                  BlocProvider.of<WishlistItemsCubit>(context).addToWishlist(item: item);
-
+                  BlocProvider.of<WishlistItemsCubit>(context)
+                      .addToWishlist(item: item);
                 },
               )
-            : CustomIconButtonWidget(icon: Icons.add_box, onTap: () {
-              BlocProvider.of<WishlistItemsCubit>(context).addToWishlist(item: item);
-        }));
+            : CustomIconButtonWidget(
+                icon: Icons.add_box,
+                onTap: () {
+                  BlocProvider.of<WishlistItemsCubit>(context)
+                      .addToWishlist(item: item);
+                }));
   }
 }

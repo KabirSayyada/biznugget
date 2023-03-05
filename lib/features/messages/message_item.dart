@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:math' as math;
-
 import 'package:biznugget/utils/formatters.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +10,6 @@ class MessageItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ListTile(
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(40),

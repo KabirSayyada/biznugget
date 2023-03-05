@@ -16,7 +16,8 @@ class WishlistScreen extends StatelessWidget {
         child: Scaffold(
             body: Column(
       children: <Widget>[
-        BlocConsumer<WishlistItemsCubit, WishlistItemsState>(listener: (context, state) {
+        BlocConsumer<WishlistItemsCubit, WishlistItemsState>(
+            listener: (context, state) {
           if (state is WishlistItemsInitial) {
             BlocProvider.of<WishlistItemsCubit>(context)
                 .fetchAllWishlistItems();

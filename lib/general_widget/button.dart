@@ -7,13 +7,14 @@ class Button extends StatelessWidget {
     super.key,
     required this.title,
     this.height,
-    required this.width,required this.onTap,
+    required this.width,
+    required this.onTap,
   });
 
   final String title;
   final double? height;
   final double width;
-  final Function()  onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {

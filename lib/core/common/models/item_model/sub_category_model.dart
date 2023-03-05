@@ -10,5 +10,4 @@ class SubCategoryModel {
     this.description,
     this.isSelected,
   });
-
 }

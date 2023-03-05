@@ -4,5 +4,3 @@ part of 'categories_cubit.dart';
 abstract class CategoriesState {}
 
 class CategorySelected extends CategoriesState {}
-
-

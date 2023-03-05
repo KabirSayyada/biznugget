@@ -15,7 +15,8 @@ class Dimensions {
 
   /** custom heights **/
 
-  static final double itemCardRatio = (width / width160) / (height / height250) * 0.8;
+  static final double itemCardRatio =
+      (width / width160) / (height / height250) * 0.8;
 
   /**height and width */
 
@@ -152,5 +153,4 @@ class Dimensions {
   static final double iconSize40 = height / 21.7;
   static final double iconSize45 = height / 19.3;
   static final double iconSize50 = height / 17.3;
-
 }

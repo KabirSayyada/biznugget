@@ -1,23 +1,21 @@
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/features/home/user_home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'filter_state.dart';
 
 class FilterCubit extends Cubit<FilterState> {
   FilterCubit() : super(FilterInitial());
 
-
   List<ItemModel> items = [];
+
   // List<ServiceModel> services = [];
   // List<JobsModel> jobs = [];
 
-
   void filter(String searchQuery, List<dynamic> list) {
     emit(FilterLoading());
+
     /// check if list is of type ItemModel
     if (list.runtimeType == List<ItemModel>) {
       // create a new list to store the filtered items
@@ -26,7 +24,9 @@ class FilterCubit extends Cubit<FilterState> {
       for (var item in items) {
         // Check if item name or description contains search query
         if (item.name.toLowerCase().contains(searchQuery.toLowerCase()) ||
-            item.description.toLowerCase().contains(searchQuery.toLowerCase())) {
+            item.description
+                .toLowerCase()
+                .contains(searchQuery.toLowerCase())) {
           // if item found then add it to the filtered list
           filteredItems.add(item);
 
@@ -59,9 +59,7 @@ class FilterCubit extends Cubit<FilterState> {
     }
 
     /// make same process for other types of lists
-    else if (true) {
-
-    }
+    else if (true) {}
   }
 
   /// full search/filter function
@@ -79,9 +77,5 @@ class FilterCubit extends Cubit<FilterState> {
     // filter(searchQuery, jobs);
 
     // we can handle every type of list in the UI screen
-
-
-
-
   }
 }

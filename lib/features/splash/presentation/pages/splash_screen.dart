@@ -1,14 +1,6 @@
 import 'package:biznugget/core/utils/app_constants.dart';
-import 'package:biznugget/features/profile/Profile_Edit/business_edit.dart';
-import 'package:biznugget/features/profile/Profile_Edit/consumer_edit.dart';
-import 'package:biznugget/features/profile/Profile_Edit/freelance_edit.dart';
-//import 'package:biznugget/features/home/business_acc_home/presentation/pages/_2_advertise_screen.dart';
-//import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
-import 'package:biznugget/features/profile/Profile_Page/consumer_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../messages/messages_screen.dart';
 import '../../../profile/Profile_Edit/service_provider.dart';
 
 class SplashScreen extends StatelessWidget {

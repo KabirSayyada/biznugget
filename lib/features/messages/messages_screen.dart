@@ -1,8 +1,8 @@
 import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../../config/app_routes.dart';
-import '../../data/services/message_service.dart';
+import '../../core/services/message_service.dart';
+import '../../core/utils/app_routes.dart';
 import 'message_item.dart';
 
 class MessagesScreen extends StatelessWidget {

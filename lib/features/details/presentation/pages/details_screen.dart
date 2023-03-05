@@ -1,10 +1,10 @@
-import 'package:biznugget/features/details/presentation/widgets/images_slider.dart';
+import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:biznugget/core/common/widgets/small_text.dart';
-import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
-import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/core/utils/colors.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/details/presentation/widgets/images_slider.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -124,7 +124,8 @@ class ItemDetails extends StatelessWidget {
                       fontWeight: FontWeight.w800,
                       color: Colors.white,
                     ),
-                    const Icon(Icons.add_shopping_cart_sharp, color: Colors.white)
+                    const Icon(Icons.add_shopping_cart_sharp,
+                        color: Colors.white)
                   ],
                 ),
               ),

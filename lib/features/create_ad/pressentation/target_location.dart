@@ -49,7 +49,6 @@ class _TargetLocationState extends State<TargetLocation> {
             backgroundColor: AppColor.appWhite,
           )),
       body: SingleChildScrollView(
-        
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child:
@@ -66,7 +65,6 @@ class _TargetLocationState extends State<TargetLocation> {
             SizedBox(
               height: 6.h,
             ),
-
 
             // Container(
             //   height: 41,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class UserDetails extends StatelessWidget {
   String name = '';
   String userAccount = '';
+
   UserDetails({super.key, required this.name, required this.userAccount});
 
   @override

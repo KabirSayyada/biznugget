@@ -1,14 +1,14 @@
+import 'package:biznugget/core/common/widgets/big_text.dart';
+import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
+import 'package:biznugget/core/utils/colors.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/home/user_home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:biznugget/features/home/user_home/presentation/cubits/popular_items_slider_index_cubit/popular_items_slider_index_cubit.dart';
 import 'package:biznugget/features/home/user_home/presentation/widgets/home_all_items_gridview_widgets/home_all_items_gridview_widget.dart';
 import 'package:biznugget/features/home/user_home/presentation/widgets/home_popular_items_slider/_1_home_carousel_slider_widget.dart';
-import 'package:biznugget/features/home/user_home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:biznugget/features/home/user_home/presentation/widgets/home_search_bar_widget.dart';
-import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
-import 'package:biznugget/core/common/widgets/big_text.dart';
-import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/core/utils/colors.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeItemsScreen extends StatelessWidget {
   const HomeItemsScreen({Key? key}) : super(key: key);
@@ -30,7 +30,6 @@ class HomeItemsScreen extends StatelessWidget {
               physics: const ScrollPhysics(),
               child: Column(
                 children: [
-
                   SizedBox(height: Dimensions.height15),
                   // search bar
                   HomeSearchBar(),
@@ -43,8 +42,16 @@ class HomeItemsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BigText(text: 'Categories', color: Colors.black, size: Dimensions.font18, fontWeight: FontWeight.w800),
-                      CustomButtonWidget(width: 100 ,text: 'See All', textColor: AppColors.hintColor, onTap: () {})
+                      BigText(
+                          text: 'Categories',
+                          color: Colors.black,
+                          size: Dimensions.font18,
+                          fontWeight: FontWeight.w800),
+                      CustomButtonWidget(
+                          width: 100,
+                          text: 'See All',
+                          textColor: AppColors.hintColor,
+                          onTap: () {})
                     ],
                   ),
                   SizedBox(height: Dimensions.height15),

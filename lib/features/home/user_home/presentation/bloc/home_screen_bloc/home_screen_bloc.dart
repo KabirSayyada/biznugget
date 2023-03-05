@@ -1,16 +1,12 @@
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
-import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-
-part 'home_screen_event.dart';
-
-part 'home_screen_state.dart';
+part 'home_screen_event.dart';part 'home_screen_state.dart';
 
 class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
-
   /// temporary data
   List<ItemModel> items = [
     // some random items
@@ -22,7 +18,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item1,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 2,
@@ -32,7 +27,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item2,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 3,
@@ -42,7 +36,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item3,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 1,
@@ -52,7 +45,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item1,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 2,
@@ -62,7 +54,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item2,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 3,
@@ -72,7 +63,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item3,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 1,
@@ -82,7 +72,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item1,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 2,
@@ -92,7 +81,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item2,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 3,
@@ -102,7 +90,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item3,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 1,
@@ -112,7 +99,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item1,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 2,
@@ -122,7 +108,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item2,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 3,
@@ -132,7 +117,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item3,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 1,
@@ -142,7 +126,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item1,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 2,
@@ -152,7 +135,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item2,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
     ItemModel(
       id: 3,
@@ -162,7 +144,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       imageUrl: AppImages.item3,
       categories: ['services'],
       subCategories: ['web development', 'mobile development'],
-
     ),
   ];
 

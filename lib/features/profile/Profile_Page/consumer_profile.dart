@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/utils/curve_image.dart';
-import 'item_card.dart';
 import 'profile_pic.dart';
 import 'user_details.dart';
 
@@ -80,7 +80,6 @@ class ConsumerProfile extends StatelessWidget {
     );
   }
 }
-
 
 /* Row of see all and New
 Positioned.directional(

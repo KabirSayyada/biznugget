@@ -40,6 +40,7 @@ class CustomImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+
       /// the surrounding container
       child: Container(
         padding: padding,
@@ -50,16 +51,18 @@ class CustomImageWidget extends StatelessWidget {
           color: surroundingBGColor,
           borderRadius: BorderRadius.circular(surroundingRadius ?? 0),
         ),
+
         /// the image
         child: Container(
           height: imgHeight ?? Dimensions.height120,
           width: imgWidth ?? Dimensions.height120,
-          margin: margin ?? EdgeInsets.only(
-            top: Dimensions.radius10,
-            bottom: Dimensions.radius10,
-            left: Dimensions.radius5,
-            right: Dimensions.radius5,
-          ),
+          margin: margin ??
+              EdgeInsets.only(
+                top: Dimensions.radius10,
+                bottom: Dimensions.radius10,
+                left: Dimensions.radius5,
+                right: Dimensions.radius5,
+              ),
           decoration: BoxDecoration(
             color: bgColor,
             image: DecorationImage(
