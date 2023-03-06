@@ -1,5 +1,5 @@
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
-import 'package:biznugget/features/home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
+import 'package:biznugget/features/home/user_home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
