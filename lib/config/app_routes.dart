@@ -1,5 +1,6 @@
 import 'package:biznugget/features/payment/payment_view/payment_initial_screen.dart';
 import 'package:biznugget/features/payment/payment_view/payment_screen.dart';
+import 'package:biznugget/features/subscription/view/sub_initial.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +25,7 @@ class AppRoutes {
   static const String payment = '/payment';
 
   static Map<String, Widget Function(BuildContext)> get routes => {
-        AppRoutes.initial: (_) => const PaymentScreen(),
+        AppRoutes.initial: (_) => const SubscriptionInitial(),
         AppRoutes.wishlist: (_) => BlocProvider(
               create: (context) =>
                   WishlistItemsCubit()..fetchAllWishlistItems(),
