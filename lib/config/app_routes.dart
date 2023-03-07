@@ -1,6 +1,8 @@
 import 'package:biznugget/features/home/home_control/presentation/home_control_screen.dart';
+import 'package:biznugget/features/payment/payment_view/add_credit_card.dart';
 import 'package:biznugget/features/payment/payment_view/payment_initial_screen.dart';
 import 'package:biznugget/features/payment/payment_view/payment_screen.dart';
+import 'package:biznugget/features/payment/payment_view/payment_success.dart';
 import 'package:biznugget/features/profile/presentation/pages/profile_screen.dart';
 import 'package:biznugget/features/subscription/view/sub_initial.dart';
 import 'package:biznugget/features/wishlist/data/repositories/local_storage.dart';
@@ -27,7 +29,7 @@ class AppRoutes {
   static const String payment = '/payment';
 
   static Map<String, Widget Function(BuildContext)> get routes => {
-        AppRoutes.initial: (_) => const SubscriptionInitial(),
+        AppRoutes.initial: (_) => const PaymentSuccess(),
         AppRoutes.wishlist: (_) => BlocProvider(
               create: (context) => WishlistItemsCubit(WishlistRepositoryImpl())
                 ..fetchAllWishlistItems(),
