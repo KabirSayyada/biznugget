@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/services/traders_service.dart';
 import '../widgets/dashed_divider.dart';
+import '../widgets/rating.dart';
 
 class TraderScreen extends StatelessWidget {
   const TraderScreen({Key? key}) : super(key: key);
@@ -88,6 +89,9 @@ class TraderScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                  Rating(
+                    value: trader.rating.round(),
+                  )
                 ],
               ),
             ),
