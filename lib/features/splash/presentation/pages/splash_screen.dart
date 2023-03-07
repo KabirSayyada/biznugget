@@ -1,7 +1,6 @@
 import 'package:biznugget/core/utils/app_constants.dart';
+import 'package:biznugget/features/traders/traders_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../../../profile/Profile_Edit/service_provider.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,7 +10,9 @@ class SplashScreen extends StatelessWidget {
     AppConstants.screenHeight = MediaQuery.of(context).size.height;
     AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
-    return const ServiceProviderEdit();
+    return const TradersScreen();
+
+    // return const ServiceProviderEdit();
 
     /// temporary code :D
     /// temporary code :D
