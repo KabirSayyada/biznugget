@@ -1,5 +1,7 @@
 import 'dart:math';
+
 import 'package:uuid/uuid.dart';
+
 import '../models.dart';
 
 class TradersService {
@@ -17,7 +19,7 @@ class TradersService {
       phone: '+234 8032538192',
       email: 'trader$index@biznugget.com',
       description: """
-       Welcome to Trader $index, where we specialize in providing top-notch trading solutions to clients across the globe. Our company is dedicated to helping our clients achieve their financial goals through our expertise in trading and investments.
+Welcome to Trader $index, where we specialize in providing top-notch trading solutions to clients across the globe. Our company is dedicated to helping our clients achieve their financial goals through our expertise in trading and investments.
 
 At our company, we offer a wide range of trading services, including commodities, futures, forex, and options trading. Our team of experienced traders and analysts work tirelessly to analyze market trends and provide our clients with the most accurate and up-to-date trading advice.
 

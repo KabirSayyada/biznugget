@@ -25,7 +25,13 @@ class TraderScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               width: double.infinity,
-              color: theme.colorScheme.primary,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
               child: Card(
                 child: Column(
                   children: [
@@ -45,6 +51,44 @@ class TraderScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Description",
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    trader.description,
+                    textAlign: TextAlign.justify,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    "Services Offered",
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    trader.description,
+                    textAlign: TextAlign.justify,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    "Customers Feedback",
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
