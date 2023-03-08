@@ -1,4 +1,6 @@
 //import 'package:biznugget/features/sign_in/sign_in_screen.dart';
+import 'package:biznugget/features/account_type/presentation/acc_type_screen.dart';
+import 'package:biznugget/features/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../features/details/presentation/pages/details_screen.dart';
@@ -18,9 +20,11 @@ class AppRoutes {
   static const String message = '/message';
   static const String profile = '/profile';
   static const String details = '/details';
+  static const String signin = '/signin';
+  static const String accountType = '/accountType';
 
   static Map<String, Widget Function(BuildContext)> get routes => {
-        AppRoutes.initial: (_) => const SplashScreen(), //SigninScreen to test
+        AppRoutes.initial: (_) => const SplashScreen(), 
         AppRoutes.wishlist: (_) => BlocProvider(
               create: (context) =>
                   WishlistItemsCubit()..fetchAllWishlistItems(),
@@ -32,11 +36,13 @@ class AppRoutes {
         AppRoutes.messages: (_) => const MessagesScreen(),
         AppRoutes.profile: (_) => const HomeScreen(),
         AppRoutes.details: (_) => const DetailsScreen(),
+        AppRoutes.signin: (_) => const SigninScreen(),
+        AppRoutes.accountType: (_) => const AccountTypeScreen(),
       };
 
   static Route? generateRoute(RouteSettings settings) {
     return MaterialPageRoute(
-      builder: (context) =>  Scaffold(
+      builder: (context) => Scaffold(
         body: Center(
           child: Text(settings.name ?? ''),
         ),
