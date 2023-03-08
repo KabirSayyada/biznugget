@@ -1,15 +1,16 @@
 import 'package:biznugget/core/common/widgets/custom_formfield.dart';
+import 'package:biznugget/core/common/widgets/social_media_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SigninSreen extends StatefulWidget {
-  const SigninSreen({super.key});
+class SigninScreen extends StatefulWidget {
+  const SigninScreen({super.key});
 
   @override
-  State<SigninSreen> createState() => _SigninSreenState();
+  State<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _SigninSreenState extends State<SigninSreen> {
+class _SigninScreenState extends State<SigninScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -135,7 +136,7 @@ class _SigninSreenState extends State<SigninSreen> {
                                         ? Icons.visibility_off
                                         : Icons.visibility),
                                     iconSize: 30,
-                                    color: Color(0xFFAFAFAF)),
+                                    color: const Color(0xFFAFAFAF)),
                               ),
                             ],
                           ),
@@ -178,65 +179,48 @@ class _SigninSreenState extends State<SigninSreen> {
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500)),
                           ),
-                          SizedBox(height: height * 0.02),
-                          FittedBox(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(
-                                  width: width / 3,
-                                  height: height * 0.12,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Card(
-                                      margin: const EdgeInsets.all(15),
-                                      elevation: 5.0,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: Image.asset(
-                                          'assets/images/google.png'),
-                                    ),
+                           SizedBox(height: height * 0.02),
+                                FittedBox(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SocialMediaButtons(
+                                        height: height * 0.12,
+                                        width: width / 3,
+                                        elevation: 5.0,
+                                        onTap: () {
+                                          // _googleSignIn(context);
+                                        },
+                                        widget: Image.asset(
+                                            'assets/images/google.png'),
+                                      ),
+                                      SocialMediaButtons(
+                                        height: height * 0.12,
+                                        width: width / 3,
+                                        elevation: 5.0,
+                                        onTap: () {
+                                          // _twitterSignIn(context);
+                                        },
+                                        widget: Image.asset(
+                                            'assets/images/twitter.png'),
+                                      ),
+                                      SocialMediaButtons(
+                                        height: height * 0.12,
+                                        width: width / 3,
+                                        elevation: 5.0,
+                                        onTap: () {
+                                          // _facebookSignIn(context);
+                                        },
+                                        widget: Image.asset(
+                                            'assets/images/facebook.png'),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                SizedBox(
-                                  width: width / 3,
-                                  height: height * 0.12,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Card(
-                                      margin: const EdgeInsets.all(15),
-                                      elevation: 5.0,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: Image.asset(
-                                          'assets/images/facebook.png'),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: width / 3,
-                                  height: height * 0.12,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Card(
-                                      margin: const EdgeInsets.all(15),
-                                      elevation: 5.0,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: Image.asset(
-                                          'assets/images/twitter.png'),
-                                    ),
-                                  ),
-                                ),
+                                )
                               ],
                             ),
-                          )
-                        ],
-                      ),
-                    )),
+                          )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
