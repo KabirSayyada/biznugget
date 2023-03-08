@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 ThemeData appTheme() {
   return ThemeData(
-    fontFamily: 'core_sans_c.otf',
+    fontFamily: 'Great Sailor',
     primaryColor: AppColors.primaryColor1,
     hintColor: AppColors.hintColor,
     brightness: Brightness.light,
     scaffoldBackgroundColor: Colors.white,
   );
 }
+// core_sans_c.otf

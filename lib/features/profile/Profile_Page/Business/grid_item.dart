@@ -1,36 +1,38 @@
+import 'package:biznugget/features/start_up/model/item_model.dart';
 import 'package:flutter/material.dart';
 
-class ItemCard extends StatelessWidget {
-  const ItemCard({
+class GridItem extends StatefulWidget {
+  const GridItem({
     super.key,
-    required this.width,
-    required this.height,
   });
 
-  final double width;
-  final double height;
+  @override
+  State<GridItem> createState() => _GridItemState();
+}
 
+class _GridItemState extends State<GridItem> {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.only(left: 5, right: 5),
       width: width,
-      height: height * 0.22,
+      height: height * 0.15,
       child: GridView.builder(
         scrollDirection: Axis.horizontal,
+        itemCount: items.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
           crossAxisSpacing: 5,
           mainAxisSpacing: 5,
-          childAspectRatio: 1.5,
+          childAspectRatio: 1.25,
         ),
         itemBuilder: (context, index) {
           return Container(
-            width: 20,
-            height: 20,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.blue,
+              image: DecorationImage(image: AssetImage(items[index].image)),
             ),
           );
         },

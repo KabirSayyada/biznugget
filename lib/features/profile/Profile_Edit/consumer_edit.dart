@@ -1,5 +1,5 @@
 import 'package:biznugget/core/utils/curve_image.dart';
-import 'package:biznugget/features/profile/Profile_Page/business_profile.dart';
+import 'package:biznugget/features/profile/Profile_Page/Business/business_profile.dart';
 import 'package:biznugget/features/profile/Profile_Page/user_details.dart';
 import 'package:flutter/material.dart';
 
@@ -72,7 +72,9 @@ class _ConsumerProfileEditState extends State<ConsumerProfileEdit> {
                           'assets/images/arrowback.png',
                           scale: 1.5,
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
                     ),
                     ProfilePic(

@@ -42,6 +42,9 @@ class MyApp extends StatelessWidget {
                 routerConfig: AppRouter.router,
                 debugShowCheckedModeBanner: false,
                 title: 'Biznugget-App',
+                theme: ThemeData(
+                  fontFamily: 'Great Sailor',
+                ),
                 //home: SplashScreen(),
               ));
         });
