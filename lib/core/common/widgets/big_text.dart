@@ -1,7 +1,6 @@
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
-
 class BigText extends StatelessWidget {
   final String text;
   final Color? color;
@@ -22,7 +21,6 @@ class BigText extends StatelessWidget {
     this.decoration = TextDecoration.none,
     this.maxLines = 1,
     this.textAlign,
-
   }) : super(key: key);
 
   @override

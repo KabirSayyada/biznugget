@@ -1,15 +1,14 @@
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
-import 'package:biznugget/core/utils/strings.dart';
-import 'package:biznugget/features/wishlist/data/wishlist_local_storage/remove_wishlist_item_locally.dart';
-import 'package:biznugget/features/wishlist/data/wishlist_local_storage/save_wishlist_items_locally.dart';
+import 'package:biznugget/features/wishlist/data/repositories/local_storage.dart';
 import 'package:bloc/bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
 part 'wishlist_items_state.dart';
 
 class WishlistItemsCubit extends Cubit<WishlistItemsState> {
-  WishlistItemsCubit() : super(WishlistItemsInitial());
+  final WishlistRepository wishlistRepository;
+
+  WishlistItemsCubit(this.wishlistRepository) : super(WishlistItemsInitial());
 
   List<ItemModel> items = [];
   List<ItemModel> filterdItems = [];
@@ -19,12 +18,9 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
     emit(WishlistItemsLoading());
     try {
       /// Fetch all wishlist items from local storage
-      Hive.openBox<ItemModel>(AppStrings.kWishlistBoxInLocalStorage)
-          .then((value) {
-        items = value.values.toList();
-        filterdItems = items;
-        emit(WishlistItemsSuccess());
-      });
+      items = await wishlistRepository.getWishlistProducts();
+      filterdItems = items;
+      emit(WishlistItemsSuccess());
     } catch (e) {
       emit(WishlistItemsFailure(
         message: e.toString(),
@@ -40,8 +36,7 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
       filterdItems = items;
 
       /// add item to local storage
-      await SaveWishlistItems.saveWishlistItemLocally(item);
-
+      await wishlistRepository.addProductToWishlist(item);
       emit(WishlistItemsSuccess());
     } catch (e) {
       emit(WishlistItemsFailure(
@@ -58,8 +53,7 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
       filterdItems = items;
 
       /// Update Local WishList
-      await RemoveWishlistItemLocally.removeWishlistItemLocally(index);
-
+      await wishlistRepository.removeProductFromWishlist(index);
       emit(WishlistItemsSuccess());
     } catch (e) {
       emit(WishlistItemsFailure(
@@ -72,10 +66,10 @@ class WishlistItemsCubit extends Cubit<WishlistItemsState> {
   filterWishlistItems({required String searchQuery}) {
     emit(WishlistItemsLoading());
     try {
-      filterdItems = items
-          .where((element) =>
-              element.name.toLowerCase().contains(searchQuery.toLowerCase()))
-          .toList();
+      filterdItems = wishlistRepository.filterWishlistProducts(
+        items: items,
+        searchQuery: searchQuery,
+      );
       emit(WishlistItemsSuccess());
     } catch (e) {
       emit(WishlistItemsFailure(

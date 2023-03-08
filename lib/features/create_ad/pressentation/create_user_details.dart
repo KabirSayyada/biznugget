@@ -84,7 +84,7 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                       context.pop();
                     },
 
-                 child:   Container(
+                    child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 18),
                         // height: 30.h,
                         // width: 30.w,
@@ -127,8 +127,7 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
           padding: const EdgeInsets.all(16.0),
           child: Stack(
             children: [
-              Column(crossAxisAlignment: CrossAxisAlignment.center,
-               children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -143,54 +142,46 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                     ),
                   ],
                 ),
-              
                 const InputField(
                   title: "Name",
                   //enabled: false,
                   hintText: 'Enter name',
-               
                 ),
-             
                 InputField(
                   // enabled: false,
                   title: "Phone Number",
                   hintText: 'Input phone',
                   keyBoardType: TextInputType.number,
-                  
+
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly
                   ], //
                 ),
-                
-         
-             const InputField(
+                const InputField(
                   // enabled: false,
-                  title: "Email" ,
+                  title: "Email",
                   hintText: 'Enter email',
                   keyBoardType: TextInputType.emailAddress,
-                  
-               //
+
+                  //
                 ),
-               
                 InkWell(
                   onTap: () {},
                   child: SizedBox(
                     height: 90.h,
                   ),
                 ),
-
-                Button(title: 'Preview',
-                width: MediaQuery.of(context).size.width * 0.7.w,
-                onTap: () {
-                  context.push('/publishAd');
-                },
+                Button(
+                  title: 'Preview',
+                  width: MediaQuery.of(context).size.width * 0.7.w,
+                  onTap: () {
+                    context.push('/publishAd');
+                  },
                 ),
-
-                  SizedBox(
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.2.h,
                 ),
                 const TermsOfUse(),
-             
               ]),
             ],
           ),

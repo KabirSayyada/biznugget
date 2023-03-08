@@ -1,13 +1,9 @@
 import 'package:biznugget/app.dart';
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
-import 'package:biznugget/bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'app_config/app_routes/app_router.dart';
-
-import 'core/services/notification_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,15 +19,11 @@ Future<void> _setup() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ItemModelAdapter());
   // setup bloc
-  Bloc.observer = MyBlocObserver();
-  // setup notifications
-  NotificationService.setup();
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -40,7 +32,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return MultiBlocProvider(
-              providers: [
+              providers: const [
                 // BlocProvider<WishlistBloc>(create: (context) => WishlistBloc()),
 
                 /// add your BlocPrvider here
@@ -49,8 +41,18 @@ class MyApp extends StatelessWidget {
                 routerConfig: AppRouter.router,
                 debugShowCheckedModeBanner: false,
                 title: 'Biznugget-App',
+                theme: ThemeData(
+                  fontFamily: 'Great Sailor',
+                ),
                 //home: SplashScreen(),
               ));
         });
   }
+  //const Bloc.observer = MyBlocObserver();
+  // setup notifications
+  //const NotificationService.setup();
+}
+
+class AppRouter {
+  static var router;
 }

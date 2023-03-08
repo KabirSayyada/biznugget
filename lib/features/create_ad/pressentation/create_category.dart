@@ -40,7 +40,6 @@ class _CreateCategoryState extends State<CreateCategory> {
   List<String> exchangeList = [
     "No",
     'Yes',
-    
   ];
 
   @override
@@ -134,7 +133,7 @@ class _CreateCategoryState extends State<CreateCategory> {
                     ),
                   ],
                 ),
-              
+
                 InkWell(
                   onTap: () {
                     context.push('/selectCategory');
@@ -150,31 +149,25 @@ class _CreateCategoryState extends State<CreateCategory> {
                   ),
                 ),
 
-               
-                
-                  const InputField(
-                    title:  "Brand",
-                   // enabled: false,
-                    hintText: 'Input Brand',
-                
-                  ),
-              
-
+                const InputField(
+                  title: "Brand",
+                  // enabled: false,
+                  hintText: 'Input Brand',
+                ),
 
                 SizedBox(
                   height: 6.h,
                 ),
-                
-               
+
                 Text(
                   "Exchange possible",
                   style:
                       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 6.h,
                 ),
-                  DropDownWidget(
+                DropDownWidget(
                   onChanged: (String? newValue) {
                     setState(() {
                       exchangeValue = newValue!;
@@ -183,12 +176,13 @@ class _CreateCategoryState extends State<CreateCategory> {
                   dropdownValue: exchangeValue,
                   dropDownMenuItems: exchangeList,
                 ),
-                  Row(
+                Row(
                   children: [
                     GFCheckbox(
                       size: 25.sp,
-                      activeBgColor:  Colors.white,
-                      activeIcon: const Icon(Icons.check, color: Color(0xff830D3F)),
+                      activeBgColor: Colors.white,
+                      activeIcon:
+                          const Icon(Icons.check, color: Color(0xff830D3F)),
                       activeBorderColor: const Color(0xff830D3F),
                       onChanged: (value) {
                         setState(() {
@@ -197,11 +191,16 @@ class _CreateCategoryState extends State<CreateCategory> {
                       },
                       value: isWarrantyChecked,
                     ),
-                     Text("Warranty",style:
-                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: const Color(0xff830D3F)),),
+                    Text(
+                      "Warranty",
+                      style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xff830D3F)),
+                    ),
                   ],
                 ),
-              
+
                 InputField(
                   title: "Price",
                   hintText: 'Input Amount',
@@ -223,8 +222,9 @@ class _CreateCategoryState extends State<CreateCategory> {
                   children: [
                     GFCheckbox(
                       size: 25.sp,
-                      activeBgColor:  Colors.white,
-                      activeIcon: const Icon(Icons.check, color: Color(0xff830D3F)),
+                      activeBgColor: Colors.white,
+                      activeIcon:
+                          const Icon(Icons.check, color: Color(0xff830D3F)),
                       activeBorderColor: const Color(0xff830D3F),
                       onChanged: (value) {
                         setState(() {
@@ -233,18 +233,22 @@ class _CreateCategoryState extends State<CreateCategory> {
                       },
                       value: isNegotiableChecked,
                     ),
-                     Text("Negotiable",style:
-                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: const Color(0xff830D3F)),),
+                    Text(
+                      "Negotiable",
+                      style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xff830D3F)),
+                    ),
                   ],
                 ),
 
                 SizedBox(
                   height: 7.h,
                 ),
-               
+
                 //work on the dropdown
 
-           
                 DropDownWidget(
                   onChanged: (String? newValue) {
                     setState(() {
@@ -288,7 +292,8 @@ class _CreateCategoryState extends State<CreateCategory> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.3,
                 ),
-             const TermsOfUse(),]),
+                const TermsOfUse(),
+              ]),
             ],
           ),
         ),

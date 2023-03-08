@@ -1,8 +1,8 @@
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/features/bottom_navigation_bar/presentation/cubits/bottom_navigation_bar_cubit.dart';
-import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:biznugget/features/home/user_home/presentation/pages/home_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BottomNavigationBarPage extends StatelessWidget {
@@ -15,6 +15,7 @@ class BottomNavigationBarPage extends StatelessWidget {
       return Scaffold(
         /// current screen
         body: _buildBody(state, context),
+
         /// bottom navigation bar
         bottomNavigationBar: ConvexAppBar(
           gradient: RadialGradient(
@@ -26,7 +27,8 @@ class BottomNavigationBarPage extends StatelessWidget {
           ),
           items: BlocProvider.of<BottomNavigationBarCubit>(context)
               .tabsOfBottomNavigationBar,
-          initialActiveIndex: 0, //optiona
+          initialActiveIndex: 0,
+          //optiona
           /// changing current screen
           onTap: (int selectedIndex) {
             BlocProvider.of<BottomNavigationBarCubit>(context)
