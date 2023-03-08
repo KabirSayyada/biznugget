@@ -1,4 +1,3 @@
-
 class ContentModel {
   const ContentModel({required this.image, required this.title});
 
@@ -6,7 +5,7 @@ class ContentModel {
   final String title;
 }
 
-List<ContentModel> contents =  [
+List<ContentModel> contents = [
   const ContentModel(
     image: "assets/svg/post_ad.svg",
     title: "Post an ad",

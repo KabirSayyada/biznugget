@@ -1,8 +1,8 @@
-import 'package:biznugget/features/home/business_home/data/models/sb_instruction_model.dart';
-import 'package:biznugget/features/home/business_home/data/models/sb_article_model.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
-import 'package:flutter/material.dart';
+import 'package:biznugget/features/home/business_home/data/models/sb_article_model.dart';
+import 'package:biznugget/features/home/business_home/data/models/sb_instruction_model.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 part 'business_home_state.dart';
@@ -33,7 +33,6 @@ class BusinessHomeCubit extends Cubit<BusinessHomeState> {
       description: 'Start exploring our products and services',
       image: AppImages.buySomeThing,
     ),
-
   ];
 
   // const data for buy and sell sections
@@ -58,6 +57,3 @@ class BusinessHomeCubit extends Cubit<BusinessHomeState> {
     emit(BHSliderIndexSelected());
   }
 }
-
-
-

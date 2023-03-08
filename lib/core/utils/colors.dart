@@ -17,8 +17,7 @@ class AppColors {
   static const Color gradientColor = Color(0xFF7D89FF);
   static const Color gradientColor2 = Color(0xFF3C5BF0);
 
-
-  static Gradient primaryGradient () {
+  static Gradient primaryGradient() {
     return LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,

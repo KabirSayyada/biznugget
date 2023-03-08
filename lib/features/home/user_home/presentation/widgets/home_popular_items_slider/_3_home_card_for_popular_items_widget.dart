@@ -1,11 +1,11 @@
 import 'package:biznugget/core/common/models/item_model/item_model.dart';
 import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/common/widgets/custom_button_widget.dart';
+import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:biznugget/core/common/widgets/small_text.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:biznugget/core/common/widgets/custom_image_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeCardForPopularItemsWidget extends StatelessWidget {

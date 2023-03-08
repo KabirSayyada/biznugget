@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'app_config/app_routes/app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,4 +48,11 @@ class MyApp extends StatelessWidget {
               ));
         });
   }
+  //const Bloc.observer = MyBlocObserver();
+  // setup notifications
+  //const NotificationService.setup();
+}
+
+class AppRouter {
+  static var router;
 }

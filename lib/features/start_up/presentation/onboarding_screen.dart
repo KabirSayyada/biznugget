@@ -52,7 +52,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               Flexible(
                 flex: 3,
-                
                 child: PageView.builder(
                   scrollDirection: Axis.horizontal,
                   controller: _pageController,

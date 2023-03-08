@@ -9,7 +9,8 @@ abstract class WishlistRepository {
 
   Future<List<ItemModel>> getWishlistProducts();
 
-  bool isProductInWishlist({required List<ItemModel> items, required int itemID});
+  bool isProductInWishlist(
+      {required List<ItemModel> items, required int itemID});
 
   List<ItemModel> filterWishlistProducts(
       {required List<ItemModel> items, required String searchQuery});
@@ -17,7 +18,6 @@ abstract class WishlistRepository {
 
 /// local storage
 class WishlistRepositoryImpl extends WishlistRepository {
-
   /// add item
   @override
   Future<void> addProductToWishlist(ItemModel item) async {
@@ -37,8 +37,9 @@ class WishlistRepositoryImpl extends WishlistRepository {
 
   /// check if item is in the wish list
   @override
-  bool isProductInWishlist({required List<ItemModel> items, required int itemID}) {
-      return items.map((item) => item.id).contains(itemID);
+  bool isProductInWishlist(
+      {required List<ItemModel> items, required int itemID}) {
+    return items.map((item) => item.id).contains(itemID);
   }
 
   /// remove an item from the wish list

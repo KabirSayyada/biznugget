@@ -43,7 +43,7 @@ class PopularItemsDotsIndicator extends StatelessWidget {
               /// todo : use popular items instead of all items from the bloc
               BlocProvider.of<PopularItemsSliderIndexCubit>(context)
                   .selectSliderIndex(index);
-              controller.animateToPage(index, duration:duration);
+              controller.animateToPage(index, duration: duration);
             },
           );
         },

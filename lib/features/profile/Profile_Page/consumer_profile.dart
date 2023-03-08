@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/utils/curve_image.dart';
 import 'Features/features.dart';
 import 'grid_card.dart';
@@ -69,50 +70,6 @@ class ConsumerProfile extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            Positioned.directional(
-              textDirection: TextDirection.ltr,
-              top: 260,
-              child: Container(
-                width: width,
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'New',
-                        style: TextStyle(
-                          color: Color(0xff830d3f),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'See all',
-                        style: TextStyle(
-                          color: Color(0xff8e8585),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned.directional(
-              textDirection: TextDirection.ltr,
-              top: 300,
-              child: GridItemCard(),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: FeatureItems(),
             ),
           ],
         ),

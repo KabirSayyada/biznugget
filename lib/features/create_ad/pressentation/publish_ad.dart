@@ -57,10 +57,10 @@ class _PublishAdState extends State<PublishAd> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.center, 
-            children: [
+            Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
               Container(
-                margin: const EdgeInsets.only( left: 15, top: 10, bottom: 10, right: 72),
+                margin: const EdgeInsets.only(
+                    left: 15, top: 10, bottom: 10, right: 72),
                 padding: const EdgeInsets.only(
                     left: 10, top: 10, bottom: 24, right: 12),
                 decoration: const BoxDecoration(
@@ -174,7 +174,7 @@ class _PublishAdState extends State<PublishAd> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left:25 ,right: 25, top: 10),
+                padding: const EdgeInsets.only(left: 25, right: 25, top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -198,7 +198,8 @@ class _PublishAdState extends State<PublishAd> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15, bottom: 10),
-                child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       'Description',
@@ -226,21 +227,40 @@ hung on shoulder. It is heat resistant and luxurious.""",
                       fontWeight: FontWeight.w400),
                 ),
               ),
-              SizedBox(height: 10.h,),
-
+              SizedBox(
+                height: 10.h,
+              ),
               Container(
-               padding: const EdgeInsets.only(left: 14, top: 12, bottom: 12),
-                 decoration: const BoxDecoration(
+                padding: const EdgeInsets.only(left: 14, top: 12, bottom: 12),
+                decoration: const BoxDecoration(
                   color: AppColor.grey003,
                 ),
                 child: Column(
                   children: const [
-                    PublishTextWidget(title: 'Brand', description: 'Channel',),
-                    PublishTextWidget(title: 'Color', description: 'Orange',),
-                    PublishTextWidget(title: 'Size', description: 'Medium',),
-                    PublishTextWidget(title: 'Product condition', description: 'New',),
-                    PublishTextWidget(title: 'Gender', description: 'Female',),
-                    PublishTextWidget(title: 'Expected delivery', description: 'Instant',),
+                    PublishTextWidget(
+                      title: 'Brand',
+                      description: 'Channel',
+                    ),
+                    PublishTextWidget(
+                      title: 'Color',
+                      description: 'Orange',
+                    ),
+                    PublishTextWidget(
+                      title: 'Size',
+                      description: 'Medium',
+                    ),
+                    PublishTextWidget(
+                      title: 'Product condition',
+                      description: 'New',
+                    ),
+                    PublishTextWidget(
+                      title: 'Gender',
+                      description: 'Female',
+                    ),
+                    PublishTextWidget(
+                      title: 'Expected delivery',
+                      description: 'Instant',
+                    ),
                   ],
                 ),
               ),
@@ -266,7 +286,9 @@ hung on shoulder. It is heat resistant and luxurious.""",
 
 class PublishTextWidget extends StatelessWidget {
   const PublishTextWidget({
-    super.key, required this.title, required this.description,
+    super.key,
+    required this.title,
+    required this.description,
   });
 
   final String title;
@@ -278,15 +300,23 @@ class PublishTextWidget extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: Row(
         children: [
-          Text("$title:",style: TextStyle(
-            color: Colors.black,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400),),
-            SizedBox(width: 10.w,),
-          Text("$description:",style: TextStyle(
-            color: AppColor.grey002,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400),),
+          Text(
+            "$title:",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            width: 10.w,
+          ),
+          Text(
+            "$description:",
+            style: TextStyle(
+                color: AppColor.grey002,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400),
+          ),
         ],
       ),
     );

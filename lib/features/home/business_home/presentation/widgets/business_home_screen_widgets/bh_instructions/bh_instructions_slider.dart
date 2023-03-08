@@ -1,12 +1,11 @@
-import 'package:biznugget/features/home/business_home/presentation/widgets/business_home_screen_widgets/bh_instructions/bh_instructions_card.dart';
-import 'package:biznugget/features/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:carousel_slider/carousel_controller.dart';
-import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:biznugget/core/utils/colors.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
+import 'package:biznugget/features/home/business_home/presentation/widgets/business_home_screen_widgets/bh_instructions/bh_instructions_card.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SBInstructionsSlider extends StatelessWidget {
   const SBInstructionsSlider({super.key});
@@ -37,7 +36,6 @@ class SBInstructionsSlider extends StatelessWidget {
   }
 }
 
-
 /// Slider and indicator
 class SBSlider extends StatelessWidget {
   const SBSlider.BHSlider({
@@ -53,7 +51,8 @@ class SBSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
       carouselController: controller,
-      itemCount: BlocProvider.of<BusinessHomeCubit>(context).instructions.length,
+      itemCount:
+          BlocProvider.of<BusinessHomeCubit>(context).instructions.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
 
           /// this is the slider card template
@@ -98,8 +97,10 @@ class BHSliderIndicator extends StatelessWidget {
         builder: (context, state) {
           return AnimatedSmoothIndicator(
             duration: duration,
-            activeIndex: BlocProvider.of<BusinessHomeCubit>(context).selectedIndex,
-            count: BlocProvider.of<BusinessHomeCubit>(context).instructions.length,
+            activeIndex:
+                BlocProvider.of<BusinessHomeCubit>(context).selectedIndex,
+            count:
+                BlocProvider.of<BusinessHomeCubit>(context).instructions.length,
             effect: WormEffect(
               spacing: Dimensions.width10,
               dotHeight: Dimensions.height15,
@@ -108,7 +109,8 @@ class BHSliderIndicator extends StatelessWidget {
               activeDotColor: Colors.white,
             ),
             onDotClicked: (index) {
-              BlocProvider.of<BusinessHomeCubit>(context).selectSliderIndex(index);
+              BlocProvider.of<BusinessHomeCubit>(context)
+                  .selectSliderIndex(index);
               controller.animateToPage(index, duration: duration);
             },
           );

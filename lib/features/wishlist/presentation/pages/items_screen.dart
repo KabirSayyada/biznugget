@@ -26,10 +26,15 @@ class ItemsScreen extends StatelessWidget {
           child: Column(
             children: [
               // custom app bar
-              CustomAppBar(text: 'Wishlist', onTap: () {
-                BlocProvider.of<BottomNavigationBarCubit>(context).selectTab(0);
-                /// todo : navigate to cart page
-              },),
+              CustomAppBar(
+                text: 'Wishlist',
+                onTap: () {
+                  BlocProvider.of<BottomNavigationBarCubit>(context)
+                      .selectTab(0);
+
+                  /// todo : navigate to cart page
+                },
+              ),
               SizedBox(height: Dimensions.height50),
               // search bar
               searchBar,
@@ -58,16 +63,14 @@ class ItemsScreen extends StatelessWidget {
     });
   }
 
-
-
   /// padding for the screen
   EdgeInsets _padding() {
     return EdgeInsets.only(
-          top: Dimensions.height60,
-          bottom: Dimensions.radius20,
-          right: Dimensions.width15,
-          left: Dimensions.width15,
-        );
+      top: Dimensions.height60,
+      bottom: Dimensions.radius20,
+      right: Dimensions.width15,
+      left: Dimensions.width15,
+    );
   }
 
   /// build list of items

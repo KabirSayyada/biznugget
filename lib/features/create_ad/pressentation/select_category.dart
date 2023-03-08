@@ -66,7 +66,6 @@ class _SelectCategoryState extends State<SelectCategory> {
           padding: const EdgeInsets.all(15.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-           
             TextField(
               style: TextStyle(
                 fontSize: 16.sp,
@@ -87,11 +86,11 @@ class _SelectCategoryState extends State<SelectCategory> {
                   contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(color: Color.fromARGB(255, 21, 201, 225))),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 21, 201, 225))),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide:
-                          BorderSide(color: Colors.white, width: 3.0))),
+                      borderSide: BorderSide(color: Colors.white, width: 3.0))),
             ),
             FutureBuilder(
               builder:

@@ -30,5 +30,4 @@ class HomeAllItemsGridview extends StatelessWidget {
       },
     );
   }
-
 }

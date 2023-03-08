@@ -9,14 +9,14 @@ class SmallText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
 
-
   const SmallText({
     Key? key,
     required this.text,
     this.color = const Color(0xFFCCC7C1),
     this.size = 0,
     this.height = 1.2,
-    this.textAlign, this.maxLines,
+    this.textAlign,
+    this.maxLines,
   }) : super(key: key);
 
   @override

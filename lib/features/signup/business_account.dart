@@ -318,6 +318,6 @@ class _BusinessScreenState extends State<BusinessScreen> {
   }
 }
 
-/* 
+/*
 
 */

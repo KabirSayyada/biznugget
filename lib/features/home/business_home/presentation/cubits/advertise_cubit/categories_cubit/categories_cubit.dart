@@ -1,10 +1,9 @@
-import 'package:biznugget/core/common/models/item_model/sub_category_model.dart';
 import 'package:biznugget/core/common/models/item_model/category_model.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:biznugget/core/common/models/item_model/sub_category_model.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 part 'categories_state.dart';
 
@@ -92,11 +91,13 @@ class CategoriesCubit extends Cubit<CategoriesState> {
           SubCategoryModel(name: 'Other'),
         ]),
   ];
+
   // selected categories
   List<CategoryModel> _selectedCategories = [];
 
   // return all categories
   List<CategoryModel> get allCategories => _categories;
+
   // return the selected categories
   List<CategoryModel> get selectedCategories => _selectedCategories;
 
@@ -112,6 +113,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
     }
     emit(CategorySelected());
   }
+
   // return index of a category by name
   int getIndexOfCategoryByName(String name) {
     for (var idx = 0; idx < _categories.length; idx++) {
@@ -121,6 +123,4 @@ class CategoriesCubit extends Cubit<CategoriesState> {
     }
     return 0;
   }
-
-
 }

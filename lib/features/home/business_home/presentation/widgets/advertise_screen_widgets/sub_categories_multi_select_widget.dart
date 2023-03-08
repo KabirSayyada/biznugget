@@ -1,10 +1,10 @@
-import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/sub_categories_cubit/sub_categories_cubit.dart';
-import 'package:flutter_awesome_select/flutter_awesome_select.dart';
 import 'package:biznugget/core/common/widgets/big_text.dart';
-import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/core/utils/colors.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
+import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/sub_categories_cubit/sub_categories_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_awesome_select/flutter_awesome_select.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SubCategoriesMultiSelectWidget extends StatelessWidget {
   SubCategoriesMultiSelectWidget({super.key});
@@ -37,7 +37,7 @@ class SubCategoriesMultiSelectWidget extends StatelessWidget {
                 BlocProvider.of<SubCategoriesCubit>(context)
                     .changeSelectedSubCategoriesByName = selected.value;
               },
-             selectedChoice: BlocProvider.of<SubCategoriesCubit>(context)
+              selectedChoice: BlocProvider.of<SubCategoriesCubit>(context)
                   .selectedSubCategories
                   .map((cate) => S2Choice<String>(
                         value: cate.name,

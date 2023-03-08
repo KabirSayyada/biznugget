@@ -9,9 +9,10 @@ navigateReplace(BuildContext context, Widget widget) {
 
 ///This method ensures navigation and does not kill the previous activity
 navigatePush(BuildContext context, Widget widget) {
-
   Navigator.push(context, CupertinoPageRoute(builder: (context) => widget));
 }
 
 ///This method backward navigation
-navigateBack(BuildContext context) { Navigator.pop(context); }
+navigateBack(BuildContext context) {
+  Navigator.pop(context);
+}

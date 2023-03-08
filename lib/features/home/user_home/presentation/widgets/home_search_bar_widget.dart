@@ -1,9 +1,7 @@
 import 'package:biznugget/core/utils/colors.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
-import 'package:searchbar_animation/searchbar_animation.dart';
-import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:searchbar_animation/searchbar_animation.dart';
 
 class HomeSearchBar extends StatelessWidget {
   HomeSearchBar({super.key});

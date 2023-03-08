@@ -11,22 +11,20 @@ class CustomUploadImageButton extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-      BigText(text: 'Add photo', size: Dimensions.font14),
+        BigText(text: 'Add photo', size: Dimensions.font14),
         SizedBox(height: Dimensions.height10),
-
         Container(
-          height: Dimensions.height40,
-          width: Dimensions.width40,
-          decoration: BoxDecoration(
-            gradient: AppColors.primaryGradient(),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-            size: Dimensions.iconSize30,
-          )
-        ),
+            height: Dimensions.height40,
+            width: Dimensions.width40,
+            decoration: BoxDecoration(
+              gradient: AppColors.primaryGradient(),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+              size: Dimensions.iconSize30,
+            )),
         SizedBox(height: Dimensions.height10),
         Row(
           children: [

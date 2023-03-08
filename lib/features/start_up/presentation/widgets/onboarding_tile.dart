@@ -23,7 +23,7 @@ class OnboardingTile extends StatelessWidget {
         ),
         Container(
           decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
+            shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
                 offset: Offset(0, 2),

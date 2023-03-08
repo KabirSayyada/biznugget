@@ -6,5 +6,4 @@ class ArticleModel {
     required this.title,
     required this.description,
   });
-
 }

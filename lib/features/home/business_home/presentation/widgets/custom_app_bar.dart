@@ -1,14 +1,14 @@
 import 'package:biznugget/core/common/widgets/big_text.dart';
 import 'package:biznugget/core/utils/assets_manager.dart';
-import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:biznugget/core/utils/colors.dart';
+import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class BHCustomAppBar extends StatelessWidget {
   const BHCustomAppBar({
     Key? key,
     required this.drawerKey,
-  }) : super(key: key) ;
+  }) : super(key: key);
 
   final GlobalKey<ScaffoldState> drawerKey;
 

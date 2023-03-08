@@ -3,17 +3,14 @@ class CategoryList {
 
   final String title;
 
-
   factory CategoryList.fromJson(Map<String, dynamic> json) {
     return CategoryList(
-   
       title: json['title'],
-
     );
   }
 }
 
-List <CategoryList> categoryList = [
+List<CategoryList> categoryList = [
   CategoryList(title: "Food and Wine"),
   CategoryList(title: "Livestock"),
   CategoryList(title: "Industrial equipment & tools"),
@@ -29,5 +26,4 @@ List <CategoryList> categoryList = [
   CategoryList(title: "Cosmetics"),
   CategoryList(title: "Computing"),
   CategoryList(title: "Real Estate"),
- 
 ];

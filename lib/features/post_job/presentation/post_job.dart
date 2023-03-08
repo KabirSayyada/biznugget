@@ -16,31 +16,30 @@ class _PostJobState extends State<PostJob> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight.h),
-        child: AppBar(
-          shadowColor: AppColor.appBarElevationColor,
-          leading: Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  
-                  context.push("/");
-                },
-                child: const Icon(Icons.arrow_back_ios_new_outlined),
-              ),
-            ],
-          ),
-          elevation: 4.0.h,
-          centerTitle: true,
-          title: Text(
-            "Post Job",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w700),
-          ),
-          backgroundColor: AppColor.appWhite,
-        )),
+          preferredSize: Size.fromHeight(kToolbarHeight.h),
+          child: AppBar(
+            shadowColor: AppColor.appBarElevationColor,
+            leading: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    context.push("/");
+                  },
+                  child: const Icon(Icons.arrow_back_ios_new_outlined),
+                ),
+              ],
+            ),
+            elevation: 4.0.h,
+            centerTitle: true,
+            title: Text(
+              "Post Job",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w700),
+            ),
+            backgroundColor: AppColor.appWhite,
+          )),
       body: Container(),
     );
   }
