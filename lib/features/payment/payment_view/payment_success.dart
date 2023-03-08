@@ -34,7 +34,7 @@ class PaymentSuccess extends StatelessWidget {
               children: [
                 SizedBox(height: height / 22),
                 BackNavigationButton(color: Colors.white, opressed: () {}),
-                SizedBox(height: height * 0.35),
+                SizedBox(height: height * 0.45),
                 Center(
                     child: Padding(
                   padding: const EdgeInsets.only(left: 12.0, right: 12),
