@@ -7,13 +7,14 @@ class Button extends StatelessWidget {
     super.key,
     required this.title,
     this.height,
-    required this.width,required this.onTap,
+    required this.width,required this.onTap,  this.radius,
   });
 
   final String title;
   final double? height;
   final double width;
   final Function()  onTap;
+  final BorderRadius? radius;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,9 @@ class Button extends StatelessWidget {
       child: Container(
         height: 41.h,
         width: width,
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.all(
-            Radius.circular(5),
+            Radius.circular(10),
           ),
           gradient: LinearGradient(
             begin: Alignment.centerLeft,

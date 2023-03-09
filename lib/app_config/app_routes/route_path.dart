@@ -8,5 +8,8 @@ class RoutePath {
   static const String selectCategory = "/selectCategory";
   static const String createUserDetails = "/createUserDetails";
   static const String publishAd = "/publishAd";
+  static const String shareService = "/shareService";
+  static const String selectServiceCategory = "/selectServiceCategory";
+  static const String activatePromo = "/activatePromo";
  
 }

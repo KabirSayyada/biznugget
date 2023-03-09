@@ -4,18 +4,19 @@ import 'package:go_router/go_router.dart';
 
 import '../../../general_widget/category_card.dart';
 import '../../../utils/colors.dart';
-import '../helpers/category_list.dart';
+import '../../create_ad/helpers/category_list.dart';
 
-class SelectAdCategory extends StatefulWidget {
-  const SelectAdCategory({super.key});
+class SelectServiceCategory extends StatefulWidget {
+  const SelectServiceCategory({super.key});
 
   @override
-  State<SelectAdCategory> createState() => _SelectAdCategoryState();
+  State<SelectServiceCategory> createState() => _SelectServiceCategoryState();
 }
 
-class _SelectAdCategoryState extends State<SelectAdCategory> {
+class _SelectServiceCategoryState extends State<SelectServiceCategory> {
   String dropdown = '';
   String dropdownValue = 'New';
+
 
   String searchString = "";
 
@@ -59,6 +60,7 @@ class _SelectAdCategoryState extends State<SelectAdCategory> {
           padding: const EdgeInsets.all(15.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+           
             TextField(
               style: TextStyle(
                 fontSize: 16.sp,
@@ -79,14 +81,11 @@ class _SelectAdCategoryState extends State<SelectAdCategory> {
                   contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide:
-                          BorderSide(color: Color.fromARGB(255, 21, 201, 225))),
+                      borderSide: BorderSide(color: Color.fromARGB(255, 21, 201, 225))),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(color: Colors.white, width: 3.0))),
-            ),
-            SizedBox(
-              height: 10.h,
+                      borderSide:
+                          BorderSide(color: Colors.white, width: 3.0))),
             ),
             FutureBuilder(
               builder:
@@ -94,14 +93,14 @@ class _SelectAdCategoryState extends State<SelectAdCategory> {
                 return ListView.separated(
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
-                  itemCount: categoryList.length,
+                  itemCount: serviceCategoryList.length,
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(
                       height: 0,
                     );
                   },
                   itemBuilder: (BuildContext context, int index) {
-                    final cateory = categoryList[index].title.toLowerCase();
+                    final cateory = serviceCategoryList[index].title.toLowerCase();
                     return cateory.toLowerCase().contains(searchString)
                         ? CategoryCard(
                             hintColor: AppColor.appTextColor,

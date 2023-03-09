@@ -10,7 +10,10 @@ import 'package:biznugget/features/post_job/presentation/post_job.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/create_ad/pressentation/activate_promotion.dart';
 import '../../features/create_ad/pressentation/create_user_details.dart';
+import '../../features/share_service/presentation/select_service_category.dart';
+import '../../features/share_service/presentation/share_service.dart';
 
 
 
@@ -49,7 +52,7 @@ class AppRouter {
     GoRoute(
         path: RoutePath.selectCategory,
         builder: (BuildContext context, GoRouterState state) {
-          return const SelectCategory();
+          return const SelectAdCategory();
         }),
     GoRoute(
         path: RoutePath.createUserDetails,
@@ -60,6 +63,21 @@ class AppRouter {
         path: RoutePath.publishAd,
         builder: (BuildContext context, GoRouterState state) {
           return const PublishAd();
+        }),
+    GoRoute(
+        path: RoutePath.shareService,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ShareService();
+        }),
+    GoRoute(
+        path: RoutePath.selectServiceCategory,
+        builder: (BuildContext context, GoRouterState state) {
+          return const SelectServiceCategory();
+        }),
+    GoRoute(
+        path: RoutePath.activatePromo,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ActivatePromo();
         }),
    
   ]);

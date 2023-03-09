@@ -250,7 +250,9 @@ hung on shoulder. It is heat resistant and luxurious.""",
               Button(
                 title: 'Publish',
                 width: MediaQuery.of(context).size.width * 0.7.w,
-                onTap: () {},
+                onTap: () {
+                  context.push('/activatePromo');
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.2.h,

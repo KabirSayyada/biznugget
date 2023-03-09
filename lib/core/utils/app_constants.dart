@@ -6,6 +6,8 @@ class AppConstants {
   static double screenHeight = 0;
   static double screenWidth = 0;
 
+  String naira = '₦';
+
   /// This method is used to show a dialog with a message
   static void showErrorDialog(
       {required BuildContext context, required String msg}) {

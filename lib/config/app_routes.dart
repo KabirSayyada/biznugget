@@ -1,3 +1,10 @@
+import 'package:biznugget/features/create_ad/pressentation/create_ad.dart';
+import 'package:biznugget/features/create_ad/pressentation/create_category.dart';
+import 'package:biznugget/features/create_ad/pressentation/create_user_details.dart';
+import 'package:biznugget/features/create_ad/pressentation/publish_ad.dart';
+import 'package:biznugget/features/create_ad/pressentation/select_category.dart';
+import 'package:biznugget/features/create_ad/pressentation/target_location.dart';
+import 'package:biznugget/features/post_job/presentation/post_job.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,6 +12,7 @@ import '../core/utils/strings.dart';
 import '../features/details/presentation/pages/details_screen.dart';
 import '../features/home/presentation/pages/home_screen.dart';
 import '../features/messages/messages_screen.dart';
+import '../features/post_content/presentation/post_content.dart';
 import '../features/splash_screen/presentation/pages/splash_screen.dart';
 import '../features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import '../features/wishlist/presentation/pages/wishlist_screen.dart';
@@ -18,11 +26,21 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String details = '/details';
 
+    static const String postContent = "/postContent";
+  static const String createAd = "/createAd";
+  static const String postJob = "/postJob";
+  static const String targetLocation = "/targetLocation";
+  static const String createCategory = "/createCategory";
+  static const String selectCategory = "/selectCategory";
+  static const String createUserDetails = "/createUserDetails";
+  static const String publishAd = "/publishAd";
+
   static Route? routes(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       /// bottom navigation bar
       case AppRoutes.initial:
-        return MaterialPageRoute(builder: (context) => const SplashScreen());
+        //return MaterialPageRoute(builder: (context) => const SplashScreen());
+        return MaterialPageRoute(builder: (context) => const PostContent());
 
       /// wishlist
       case AppRoutes.wishlist:
@@ -55,6 +73,38 @@ class AppRoutes {
       /// DetailsScreen
       case AppRoutes.details:
         return MaterialPageRoute(builder: (context) => const DetailsScreen());
+
+      /// PostContent LandingScreen
+      case AppRoutes.postContent:
+        return MaterialPageRoute(builder: (context) => const PostContent());
+
+      /// CreateAdScreen
+      case AppRoutes.createAd:
+        return MaterialPageRoute(builder: (context) => const CreateAd());
+
+      /// PostJobScreen
+      case AppRoutes.postJob:
+        return MaterialPageRoute(builder: (context) => const PostJob());
+
+      /// TargetLocationScreen
+      case AppRoutes.targetLocation:
+        return MaterialPageRoute(builder: (context) => const TargetLocation());
+
+      /// CreateCategoryScreen
+      case AppRoutes.createCategory:
+        return MaterialPageRoute(builder: (context) => const CreateCategory());
+
+      /// SelectCategoryScreen
+      case AppRoutes.selectCategory:
+        return MaterialPageRoute(builder: (context) => const SelectAdCategory());
+
+      /// CreateUserDetailsScreen
+      case AppRoutes.createUserDetails:
+        return MaterialPageRoute(builder: (context) => const CreateUserDetails());
+
+      /// PublishAdScreen
+      case AppRoutes.publishAd:
+        return MaterialPageRoute(builder: (context) => const PublishAd());
 
       default:
         return MaterialPageRoute(

@@ -20,7 +20,7 @@ class _PostContentState extends State<PostContent> {
         context.push("/createAd");
         break;
       case 1:
-        context.push("/createAd");
+        context.push("/shareService");
         break;
       case 2:
         context.push("/postJob");

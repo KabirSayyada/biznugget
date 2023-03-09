@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../messages/messages_screen.dart';
+import '../../../post_content/presentation/post_content.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class SplashScreen extends StatelessWidget {
     AppConstants.screenWidth = MediaQuery.of(context).size.width;
 
     return const MessagesScreen();
+    //return const PostContent();
 
     /// temporary code :D
     /// temporary code :D

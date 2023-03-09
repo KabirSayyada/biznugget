@@ -9,12 +9,20 @@ import 'package:biznugget/features/bottom_navigation_bar/presentation/cubits/bot
 import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'app_config/app_routes/app_router.dart';
 
 class Biznugget extends StatelessWidget {
   const Biznugget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
     return MultiBlocProvider(
       providers: [
         /// bottom navigation bar provider
@@ -40,12 +48,13 @@ class Biznugget extends StatelessWidget {
 
         /// add other bloc/cubit providers here
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         title: AppStrings.appName,
         theme: appTheme(),
-        onGenerateRoute: AppRoutes.routes,
+        //onGenerateRoute: AppRoutes.routes,
       ),
     );
-  }
-}
+  });
+}}
