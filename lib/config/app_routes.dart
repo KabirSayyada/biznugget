@@ -30,7 +30,7 @@ class AppRoutes {
   static const String paidAds = '/paidAdsBasicInfo';
 
   static Map<String, Widget Function(BuildContext)> get routes => {
-        AppRoutes.initial: (_) => const PaymentSuccess(),
+        AppRoutes.initial: (_) => const PaidAdsBasicInfoScreen(),
         AppRoutes.wishlist: (_) => BlocProvider(
               create: (context) => WishlistItemsCubit(WishlistRepositoryImpl())
                 ..fetchAllWishlistItems(),
