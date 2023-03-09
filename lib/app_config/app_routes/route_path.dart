@@ -9,4 +9,6 @@ class RoutePath {
   static const String createUserDetails = "/createUserDetails";
   static const String publishAd = "/publishAd";
   static const String payment = "/payment";
+  static const String paidAdsBasicInfo = '/paidAdsBasicInfo';
+  static const String paidAdsAudience = '/paidAdsAudience';
 }

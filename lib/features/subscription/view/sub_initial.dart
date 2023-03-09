@@ -26,19 +26,20 @@ class _SubscriptionInitialState extends State<SubscriptionInitial> {
 
     return Scaffold(
         body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: kOuterPaddingHorizontalRadius,
-            vertical: kOuterPaddingVerticalRadius),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: height / 22),
-            BackNavigationButton(opressed: () {}),
-            SizedBox(height: height / 16),
-            const PaymentTextWidget(
-              title: 'Choose\nSubscription plan',
-              fontsize: 24,
+            SizedBox(height: height / 30),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: BackNavigationButton(opressed: () {}),
+            ),
+            SizedBox(height: height / 20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: PaymentTextWidget(
+                  title: 'Choose\nSubscription plan', fontsize: 24),
             ),
             SizedBox(height: height / 35),
             NotificationListener<ScrollNotification>(
@@ -141,9 +142,12 @@ class _SubscriptionInitialState extends State<SubscriptionInitial> {
             const SizedBox(
               height: 16,
             ),
-            const PaymentTextWidget(
-              title: 'Learn about subcription plans',
-              fontsize: 18,
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: PaymentTextWidget(
+                title: 'Learn about subcription plans',
+                fontsize: 18,
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -164,28 +168,31 @@ class _SubscriptionInitialState extends State<SubscriptionInitial> {
     ));
   }
 
-  CustomContainer _buildSubKnowMoreBox() {
+  Widget _buildSubKnowMoreBox() {
     final height = context.height;
 
-    return CustomContainer(
-        height: height * 0.12,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const PaymentTextWidget(
-              title: 'Reach large audience',
-              fontsize: 14,
-              fontWeight: FontWeight.bold,
-              color: kBrownColor,
-            ),
-            const SizedBox(height: 8),
-            PaymentTextWidget(
-              title: 'subcription plans' * 6,
-              fontsize: 13,
-              fontWeight: FontWeight.w100,
-            ),
-          ],
-        ));
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CustomContainer(
+          height: height * 0.12,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const PaymentTextWidget(
+                title: 'Reach large audience',
+                fontsize: 14,
+                fontWeight: FontWeight.bold,
+                color: kBrownColor,
+              ),
+              const SizedBox(height: 8),
+              PaymentTextWidget(
+                title: 'subcription plans' * 6,
+                fontsize: 13,
+                fontWeight: FontWeight.w100,
+              ),
+            ],
+          )),
+    );
   }
 
   String getCurrency() {
@@ -205,7 +212,7 @@ class _SubscriptionInitialState extends State<SubscriptionInitial> {
     final width = context.width;
     return Container(
       height: height * 0.24,
-      width: width * 0.75,
+      width: width * 0.80,
       decoration: BoxDecoration(
         //color: kGoldColorDark,
         gradient: LinearGradient(
@@ -276,9 +283,12 @@ class _SubscriptionInitialState extends State<SubscriptionInitial> {
   Widget _customButtom({required String title}) {
     return InkWell(
       onTap: () {},
-      child: CustomContainer(
-          color: kButtonColor,
-          child: Center(child: PaymentTextWidget(title: title))),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: CustomContainer(
+            color: kButtonColor,
+            child: Center(child: PaymentTextWidget(title: title))),
+      ),
     );
   }
 

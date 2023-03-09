@@ -12,6 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/create_ad/pressentation/create_user_details.dart';
+import '../../features/paid_ads/paid_ads_view/paid_ads_audience_screen.dart';
+import '../../features/paid_ads/paid_ads_view/paid_ads_basic_info_screen.dart';
+import '../../features/paid_ads/widget/custom_page_indicator.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: <RouteBase>[
@@ -64,6 +67,16 @@ class AppRouter {
         path: RoutePath.payment,
         builder: (BuildContext context, GoRouterState state) {
           return const PaymentScreen();
+        }),
+    GoRoute(
+        path: RoutePath.paidAdsBasicInfo,
+        builder: (BuildContext context, GoRouterState state) {
+          return const PaidAdsBasicInfoScreen();
+        }),
+    GoRoute(
+        path: RoutePath.paidAdsAudience,
+        builder: (BuildContext context, GoRouterState state) {
+          return const PaidAdsAudienceScreen(i: 1);
         }),
   ]);
 }
