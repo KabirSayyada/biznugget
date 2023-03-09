@@ -7,3 +7,4 @@ const creditDebitImage = 'assets/payment_img/debit_credit_image.png';
 const internetBankingImage = 'assets/payment_img/internet_banking_image.png';
 const paypalImage = 'assets/payment_img/paypal.png';
 const masterCardImage = 'assets/payment_img/Group 2.png';
+const rectangleBackgroundImage = 'assets/payment_img/Rectangle_background.png';
