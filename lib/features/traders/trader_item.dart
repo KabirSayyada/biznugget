@@ -1,8 +1,9 @@
 import 'package:biznugget/core/models.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../core/utils/app_routes.dart';
+import '../../core/utils/app_router.dart';
 
 class TraderItem extends StatelessWidget {
   const TraderItem({
@@ -17,10 +18,9 @@ class TraderItem extends StatelessWidget {
     return Card(
       elevation: 2,
       child: InkWell(
-        onTap: () => Navigator.pushNamed(
-          context,
-          AppRoutes.trader,
-          arguments: trader.id,
+        onTap: () => context.goNamed(
+          AppRouter.trader,
+          queryParams: {"id": trader.id},
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),

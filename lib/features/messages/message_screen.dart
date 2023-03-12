@@ -5,11 +5,12 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 class MessageScreen extends StatelessWidget {
-  const MessageScreen({Key? key}) : super(key: key);
+  const MessageScreen({Key? key, required this.user}) : super(key: key);
+
+  final types.User user;
 
   @override
   Widget build(BuildContext context) {
-    final user = ModalRoute.of(context)!.settings.arguments as types.User;
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(

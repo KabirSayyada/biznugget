@@ -5,13 +5,13 @@ import '../widgets/dashed_divider.dart';
 import '../widgets/rating.dart';
 
 class TraderScreen extends StatelessWidget {
-  const TraderScreen({Key? key}) : super(key: key);
+  const TraderScreen({Key? key, required this.traderId}) : super(key: key);
+
+  final String traderId;
 
   @override
   Widget build(BuildContext context) {
-    final trader = TradersService.getTrader(
-      ModalRoute.of(context)?.settings.arguments as String,
-    );
+    final trader = TradersService.getTrader(traderId);
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(

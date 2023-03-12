@@ -1,8 +1,9 @@
 import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/services/message_service.dart';
-import '../../core/utils/app_routes.dart';
+import '../../core/utils/app_router.dart';
 import 'message_item.dart';
 
 class MessagesScreen extends StatelessWidget {
@@ -23,10 +24,9 @@ class MessagesScreen extends StatelessWidget {
           itemCount: MessageService.messages.length,
           itemBuilder: (_, index) {
             return InkWell(
-              onTap: () => Navigator.pushNamed(
-                context,
-                AppRoutes.message,
-                arguments: MessageService.messages[index].author,
+              onTap: () => context.goNamed(
+                AppRouter.message,
+                extra: MessageService.messages[index].author,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(12),
