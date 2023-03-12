@@ -1,14 +1,13 @@
 import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/core/utils/strings.dart';
-import 'package:biznugget/features/bottom_navigation_bar/presentation/cubits/bottom_navigation_bar_cubit.dart';
-import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/categories_cubit/categories_cubit.dart';
-import 'package:biznugget/features/home/business_home/presentation/cubits/advertise_cubit/sub_categories_cubit/sub_categories_cubit.dart';
-import 'package:biznugget/features/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
-import 'package:biznugget/features/home/user_home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
-import 'package:biznugget/features/payment/bloc/payment_event.dart';
-import 'package:biznugget/features/payment/bloc/paymet_bloc.dart';
-import 'package:biznugget/features/wishlist/data/repositories/local_storage.dart';
-import 'package:biznugget/features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
+import 'presentation/home/business_home/presentation/cubits/advertise_cubit/categories_cubit/categories_cubit.dart';
+import 'presentation/home/business_home/presentation/cubits/advertise_cubit/sub_categories_cubit/sub_categories_cubit.dart';
+import 'presentation/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
+import 'presentation/home/user_home/presentation/bloc/home_screen_bloc/home_screen_bloc.dart';
+import 'presentation/payment/bloc/payment_event.dart';
+import 'presentation/payment/bloc/paymet_bloc.dart';
+import 'presentation/wishlist/data/repositories/local_storage.dart';
+import 'presentation/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,9 +22,6 @@ class BiznuggetApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        /// bottom navigation bar provider
-        BlocProvider<BottomNavigationBarCubit>(
-            create: (context) => BottomNavigationBarCubit()),
 
         /// wishlist provider
         BlocProvider<WishlistItemsCubit>(
