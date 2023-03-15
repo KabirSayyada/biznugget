@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'app_config/app_routes/app_router.dart';
+
 import 'core/utils/app_router.dart';
 import 'core/utils/app_theme.dart';
 
@@ -20,6 +22,11 @@ class BiznuggetApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
     return MultiBlocProvider(
       providers: [
 
@@ -66,5 +73,5 @@ class BiznuggetApp extends StatelessWidget {
         },
       ),
     );
-  }
-}
+  });
+}}

@@ -2,27 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../general_widget/category_card.dart';
 import '../../widgets/input_field.dart';
 import '../../../utils/colors.dart';
 import '../helpers/category_list.dart';
 
-class SelectCategory extends StatefulWidget {
-  const SelectCategory({super.key});
+class SelectAdCategory extends StatefulWidget {
+  const SelectAdCategory({super.key});
 
   @override
-  State<SelectCategory> createState() => _SelectCategoryState();
+  State<SelectAdCategory> createState() => _SelectAdCategoryState();
 }
 
-class _SelectCategoryState extends State<SelectCategory> {
+class _SelectAdCategoryState extends State<SelectAdCategory> {
   String dropdown = '';
   String dropdownValue = 'New';
-
-  List list = [
-    "Flutter",
-    "React",
-    "Ionic",
-    "Xamarin",
-  ];
 
   String searchString = "";
 
@@ -92,6 +86,9 @@ class _SelectCategoryState extends State<SelectCategory> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       borderSide: BorderSide(color: Colors.white, width: 3.0))),
             ),
+            SizedBox(
+              height: 10.h,
+            ),
             FutureBuilder(
               builder:
                   (BuildContext context, AsyncSnapshot<CategoryList> snapshot) {
@@ -107,7 +104,7 @@ class _SelectCategoryState extends State<SelectCategory> {
                   itemBuilder: (BuildContext context, int index) {
                     final cateory = categoryList[index].title.toLowerCase();
                     return cateory.toLowerCase().contains(searchString)
-                        ? InputField(
+                        ? CategoryCard(
                             hintColor: AppColor.appTextColor,
                             enabled: false,
                             hintText: cateory,
