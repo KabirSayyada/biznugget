@@ -1,3 +1,4 @@
+import 'package:biznugget/app_config/app_routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -102,15 +103,19 @@ class _SelectServiceCategoryState extends State<SelectServiceCategory> {
                   itemBuilder: (BuildContext context, int index) {
                     final cateory = serviceCategoryList[index].title.toLowerCase();
                     return cateory.toLowerCase().contains(searchString)
-                        ? CategoryCard(
-                            hintColor: AppColor.appTextColor,
-                            enabled: false,
-                            hintText: cateory,
-                            suffixIcon: const Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              color: AppColor.black,
+                        ? InkWell(
+                          onTap: () {
+                           context.go(RoutePath.shareService);
+                           Navigator.pop(context, 'Category 1');
+
+                          },
+                          child: CategoryCard(
+                              hintColor: AppColor.appTextColor,
+                              enabled: false,
+                              hintText: cateory,
+                             
                             ),
-                          )
+                        )
                         : Container();
                   },
                 );

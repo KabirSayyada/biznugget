@@ -11,5 +11,6 @@ class RoutePath {
   static const String shareService = "/shareService";
   static const String selectServiceCategory = "/selectServiceCategory";
   static const String activatePromo = "/activatePromo";
+  static const String shareServiceSpecialty = "/shareServiceSpecialty";
  
 }

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../app_config/app_routes/route_path.dart';
 import '../../../utils/colors.dart';
 import '../data/models/post_content_model.dart';
 
@@ -20,7 +21,7 @@ class _PostContentState extends State<PostContent> {
         context.push("/createAd");
         break;
       case 1:
-        context.push("/shareService");
+        context.push(RoutePath.shareService);
         break;
       case 2:
         context.push("/postJob");

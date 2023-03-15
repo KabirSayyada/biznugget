@@ -1,105 +1,73 @@
+import 'package:biznugget/general_widget/widgets.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../general_widget/input_field.dart';
+import '../../../app_config/app_routes/route_path.dart';
 import '../../../utils/colors.dart';
+import '../../create_ad/widgets/dropdown_widget.dart';
 
 class ShareService extends StatefulWidget {
-  const ShareService({super.key});
+  const ShareService({super.key,  this.category});
+
+  final String? category;
 
   @override
   State<ShareService> createState() => _ShareServiceState();
 }
 
 class _ShareServiceState extends State<ShareService> {
-
-  
   TextEditingController categoryController = TextEditingController();
   bool isPasswordObscure = true;
 
   String errorText = "";
+   String exchangeValue = 'Years of experience';
+
+    List<String> exchangeList = [
+    "Years of experience",
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    
+  ];
 
   @override
   void dispose() {
     // TODO: implement dispose
     categoryController.dispose();
-  
+
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: AppColor.appWhite,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight.h),
-          child: AppBar(
-            shadowColor: AppColor.appBarElevationColor,
-            leading: Row(
-              children: [
-                InkWell(
-                  onTap: () {
-                    context.push("/");
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+          child: CustomAppBar(
+            title: "Share a Service",
+            suffixWidget: AppBarButton(
+              buttonColor: [
+                const Color(0xff01C3CC).withOpacity(0.3),
+                const Color(0xff3F56F2).withOpacity(0.3),
               ],
             ),
-            elevation: 4.0.h,
-            centerTitle: true,
-            title: Text(
-              "Share a Service",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700),
-            ),
-            backgroundColor: AppColor.appWhite,
-            actions: [
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      context.push('/createCategory');
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: 34.h,
-                      width: 56.w,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            const Color(0xff01C3CC).withOpacity(0.3),
-                            const Color(0xff3F56F2).withOpacity(0.3),
-                          ],
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Next",
-                          style: TextStyle(
-                              fontSize: 12.sp, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+            onTap: () {
+             
+            },
           )),
       body: SingleChildScrollView(
         child: Padding(
@@ -120,19 +88,44 @@ class _ShareServiceState extends State<ShareService> {
                 ),
               ],
             ),
-
-            // const InputField(
-            //   title: "Product name",
-            //   hintText: 'Input product name',
-            // ),
-             InkWell(
-              onTap: () {
-                context.push('/selectServiceCategory');
+      
+            InkWell(
+              onTap: () async {
+               // context.push('/selectServiceCategory');
+                final result =  context.go('/categories') as String?;
               },
-              child:  InputField(
+              child: InputField(
                 title: "Category",
-                hintText: 'Select occupation',
-                suffixIcon: Icon(Icons.arrow_forward_ios_rounded),
+                hintText: 'Select occupation' ,
+                suffixIcon: const Icon(Icons.arrow_forward_ios_rounded),
+                controller: categoryController,
+                enabled: false,
+              ),
+            ),
+           
+            InkWell(
+              onTap: () async {
+               // context.push('/selectServiceCategory');
+                 context.push(RoutePath.shareServiceSpecialty);
+              },
+              child: InputField(
+                title: "Specialty",
+                hintText: 'Choose your expertise' ,
+                suffixIcon: const Icon(Icons.arrow_forward_ios_rounded),
+                controller: categoryController,
+                enabled: false,
+              ),
+            ),
+           
+            InkWell(
+              onTap: () async {
+               // context.push('/selectServiceCategory');
+                final result =  context.go('/categories') as String?;
+              },
+              child: InputField(
+                title: "Skills",
+                hintText: 'Select the skills that suit you' ,
+                suffixIcon: const Icon(Icons.arrow_forward_ios_rounded),
                 controller: categoryController,
                 enabled: false,
               ),
@@ -141,7 +134,7 @@ class _ShareServiceState extends State<ShareService> {
               height: 6.h,
             ),
             Text(
-              "Add photo",
+              "Add file",
               style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
             ),
             SizedBox(
@@ -164,35 +157,55 @@ class _ShareServiceState extends State<ShareService> {
             SizedBox(
               height: 10.h,
             ),
-            SvgPicture.asset("assets/svg/add_photo.svg"),
-
+      
+            DottedBorder(
+              borderType: BorderType.RRect,
+              radius: const Radius.circular(12),
+              padding: const EdgeInsets.all(6),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                child: SizedBox(
+                  height: 115.h,
+                  width: 300,
+                 // color: Colors.amber,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    SvgPicture.asset("assets/svg/upload_file.svg"),
+                    SizedBox(height:    5.h),
+                    Text(
+              "Drop files here",
+              style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                 ),
+            ),
+                  ],),
+                ),
+              ),
+            ),
+      
             // SizedBox(
             //   height: 7.h,
             // ),
-            const InputField(
-              title: "Add video",
-              hintText: 'Link to YouTube, Vimeo, SWF file and MOV file',
-            ),
-
+           
+      
             const InputField(
               title: "Description",
-              hintText: 'Enter product description',
-              maxLines: 7,
-              minLines: 4,
+              hintText: 'Describe your work history and past projects.',
+              maxLines: 3,
+              minLines: 2,
             ),
-
-            InkWell(
-              onTap: () {
-                context.push('/targetLocation');
-              },
-              child: const InputField(
-                title: "Target Location",
-                hintText: 'choose location',
-                suffixIcon: Icon(Icons.arrow_forward_ios_rounded),
-                enabled: false,
-              ),
-            ),
-            SizedBox(height: 30.h),
+        DropDownWidget(
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      exchangeValue = newValue!;
+                    });
+                  },
+                  dropdownValue: exchangeValue,
+                  dropDownMenuItems: exchangeList,
+                ),
+            SizedBox(height: width * 0.2.h),
             RichText(
               text: const TextSpan(
                   text: "By clicking on Publish, you accept the ",
@@ -214,6 +227,41 @@ class _ShareServiceState extends State<ShareService> {
                   ]),
             ),
           ]),
+        ),
+      ),
+    );
+  }
+}
+
+class AppBarButton extends StatelessWidget {
+  const AppBarButton({
+    super.key,
+    required this.buttonColor,
+     this.title = "Next",
+  });
+  final List<Color> buttonColor;
+  final String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      height: 34.h,
+      width: 56.w,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(5),
+        ),
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: buttonColor,
+        ),
+      ),
+      child: Center(
+        child: Text(
+          title!,
+          style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
         ),
       ),
     );
