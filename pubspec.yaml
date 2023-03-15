@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_bloc: ^8.1.2
+
   go_router: ^6.0.6
   flutter_svg: ^2.0.0+1
   flutter_screenutil: ^5.6.1
@@ -50,18 +51,28 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   fluttertoast: ^8.1.3
   expandable: ^5.0.1
-  flutter_advanced_drawer: ^1.3.3
-  multi_select_flutter: ^4.1.3
-  google_fonts: ^4.0.3 
+  google_fonts: ^4.0.3
   firebase_core: ^2.5.0
   hydrated_bloc: ^9.1.0
   equatable: ^2.0.5
   path_provider: ^2.0.12
-  intl: ^0.18.0
+  intl: ^0.17.0
   firebase_auth: ^4.2.2
   flutter_local_notifications: ^13.0.0
   timezone: ^0.9.0
   dotted_border: ^2.0.0+3
+  cached_network_image: ^3.2.3
+  easy_search_bar: ^2.4.2
+  flutter_chat_types: ^3.6.0
+  flutter_chat_ui: ^1.6.6
+  font_awesome_flutter: ^10.4.0
+  flutter_awesome_select: ^6.5.0
+  card_swiper: ^2.0.4
+  dotted_border: ^2.0.0+3
+  logger: ^1.3.0
+  favorite_button: ^0.0.4
+  flutter_riverpod: ^2.3.1
+
 
 dev_dependencies:
   flutter_test:
@@ -91,247 +102,9 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
-    - assets/upload-page/images/frame-39.png
-    - assets/upload-page/images/frame-44.png
-    - assets/upload-page/images/frame-3.png
-    - assets/upload-page/images/vector.png
-    - assets/upload-page/images/vector-AJ1.png
-    - assets/upload-page/images/vector-jrm.png
-    - assets/upload-page/images/vector-mvV.png
-    - assets/upload-page/images/frame-44-eBw.png
-    - assets/upload-page/images/frame-60.png
-    - assets/upload-page/images/frame-60-ofK.png
-    - assets/upload-page/images/frame-32.png
-    - assets/upload-page/images/vector-qLq.png
-    - assets/upload-page/images/frame-44-MNM.png
-    - assets/upload-page/images/frame-773.png
-    - assets/upload-page/images/vector-FTb.png
-    - assets/upload-page/images/frame-44-zKf.png
-    - assets/upload-page/images/frame-44-uGR.png
-    - assets/upload-page/images/frame-43.png
-    - assets/upload-page/images/vector-C8D.png
-    - assets/upload-page/images/vector-XHF.png
-    - assets/upload-page/images/vector-fz5.png
-    - assets/upload-page/images/frame-32-5wK.png
-    - assets/upload-page/images/vector-64M.png
-    - assets/upload-page/images/frame-44-XAu.png
-    - assets/upload-page/images/vector-ou7.png
-    - assets/upload-page/images/vector-JnZ.png
-    - assets/upload-page/images/vector-bND.png
-    - assets/upload-page/images/frame-44-8sF.png
-    - assets/upload-page/images/frame-44-UL5.png
-    - assets/upload-page/images/frame-43-Ex5.png
-    - assets/upload-page/images/rectangle-5-bg.png
-    - assets/upload-page/images/vector-3sT.png
-    - assets/upload-page/images/vector-djB.png
-    - assets/upload-page/images/vector-3RP.png
-    - assets/upload-page/images/vector-d7B.png
-    - assets/upload-page/images/rectangle-4-bg.png
-    - assets/upload-page/images/vector-E8D.png
-    - assets/upload-page/images/frame-44-zU5.png
-    - assets/upload-page/images/frame-44-mh7.png
-    - assets/upload-page/images/vector-xqT.png
-    - assets/upload-page/images/frame-3-Uqb.png
-    - assets/upload-page/images/frame-773-FSM.png
-    - assets/upload-page/images/vector-DfK.png
-    - assets/upload-page/images/frame-44-RB3.png
-    - assets/upload-page/images/frame-60-ppV.png
-    - assets/upload-page/images/vector-oL9.png
-    - assets/upload-page/images/frame-90.png
-    - assets/upload-page/images/frame-43-Hp1.png
-    - assets/upload-page/images/vector-DBs.png
-    - assets/upload-page/images/vector-ByF.png
-    - assets/upload-page/images/rectangle-4-bg-cPw.png
-    - assets/upload-page/images/ellipse.png
-    - assets/upload-page/images/vector-eJZ.png
-    - assets/upload-page/images/vector-JdK.png
-    - assets/upload-page/images/frame-44-XKb.png
-    - assets/upload-page/images/frame-44-to7.png
-    - assets/upload-page/images/frame-87.png
-    - assets/upload-page/images/mask-group.png
-    - assets/upload-page/images/vector-A1T.png
-    - assets/upload-page/images/vector-4sX.png
-    - assets/upload-page/images/frame-43-nYd.png
-    - assets/upload-page/images/frame-39-KHf.png
-    - assets/upload-page/images/frame-32-rHb.png
-    - assets/upload-page/images/frame-42.png
-    - assets/upload-page/images/frame-17.png
-    - assets/upload-page/images/frame-42-6xD.png
-    - assets/upload-page/images/rectangle-2-bg.png
-    - assets/upload-page/images/mask-group-xUd.png
-    - assets/upload-page/images/frame-43-SR3.png
-    - assets/upload-page/images/frame-17-9qF.png
-    - assets/upload-page/images/frame-44-8QD.png
-    - assets/upload-page/images/vector-bY9.png
-    - assets/upload-page/images/mask-group-mu7.png
-    - assets/upload-page/images/frame-44-QyK.png
-    - assets/upload-page/images/vector-hZf.png
-    - assets/upload-page/images/vector-Dhf.png
-    - assets/upload-page/images/frame-32-b4Z.png
-    - assets/upload-page/images/vector-D4Z.png
-    - assets/upload-page/images/frame-44-GNq.png
-    - assets/upload-page/images/rectangle-2-bg-YVj.png
-    - assets/upload-page/images/frame-17-8aH.png
-    - assets/upload-page/images/vector-qUh.png
-    - assets/upload-page/images/frame-20.png
-    - assets/upload-page/images/vector-Jey.png
-    - assets/upload-page/images/frame-44-DG9.png
-    - assets/upload-page/images/frame-17-8tu.png
-    - assets/upload-page/images/vector-ftq.png
-    - assets/upload-page/images/frame-44-cJH.png
-    - assets/upload-page/images/frame-17-dvd.png
-    - assets/upload-page/images/vector-jTs.png
-    - assets/upload-page/images/frame-43-BGh.png
-    - assets/upload-page/images/vector-Dpq.png
-    - assets/upload-page/images/vector-any.png
-    - assets/upload-page/images/frame-43-UA1.png
-    - assets/upload-page/images/vector-48D.png
-    - assets/upload-page/images/frame-13.png
-    - assets/upload-page/images/frame-20-abX.png
-    - assets/upload-page/images/frame-17-VCh.png
-    - assets/upload-page/images/vector-1wj.png
-    - assets/upload-page/images/vector-MEu.png
-    - assets/upload-page/images/frame-39-YXF.png
-    - assets/upload-page/images/frame-42-3U1.png
-    - assets/upload-page/images/vector-aD3.png
-    - assets/upload-page/images/frame-44-QNq.png
-    - assets/upload-page/images/vector-VfB.png
-    - assets/upload-page/images/frame-3-gDB.png
-    - assets/upload-page/images/frame-43-9Mf.png
-    - assets/upload-page/images/frame-44-BRP.png
-    - assets/upload-page/images/vector-Gxd.png
-    - assets/upload-page/images/vector-b57.png
-    - assets/upload-page/images/frame-3-VRP.png
-    - assets/upload-page/images/vector-pCm.png
-    - assets/upload-page/images/vector-477.png
-    - assets/upload-page/images/vector-mXK.png
-    - assets/upload-page/images/vector-Dcq.png
-    - assets/upload-page/images/vector-Wrq.png
-    - assets/upload-page/images/frame-43-dRf.png
-    - assets/upload-page/images/mask-group-ZaD.png
-    - assets/upload-page/images/vector-qGq.png
-    - assets/upload-page/images/frame-20-CDB.png
-    - assets/upload-page/images/vector-6pM.png
-    - assets/upload-page/images/vector-M9F.png
-    - assets/upload-page/images/frame-44-wVf.png
-    - assets/upload-page/images/frame-44-eQ5.png
-    - assets/upload-page/images/vector-N5B.png
-    - assets/upload-page/images/vector-Hxq.png
-    - assets/upload-page/images/frame-822.png
-    - assets/upload-page/images/vector-G45.png
-    - assets/upload-page/images/frame-3-mFj.png
-    - assets/upload-page/images/frame-20-g7o.png
-    - assets/upload-page/images/vector-QpV.png
-    - assets/upload-page/images/vector-6hK.png
-    - assets/upload-page/images/frame-43-3sT.png
-    - assets/upload-page/images/vector-u8y.png
-    - assets/upload-page/images/frame-43-ne1.png
-    - assets/upload-page/images/vector-XJ5.png
-    - assets/upload-page/images/frame-44-emK.png
-    - assets/upload-page/images/vector-w5X.png
-    - assets/upload-page/images/frame-60-TzD.png
-    - assets/upload-page/images/frame-44-kDs.png
-    - assets/upload-page/images/vector-Y5B.png
-    - assets/upload-page/images/material-symbols-location-on-outline.png
-    - assets/upload-page/images/frame-60-GBw.png
-    - assets/upload-page/images/vector-CAh.png
-    - assets/upload-page/images/frame-60-XZw.png
-    - assets/upload-page/images/frame-32-X1X.png
-    - assets/upload-page/images/star-1.png
-    - assets/upload-page/images/frame-3-wx9.png
-    - assets/upload-page/images/vector-niR.png
-    - assets/upload-page/images/vector-TaV.png
-    - assets/upload-page/images/vector-CpD.png
-    - assets/upload-page/images/rectangle-1-bg.png
-    - assets/upload-page/images/frame-60-WRT.png
-    - assets/upload-page/images/vector-8xd.png
-    - assets/upload-page/images/star-1-mem.png
-    - assets/upload-page/images/frame-815.png
-    - assets/upload-page/images/material-symbols-location-on-outline-zg5.png
-    - assets/upload-page/images/frame-43-vbf.png
-    - assets/upload-page/images/frame-44-h6V.png
-    - assets/upload-page/images/vector-DKb.png
-    - assets/upload-page/images/frame-90-JM3.png
-    - assets/upload-page/images/star-1-EEh.png
-    - assets/upload-page/images/frame-822-tmb.png
-    - assets/upload-page/images/ellipse-5-bg.png
-    - assets/upload-page/images/frame-43-4qs.png
-    - assets/upload-page/images/frame-43-aLu.png
-    - assets/upload-page/images/ellipse-5-bg-1js.png
-    - assets/upload-page/images/frame-43-pQM.png
-    - assets/upload-page/images/frame-32-ftq.png
-    - assets/upload-page/images/vector-iLu.png
-    - assets/upload-page/images/frame-44-t4u.png
-    - assets/upload-page/images/vector-7KB.png
-    - assets/upload-page/images/frame-44-srM.png
-    - assets/upload-page/images/vector-92M.png
-    - assets/upload-page/images/frame-44-ddf.png
-    - assets/upload-page/images/vector-za1.png
-    - assets/upload-page/images/frame-44-AHT.png
-    - assets/upload-page/images/frame-43-u7s.png
-    - assets/upload-page/images/frame-39-h6u.png
-    - assets/upload-page/images/frame-44-CZT.png
-    - assets/upload-page/images/vector-qVw.png
-    - assets/upload-page/images/vector-BtZ.png
-    - assets/upload-page/images/frame-43-fad.png
-    - assets/upload-page/images/auto-group-jb1u.png
-    - assets/upload-page/images/vector-ZCh.png
-    - assets/upload-page/images/vector-QQd.png
-    - assets/upload-page/images/frame-43-r13.png
-    - assets/upload-page/images/frame-32-FoB.png
-    - assets/upload-page/images/vector-7cR.png
-    - assets/upload-page/images/frame-43-GB7.png
-    - assets/upload-page/images/vector-PQq.png
-    - assets/upload-page/images/vector-NpV.png
-    - assets/upload-page/images/frame-44-gaH.png
-    - assets/upload-page/images/vector-8Y5.png
-    - assets/upload-page/images/vector-wiM.png
-    - assets/upload-page/images/frame-44-xm3.png
-    - assets/upload-page/images/vector-Sjf.png
-    - assets/upload-page/images/vector-fSD.png
-    - assets/upload-page/images/frame-44-ZnV.png
-    - assets/upload-page/images/vector-v9B.png
-    - assets/upload-page/images/vector-eL5.png
-    - assets/upload-page/images/vector-ajX.png
-    - assets/upload-page/images/frame-3-pds.png
-    - assets/upload-page/images/frame-44-MNu.png
-    - assets/upload-page/images/frame-47.png
-    - assets/upload-page/images/frame-3-5TK.png
-    - assets/upload-page/images/frame-44-57s.png
-    - assets/upload-page/images/frame-47-CCV.png
-    - assets/upload-page/images/frame-3-Ssf.png
-    - assets/upload-page/images/vector-XPK.png
-    - assets/upload-page/images/frame-42-xd3.png
-    - assets/upload-page/images/frame-42-ULV.png
-    - assets/upload-page/images/frame-44-15X.png
-    - assets/upload-page/images/vector-B8R.png
-    - assets/upload-page/images/frame-44-mcR.png
-    - assets/upload-page/images/frame-32-Ham.png
-    - assets/upload-page/images/frame-3-QvH.png
-    - assets/upload-page/images/vector-t3f.png
-    - assets/upload-page/images/vector-NjX.png
-    - assets/upload-page/images/frame-43-tv9.png
-    - assets/upload-page/images/frame-43-TLy.png
-    - assets/upload-page/images/frame-44-DUZ.png
-    - assets/upload-page/images/vector-qPT.png
-    - assets/upload-page/images/frame-44-WkV.png
-    - assets/upload-page/images/frame-32-hKB.png
-    - assets/upload-page/images/frame-43-nbX.png
-    - assets/upload-page/images/vector-ab7.png
-    - assets/upload-page/images/frame-39-a2h.png
-    - assets/upload-page/images/frame-44-Lmj.png
-    - assets/upload-page/images/frame-43-aXX.png
-    - assets/upload-page/images/frame-39-6Vs.png
-    - assets/upload-page/images/frame-44-S3w.png
-    - assets/upload-page/images/frame-43-ZuF.png
-    - assets/upload-page/images/frame-42-Zdo.png
-    - assets/upload-page/images/frame-44-zdB.png
-    - assets/upload-page/images/frame-39-tQm.png
-    - assets/upload-page/images/frame-44-kAZ.png
-    - assets/upload-page/images/vector-hCq.png
-    - assets/upload-page/images/vector-jDP.png
-    - assets/upload-page/images/frame-42-J13.png
-    
+    - assets/payment_img/
+    - assets/subscription_img/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -348,6 +121,10 @@ flutter:
     - family: Great Sailor
       fonts:
         - asset: assets/fonts/Great Sailor.ttf
+
+    - family: Core Sans C
+      fonts:
+        - asset: assets/fonts/core_sans_c.otf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -12,7 +12,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/create_ad/pressentation/activate_promotion.dart';
 import '../../features/create_ad/pressentation/create_user_details.dart';
-import '../../features/post_content/upload-page/share_service_specialty.dart';
+import '../../features/share_service/presentation/share_service_specialty.dart';
 import '../../features/share_service/presentation/select_service_category.dart';
 import '../../features/share_service/presentation/share_service.dart';
 

@@ -1,8 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/timezone.dart';
 import 'package:timezone/data/latest.dart';
+import 'package:timezone/timezone.dart';
+
+import 'statics.dart';
 
 enum NotificationChannel {
   messages,
@@ -18,9 +18,9 @@ class NotificationService {
     );
 
     await _plugin.initialize(initSettings).then((_) {
-      log('setupPlugin: setup success');
+      logger.d("setup success");
     }).catchError((Object error) {
-      log('setupPlugin: error $error');
+      logger.e("setup failed", error);
     });
   }
 

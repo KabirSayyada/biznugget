@@ -3,9 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'network_event.dart';
-
 part 'network_state.dart';
-
 
 class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   NetworkBloc._() : super(NetworkInitial()) {
