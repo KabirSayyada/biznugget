@@ -70,7 +70,7 @@ class AdvertiseScreen extends StatelessWidget {
                         // submit button
                         CustomButtonWidget(
                           text: 'Submit',
-                          gradient: AppColors.primaryGradient(),
+                          //  gradient: AppColors.primaryGradient(),
                           height: Dimensions.height50,
                           width: Dimensions.width200,
                           onTap: () {

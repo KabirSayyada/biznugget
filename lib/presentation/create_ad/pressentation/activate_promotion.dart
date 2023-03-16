@@ -1,4 +1,3 @@
-import 'package:biznugget/features/create_ad/helpers/category_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,8 +7,9 @@ import 'package:getwidget/size/gf_size.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/utils/colors.dart';
-import '../../../general_widget/button.dart';
 import '../../../utils/colors.dart';
+import '../../widgets/button.dart';
+import '../helpers/category_list.dart';
 import '../widgets/term_of_use.dart';
 
 class ActivatePromo extends StatefulWidget {
@@ -94,23 +94,28 @@ class _PublishAdState extends State<ActivatePromo> {
                   });
                 },
                 child: ActivatePromoCard(
-                    groupValue: groupValue,
-                    title: activatePromo.title,
-                    description: activatePromo.description,
-                    amount: activatePromo.amount,
-                    onChanged: (int) {
-                      (value) {
-                        setState(() {
-                          groupValue = value;
-                          isSelected = !isSelected;
-                          setState(() {});
-                        });
-                      };
-                    },
-                    isSelected: isSelected,
-                    color: _currentIndex == index ? Colors.blue : Colors.white,
-                    radioColor: _currentIndex == index ? GFColors.SUCCESS : GFColors.LIGHT,
-                     textColor: _currentIndex == index ? Colors.white : AppColors.primaryColor1,),
+                  groupValue: groupValue,
+                  title: activatePromo.title,
+                  description: activatePromo.description,
+                  amount: activatePromo.amount,
+                  onChanged: (int) {
+                    (value) {
+                      setState(() {
+                        groupValue = value;
+                        isSelected = !isSelected;
+                        setState(() {});
+                      });
+                    };
+                  },
+                  isSelected: isSelected,
+                  color: _currentIndex == index ? Colors.blue : Colors.white,
+                  radioColor: _currentIndex == index
+                      ? GFColors.SUCCESS
+                      : GFColors.LIGHT,
+                  textColor: _currentIndex == index
+                      ? Colors.white
+                      : AppColors.primaryColor1,
+                ),
               );
             },
             itemCount: activatePromoList.length,
@@ -151,22 +156,21 @@ class _PublishAdState extends State<ActivatePromo> {
                       ),
                       child: Column(
                         children: [
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  SvgPicture.asset("assets/svg/cancel_button.svg"),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              SvgPicture.asset("assets/svg/cancel_button.svg"),
+                              const SizedBox(
+                                width: 8,
                               ),
-                              SizedBox(
-                                height: 13.h,
-                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 13.h,
+                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                            
                               Text("Choose your payment method",
                                   style: TextStyle(
                                       color: Colors.black,

@@ -17,7 +17,7 @@ class CategoriesMultiSelectWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: AppColors.primaryGradient(),
+        // gradient: AppColors.primaryGradient(),
         borderRadius: BorderRadius.circular(Dimensions.radius10),
       ),
       child: SmartSelect<String>.multiple(

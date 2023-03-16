@@ -1,5 +1,6 @@
 import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/core/utils/strings.dart';
+import 'app_config/app_routes/app_router.dart';
 import 'presentation/home/business_home/presentation/cubits/advertise_cubit/categories_cubit/categories_cubit.dart';
 import 'presentation/home/business_home/presentation/cubits/advertise_cubit/sub_categories_cubit/sub_categories_cubit.dart';
 import 'presentation/home/business_home/presentation/cubits/business_home_cubit/business_home_cubit.dart';
@@ -12,9 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'app_config/app_routes/app_router.dart';
-
-import 'core/utils/app_router.dart';
 import 'core/utils/app_theme.dart';
 
 class BiznuggetApp extends StatelessWidget {
@@ -27,51 +25,55 @@ class BiznuggetApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
-    return MultiBlocProvider(
-      providers: [
+          return MultiBlocProvider(
+            providers: [
+              /// wishlist provider
+              BlocProvider<WishlistItemsCubit>(
+                  create: (context) =>
+                      WishlistItemsCubit(WishlistRepositoryImpl())
+                        ..fetchAllWishlistItems()),
 
-        /// wishlist provider
-        BlocProvider<WishlistItemsCubit>(
-            create: (context) => WishlistItemsCubit(WishlistRepositoryImpl())
-              ..fetchAllWishlistItems()),
+              /// Network provider
+              BlocProvider<NetworkBloc>(
+                  create: (context) => NetworkBloc()..add(NetworkObserve())),
 
-        /// Network provider
-        BlocProvider<NetworkBloc>(
-            create: (context) => NetworkBloc()..add(NetworkObserve())),
+              /// home bloc
+              BlocProvider<HomeScreenBloc>(
+                  create: (context) => HomeScreenBloc()),
 
-        /// home bloc
-        BlocProvider<HomeScreenBloc>(create: (context) => HomeScreenBloc()),
+              /// Business Home Cubit
+              BlocProvider<BusinessHomeCubit>(
+                  create: (context) => BusinessHomeCubit()),
 
-        /// Business Home Cubit
-        BlocProvider<BusinessHomeCubit>(
-            create: (context) => BusinessHomeCubit()),
+              /// categories cubit
+              BlocProvider<CategoriesCubit>(
+                  create: (context) => CategoriesCubit()),
 
-        /// categories cubit
-        BlocProvider<CategoriesCubit>(create: (context) => CategoriesCubit()),
+              /// Sub categories cubit
+              BlocProvider<SubCategoriesCubit>(
+                  create: (context) => SubCategoriesCubit()),
 
-        /// Sub categories cubit
-        BlocProvider<SubCategoriesCubit>(
-            create: (context) => SubCategoriesCubit()),
+              /// PAYMENT BLOC
+              BlocProvider<PaymentBloc>(
+                  create: (_) =>
+                      PaymentBloc()..add(const PaymentEventInitialize())),
 
-        /// PAYMENT BLOC
-        BlocProvider<PaymentBloc>(
-            create: (_) => PaymentBloc()..add(const PaymentEventInitialize())),
-
-        /// add other bloc/cubit providers here
-      ],
-      child: ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            title: AppStrings.appName,
-            theme: appTheme(),
-            routerConfig: AppRouter.router,
+              /// add other bloc/cubit providers here
+            ],
+            child: ScreenUtilInit(
+              designSize: const Size(360, 690),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (context, child) {
+                return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  title: AppStrings.appName,
+                  theme: appTheme(),
+                  routerConfig: AppRouter.router,
+                );
+              },
+            ),
           );
-        },
-      ),
-    );
-  });
-}}
+        });
+  }
+}

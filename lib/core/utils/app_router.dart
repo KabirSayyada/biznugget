@@ -153,7 +153,7 @@ class AppRouter {
     GoRoute(
       path: selectCategory,
       builder: (BuildContext context, GoRouterState state) {
-        return const SelectCategory();
+        return const SelectAdCategory();
       },
     ),
     GoRoute(

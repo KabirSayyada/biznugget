@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../general_widget/category_card.dart';
-import '../../widgets/input_field.dart';
 import '../../../utils/colors.dart';
+import '../../widgets/category_card.dart';
 import '../helpers/category_list.dart';
 
 class SelectAdCategory extends StatefulWidget {

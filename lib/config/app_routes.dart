@@ -1,21 +1,21 @@
-import 'package:biznugget/features/create_ad/pressentation/create_ad.dart';
-import 'package:biznugget/features/create_ad/pressentation/create_category.dart';
-import 'package:biznugget/features/create_ad/pressentation/create_user_details.dart';
-import 'package:biznugget/features/create_ad/pressentation/publish_ad.dart';
-import 'package:biznugget/features/create_ad/pressentation/select_category.dart';
-import 'package:biznugget/features/create_ad/pressentation/target_location.dart';
-import 'package:biznugget/features/post_job/presentation/post_job.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/utils/strings.dart';
-import '../features/details/presentation/pages/details_screen.dart';
-import '../features/home/presentation/pages/home_screen.dart';
-import '../features/messages/messages_screen.dart';
-import '../features/post_content/presentation/post_content.dart';
-import '../features/splash_screen/presentation/pages/splash_screen.dart';
-import '../features/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
-import '../features/wishlist/presentation/pages/wishlist_screen.dart';
+import '../presentation/create_ad/pressentation/create_ad.dart';
+import '../presentation/create_ad/pressentation/create_category.dart';
+import '../presentation/create_ad/pressentation/create_user_details.dart';
+import '../presentation/create_ad/pressentation/publish_ad.dart';
+import '../presentation/create_ad/pressentation/select_category.dart';
+import '../presentation/create_ad/pressentation/target_location.dart';
+import '../presentation/details/presentation/pages/details_screen.dart';
+import '../presentation/home/user_home/presentation/pages/home_screen.dart';
+import '../presentation/messages/messages_screen.dart';
+import '../presentation/post_content/presentation/post_content.dart';
+import '../presentation/post_job/presentation/post_job.dart';
+import '../presentation/wishlist/data/repositories/local_storage.dart';
+import '../presentation/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
+import '../presentation/wishlist/presentation/pages/wishlist_screen.dart';
 
 class AppRoutes {
   static const String initial = '/';
@@ -26,7 +26,7 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String details = '/details';
 
-    static const String postContent = "/postContent";
+  static const String postContent = "/postContent";
   static const String createAd = "/createAd";
   static const String postJob = "/postJob";
   static const String targetLocation = "/targetLocation";
@@ -47,8 +47,8 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: ((context) {
             return BlocProvider(
-              create: (context) =>
-                  WishlistItemsCubit()..fetchAllWishlistItems(),
+              create: (context) => WishlistItemsCubit(WishlistRepositoryImpl())
+                ..fetchAllWishlistItems(),
               child: WishlistScreen(),
             );
           }),
@@ -56,11 +56,11 @@ class AppRoutes {
 
       /// home
       case AppRoutes.homeScreen:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(builder: (context) => HomeScreen());
 
       /// advertise
       case AppRoutes.advertise:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(builder: (context) => HomeScreen());
 
       /// messages
       case AppRoutes.messages:
@@ -68,7 +68,7 @@ class AppRoutes {
 
       /// profile
       case AppRoutes.profile:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(builder: (context) => HomeScreen());
 
       /// DetailsScreen
       case AppRoutes.details:
@@ -96,11 +96,13 @@ class AppRoutes {
 
       /// SelectCategoryScreen
       case AppRoutes.selectCategory:
-        return MaterialPageRoute(builder: (context) => const SelectAdCategory());
+        return MaterialPageRoute(
+            builder: (context) => const SelectAdCategory());
 
       /// CreateUserDetailsScreen
       case AppRoutes.createUserDetails:
-        return MaterialPageRoute(builder: (context) => const CreateUserDetails());
+        return MaterialPageRoute(
+            builder: (context) => const CreateUserDetails());
 
       /// PublishAdScreen
       case AppRoutes.publishAd:

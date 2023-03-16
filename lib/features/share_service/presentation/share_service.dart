@@ -1,4 +1,3 @@
-import 'package:biznugget/general_widget/widgets.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,11 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app_config/app_routes/route_path.dart';
+import '../../../presentation/create_ad/widgets/dropdown_widget.dart';
+import '../../../presentation/widgets/custom_appbar.dart';
+import '../../../presentation/widgets/input_field.dart';
 import '../../../utils/colors.dart';
-import '../../create_ad/widgets/dropdown_widget.dart';
 
 class ShareService extends StatefulWidget {
-  const ShareService({super.key,  this.category});
+  const ShareService({super.key, this.category});
 
   final String? category;
 
@@ -23,9 +24,9 @@ class _ShareServiceState extends State<ShareService> {
   bool isPasswordObscure = true;
 
   String errorText = "";
-   String exchangeValue = 'Years of experience';
+  String exchangeValue = 'Years of experience';
 
-    List<String> exchangeList = [
+  List<String> exchangeList = [
     "Years of experience",
     '1',
     '2',
@@ -37,7 +38,6 @@ class _ShareServiceState extends State<ShareService> {
     '8',
     '9',
     '10',
-    
   ];
 
   @override
@@ -65,9 +65,7 @@ class _ShareServiceState extends State<ShareService> {
                 const Color(0xff3F56F2).withOpacity(0.3),
               ],
             ),
-            onTap: () {
-             
-            },
+            onTap: () {},
           )),
       body: SingleChildScrollView(
         child: Padding(
@@ -88,43 +86,43 @@ class _ShareServiceState extends State<ShareService> {
                 ),
               ],
             ),
-      
+
             InkWell(
               onTap: () async {
-               // context.push('/selectServiceCategory');
-                final result =  context.go('/categories') as String?;
+                // context.push('/selectServiceCategory');
+                final result = context.go('/categories') as String?;
               },
               child: InputField(
                 title: "Category",
-                hintText: 'Select occupation' ,
+                hintText: 'Select occupation',
                 suffixIcon: const Icon(Icons.arrow_forward_ios_rounded),
                 controller: categoryController,
                 enabled: false,
               ),
             ),
-           
+
             InkWell(
               onTap: () async {
-               // context.push('/selectServiceCategory');
-                 context.push(RoutePath.shareServiceSpecialty);
+                // context.push('/selectServiceCategory');
+                context.push(RoutePath.shareServiceSpecialty);
               },
               child: InputField(
                 title: "Specialty",
-                hintText: 'Choose your expertise' ,
+                hintText: 'Choose your expertise',
                 suffixIcon: const Icon(Icons.arrow_forward_ios_rounded),
                 controller: categoryController,
                 enabled: false,
               ),
             ),
-           
+
             InkWell(
               onTap: () async {
-               // context.push('/selectServiceCategory');
-                final result =  context.go('/categories') as String?;
+                // context.push('/selectServiceCategory');
+                final result = context.go('/categories') as String?;
               },
               child: InputField(
                 title: "Skills",
-                hintText: 'Select the skills that suit you' ,
+                hintText: 'Select the skills that suit you',
                 suffixIcon: const Icon(Icons.arrow_forward_ios_rounded),
                 controller: categoryController,
                 enabled: false,
@@ -157,7 +155,7 @@ class _ShareServiceState extends State<ShareService> {
             SizedBox(
               height: 10.h,
             ),
-      
+
             DottedBorder(
               borderType: BorderType.RRect,
               radius: const Radius.circular(12),
@@ -167,44 +165,44 @@ class _ShareServiceState extends State<ShareService> {
                 child: SizedBox(
                   height: 115.h,
                   width: 300,
-                 // color: Colors.amber,
+                  // color: Colors.amber,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    SvgPicture.asset("assets/svg/upload_file.svg"),
-                    SizedBox(height:    5.h),
-                    Text(
-              "Drop files here",
-              style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                 ),
-            ),
-                  ],),
+                      SvgPicture.asset("assets/svg/upload_file.svg"),
+                      SizedBox(height: 5.h),
+                      Text(
+                        "Drop files here",
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-      
+
             // SizedBox(
             //   height: 7.h,
             // ),
-           
-      
+
             const InputField(
               title: "Description",
               hintText: 'Describe your work history and past projects.',
               maxLines: 3,
               minLines: 2,
             ),
-        DropDownWidget(
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      exchangeValue = newValue!;
-                    });
-                  },
-                  dropdownValue: exchangeValue,
-                  dropDownMenuItems: exchangeList,
-                ),
+            DropDownWidget(
+              onChanged: (String? newValue) {
+                setState(() {
+                  exchangeValue = newValue!;
+                });
+              },
+              dropdownValue: exchangeValue,
+              dropDownMenuItems: exchangeList,
+            ),
             SizedBox(height: width * 0.2.h),
             RichText(
               text: const TextSpan(
@@ -237,7 +235,7 @@ class AppBarButton extends StatelessWidget {
   const AppBarButton({
     super.key,
     required this.buttonColor,
-     this.title = "Next",
+    this.title = "Next",
   });
   final List<Color> buttonColor;
   final String? title;

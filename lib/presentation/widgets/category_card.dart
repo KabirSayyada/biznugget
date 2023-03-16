@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/colors.dart';
+import '../../utils/colors.dart';
 
 class CategoryCard extends StatelessWidget {
-
-   final List<TextInputFormatter>? inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
   final AutovalidateMode? autovalidateMode;
   final TextAlign? textAlign;
   final TextInputType? keyBoardType;
@@ -75,23 +74,22 @@ class CategoryCard extends StatelessWidget {
     this.labelRightItem,
     this.labelStyle,
     this.initialValue,
-    this.suffixTitle, this.title = '',
+    this.suffixTitle,
+    this.title = '',
   });
-
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-    
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
-           
             boxShadow: [
               BoxShadow(
-                color: const Color.fromARGB(255, 143, 141, 141).withOpacity(0.5),
+                color:
+                    const Color.fromARGB(255, 143, 141, 141).withOpacity(0.5),
                 spreadRadius: 1,
                 blurRadius: 2,
                 offset: const Offset(1, 2), // changes position of shadow
@@ -99,37 +97,37 @@ class CategoryCard extends StatelessWidget {
             ],
           ),
           child: TextFormField(
-                initialValue: initialValue,
-                    showCursor: showCursor,
-                    readOnly: readOnly,
-                    maxLength: maxLength,
-                    enabled: enabled,
-                    onTap: onTap,
-                    maxLines: maxLines,
-                    minLines: minLines,
-                    autovalidateMode: autovalidateMode,
-                    focusNode: focusnode,
-                    controller: controller,
-                     onChanged: onChanged,
-                     keyboardType: keyBoardType,
-                     inputFormatters: inputFormatters,
-                    onEditingComplete: onEdittingComplete,
-                    obscureText: obscureText ?? false,
-            decoration:  InputDecoration(
-              
-              border: InputBorder.none,
-               suffixIcon: suffixIcon,
+            initialValue: initialValue,
+            showCursor: showCursor,
+            readOnly: readOnly,
+            maxLength: maxLength,
+            enabled: enabled,
+            onTap: onTap,
+            maxLines: maxLines,
+            minLines: minLines,
+            autovalidateMode: autovalidateMode,
+            focusNode: focusnode,
+            controller: controller,
+            onChanged: onChanged,
+            keyboardType: keyBoardType,
+            inputFormatters: inputFormatters,
+            onEditingComplete: onEdittingComplete,
+            obscureText: obscureText ?? false,
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                suffixIcon: suffixIcon,
                 hintText: hintText,
                 hintStyle: TextStyle(
-                  fontSize: 14.sp, fontWeight: FontWeight.w400, color: hintColor ?? AppColor.hintGrey
-                ),
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: hintColor ?? AppColor.hintGrey),
                 fillColor: Colors.white,
                 hoverColor: Colors.blue,
                 filled: true,
-                contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                contentPadding:
+                    const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                 enabledBorder: const OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.white, width: 3.0))),
+                    borderSide: BorderSide(color: Colors.white, width: 3.0))),
           ),
         ),
       ],

@@ -1,11 +1,8 @@
 import 'package:biznugget/core/utils/app_constants.dart';
-import 'package:biznugget/features/home/business_acc_home/presentation/pages/_2_advertise_screen.dart';
-import 'package:biznugget/features/home/presentation/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../messages/messages_screen.dart';
-import '../../../post_content/presentation/post_content.dart';
+import '../../../../presentation/messages/messages_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
