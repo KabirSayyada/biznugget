@@ -1,6 +1,6 @@
 class RoutePath {
-  static const String startedScreen = "/";
-  static const String postContent = "/postContent";
+  //static const String startedScreen = "/";
+  static const String postContent = "/";
   static const String createAd = "/createAd";
   static const String postJob = "/postJob";
   static const String targetLocation = "/targetLocation";
@@ -8,7 +8,9 @@ class RoutePath {
   static const String selectCategory = "/selectCategory";
   static const String createUserDetails = "/createUserDetails";
   static const String publishAd = "/publishAd";
-  static const String payment = "/payment";
-  static const String paidAdsBasicInfo = '/paidAdsBasicInfo';
-  static const String paidAdsAudience = '/paidAdsAudience';
+  static const String shareService = "/shareService";
+  static const String selectServiceCategory = "/selectServiceCategory";
+  static const String activatePromo = "/activatePromo";
+  static const String shareServiceSpecialty = "/shareServiceSpecialty";
+ 
 }
