@@ -21,8 +21,8 @@ class DetailsScreen extends StatelessWidget {
             width: double.maxFinite,
             height: double.maxFinite,
             decoration: BoxDecoration(
-              gradient: AppColors.primaryGradient(),
-            ),
+                // gradient: AppColors.primaryGradient(),
+                ),
           ),
 
           /// images slider
@@ -113,7 +113,7 @@ class ItemDetails extends StatelessWidget {
                 width: Dimensions.width125,
                 padding: EdgeInsets.symmetric(horizontal: Dimensions.width15),
                 decoration: BoxDecoration(
-                  gradient: AppColors.primaryGradient(),
+                  // gradient: AppColors.primaryGradient(),
                   borderRadius: BorderRadius.circular(Dimensions.radius5),
                 ),
                 child: Row(

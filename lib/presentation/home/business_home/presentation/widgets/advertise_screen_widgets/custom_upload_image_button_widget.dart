@@ -17,7 +17,7 @@ class CustomUploadImageButton extends StatelessWidget {
             height: Dimensions.height40,
             width: Dimensions.width40,
             decoration: BoxDecoration(
-              gradient: AppColors.primaryGradient(),
+              // gradient: AppColors.primaryGradient(),
               shape: BoxShape.circle,
             ),
             child: Icon(

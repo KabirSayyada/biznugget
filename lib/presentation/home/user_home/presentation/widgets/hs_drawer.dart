@@ -16,7 +16,7 @@ class HSDrawer extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(0),
         child: Container(
           decoration: BoxDecoration(
-            gradient: AppColors.primaryGradient(),
+            // gradient: AppColors.primaryGradient(),
             // color: AppColors.primaryColor1,
             borderRadius: BorderRadius.circular(Dimensions.radius10),
           ),

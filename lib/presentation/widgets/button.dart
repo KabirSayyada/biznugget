@@ -23,9 +23,9 @@ class Button extends StatelessWidget {
       child: Container(
         height: 41.h,
         width: width,
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.all(
-            Radius.circular(5),
+            Radius.circular(10),
           ),
           gradient: LinearGradient(
             begin: Alignment.centerLeft,

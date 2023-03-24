@@ -22,7 +22,7 @@ class SubCategoriesMultiSelectWidget extends StatelessWidget {
                 .isNotEmpty) {
           return Container(
             decoration: BoxDecoration(
-              gradient: AppColors.primaryGradient(),
+              // gradient: AppColors.primaryGradient(),
               borderRadius: BorderRadius.circular(Dimensions.radius10),
             ),
             child: SmartSelect<String>.multiple(
