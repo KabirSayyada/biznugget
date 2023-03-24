@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">5916844198431773</string>
+    <string name="fb_login_protocol_scheme">fb5916844198431773</string>
+    <string name="facebook_client_token">85f8e9f0c171a1cbf8770a1b7bbd233b</string>
+    <string name="app_name">Biznugget</string>
+
+</resources>

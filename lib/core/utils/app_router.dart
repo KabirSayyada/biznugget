@@ -1,3 +1,6 @@
+import 'package:biznugget/presentation/account_type/presentation/acc_type_screen.dart';
+import 'package:biznugget/presentation/signin/auth_checker.dart';
+import 'package:biznugget/presentation/signin/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -48,6 +51,9 @@ class AppRouter {
   static const String publishAd = "/publishAd";
   static const String paidAdsBasicInfo = '/paidAdsBasicInfo';
   static const String paidAdsAudience = '/paidAdsAudience';
+  static const String authChecker = '/authChecker';
+  static const String signInScreen = '/signInScreen';
+  static const String accTypeScreen = '/accTypeScreen';
 
   static final routes = [
     GoRoute(
@@ -184,6 +190,25 @@ class AppRouter {
       path: paidAdsAudience,
       builder: (BuildContext context, GoRouterState state) {
         return const PaidAdsAudienceScreen(i: 1);
+      },
+    ),
+    //checks if user is authenticated
+    GoRoute(
+      path: authChecker,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AuthChecker();
+      },
+    ),
+    GoRoute(
+      path: signInScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const SigninScreen();
+      },
+    ),
+    GoRoute(
+      path: accTypeScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AccountTypeScreen();
       },
     ),
   ];

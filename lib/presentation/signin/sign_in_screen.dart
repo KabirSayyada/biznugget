@@ -1,32 +1,33 @@
 import 'package:biznugget/core/common/widgets/custom_formfield.dart';
 import 'package:biznugget/core/common/widgets/social_media_buttons.dart';
+import 'package:biznugget/presentation/signin/view_model/login_controler.dart';
+import 'package:biznugget/presentation/signin/view_model/login_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SigninScreen extends StatefulWidget {
+class SigninScreen extends ConsumerStatefulWidget {
   const SigninScreen({super.key});
 
   @override
-  State<SigninScreen> createState() => _SigninScreenState();
+  ConsumerState<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _SigninScreenState extends State<SigninScreen> {
+class _SigninScreenState extends ConsumerState<SigninScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
   bool _isObscure = true;
-
-  @override
-  void dispose() {
-    super.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    ref.listen<LoginState>(loginControllerProvider, ((previous, state) {
+      if (state is LoginStateError) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(state.error)));
+      }
+    }));
     return GestureDetector(
       onTap: () {
         //unfocuses the textfield if users click anywhere on the screen
@@ -89,138 +90,141 @@ class _SigninScreenState extends State<SigninScreen> {
                 const SizedBox(height: 10),
                 const Text('Welcome back to Biznugget',
                     style: TextStyle(fontSize: 15)),
-                Form(
-                    key: _formKey,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25.0, 40.0, 25, 10.0),
-                      child: Column(
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(25.0, 40.0, 25, 10.0),
+                  child: Column(
+                    children: [
+                      Wrap(
                         children: [
-                          Wrap(
-                            children: [
-                              const Text(
-                                'E-mail',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black),
-                              ),
-                              CustomFormField(
-                                textController: emailController,
-                                hintText: 'Enter E-mail',
-                                isObscure: !_isObscure,
-                              ),
-                            ],
+                          const Text(
+                            'E-mail',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
                           ),
-                          SizedBox(height: height * 0.02),
-                          Wrap(
-                            runAlignment: WrapAlignment.start,
-                            children: [
-                              const Text(
-                                'Password',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black),
-                              ),
-                              CustomFormField(
-                                textController: emailController,
-                                hintText: 'Enter Password',
-                                isObscure: _isObscure,
-                                suffixIcon: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _isObscure = !_isObscure;
-                                      });
-                                    },
-                                    icon: Icon(_isObscure
-                                        ? Icons.visibility_off
-                                        : Icons.visibility),
-                                    iconSize: 30,
-                                    color: const Color(0xFFAFAFAF)),
-                              ),
-                            ],
+                          CustomFormField(
+                            textController: emailController,
+                            hintText: 'Enter E-mail',
+                            isObscure: !_isObscure,
                           ),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: TextButton(
+                        ],
+                      ),
+                      SizedBox(height: height * 0.02),
+                      Wrap(
+                        runAlignment: WrapAlignment.start,
+                        children: [
+                          const Text(
+                            'Password',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
+                          CustomFormField(
+                            textController: passwordController,
+                            hintText: 'Enter Password',
+                            isObscure: _isObscure,
+                            suffixIcon: IconButton(
                                 onPressed: () {
-                                  //naviagtes to password reset page
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
                                 },
-                                child: const Text(
-                                  'Forgot Password?',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Color(0xFF212121)),
-                                ),
-                              )),
-                          Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 20.0),
-                            child: MaterialButton(
-                              onPressed: () {},
-                              height: 40,
-                              minWidth: width / 2,
-                              color: const Color(0xFF01C3CC),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: const Text(
-                                'Sign In',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
+                                icon: Icon(_isObscure
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
+                                iconSize: 30,
+                                color: const Color(0xFFAFAFAF)),
                           ),
-                          SizedBox(
-                            height: height * 0.03,
-                            child: Text('Or continue with',
-                                style: GoogleFonts.poppins(
-                                    color: const Color(0xFFDCDCDC),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500)),
-                          ),
-                           SizedBox(height: height * 0.02),
-                                FittedBox(
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      SocialMediaButtons(
-                                        height: height * 0.12,
-                                        width: width / 3,
-                                        elevation: 5.0,
-                                        onTap: () {
-                                          // _googleSignIn(context);
-                                        },
-                                        widget: Image.asset(
-                                            'assets/images/google.png'),
-                                      ),
-                                      SocialMediaButtons(
-                                        height: height * 0.12,
-                                        width: width / 3,
-                                        elevation: 5.0,
-                                        onTap: () {
-                                          // _twitterSignIn(context);
-                                        },
-                                        widget: Image.asset(
-                                            'assets/images/twitter.png'),
-                                      ),
-                                      SocialMediaButtons(
-                                        height: height * 0.12,
-                                        width: width / 3,
-                                        elevation: 5.0,
-                                        onTap: () {
-                                          // _facebookSignIn(context);
-                                        },
-                                        widget: Image.asset(
-                                            'assets/images/facebook.png'),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
+                        ],
+                      ),
+                      Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {
+                              //naviagtes to password reset page
+                            },
+                            child: const Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                  fontSize: 16, color: Color(0xFF212121)),
                             ),
                           )),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 20.0),
+                        child: MaterialButton(
+                          onPressed: () {
+                            ref.read(loginControllerProvider.notifier).login(
+                                emailController.text, passwordController.text);
+                          },
+                          height: 40,
+                          minWidth: width / 2,
+                          color: const Color(0xFF01C3CC),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          child: const Text(
+                            'Sign In',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.03,
+                        child: Text('Or continue with',
+                            style: GoogleFonts.poppins(
+                                color: const Color(0xFFDCDCDC),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500)),
+                      ),
+                      SizedBox(height: height * 0.02),
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SocialMediaButtons(
+                              height: height * 0.12,
+                              width: width / 3,
+                              elevation: 5.0,
+                              onTap: () {
+                                ref
+                                    .read(loginControllerProvider.notifier)
+                                    .loginWithGoogle();
+                                // _googleSignIn
+                              },
+                              widget: Image.asset('assets/images/google.png'),
+                            ),
+                            SocialMediaButtons(
+                              height: height * 0.12,
+                              width: width / 3,
+                              elevation: 5.0,
+                              onTap: () {
+                                // _twitterSignIn(context);
+                              },
+                              widget: Image.asset('assets/images/twitter.png'),
+                            ),
+                            SocialMediaButtons(
+                              height: height * 0.12,
+                              width: width / 3,
+                              elevation: 5.0,
+                              onTap: () {
+                                ref
+                                    .read(loginControllerProvider.notifier)
+                                    .loginWithFacebook();
+                                // _facebookSignIn
+                              },
+                              widget: Image.asset('assets/images/facebook.png'),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

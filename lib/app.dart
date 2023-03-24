@@ -11,7 +11,6 @@ import 'presentation/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/utils/app_router.dart';
 import 'core/utils/app_theme.dart';
 
