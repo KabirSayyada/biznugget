@@ -13,7 +13,9 @@ class TermsOfUse extends StatelessWidget {
         text: const TextSpan(
             text: "By clicking on Publish, you accept the ",
             style: TextStyle(
-                color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
+                color: Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.w400),
             children: [
               TextSpan(
                   text: "Terms of Use",

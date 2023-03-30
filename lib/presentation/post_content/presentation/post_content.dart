@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app_config/app_routes/route_path.dart';
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 import '../data/models/post_content_model.dart';
 
 class PostContent extends StatefulWidget {

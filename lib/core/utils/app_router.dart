@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:go_router/go_router.dart';
 
+import '../../presentation/create_ad/pressentation/activate_promotion.dart';
 import '../../presentation/create_ad/pressentation/create_ad.dart';
 import '../../presentation/create_ad/pressentation/create_category.dart';
 import '../../presentation/create_ad/pressentation/create_user_details.dart';
@@ -19,7 +20,9 @@ import '../../presentation/payment/payment_view/payment_screen.dart';
 import '../../presentation/post_content/presentation/post_content.dart';
 import '../../presentation/post_job/presentation/post_job.dart';
 import '../../presentation/profile/presentation/pages/profile_screen.dart';
-import '../../presentation/splash/presentation/pages/splash_screen.dart';
+import '../../presentation/share_service/data/models/specialty_model.dart';
+import '../../presentation/share_service/presentation/pages.dart';
+import '../../presentation/share_service/presentation/share_service_specialty.dart';
 import '../../presentation/traders/trader_screen.dart';
 import '../../presentation/traders/traders_screen.dart';
 import '../../presentation/wishlist/data/repositories/local_storage.dart';
@@ -27,7 +30,8 @@ import '../../presentation/wishlist/presentation/cubits/wishlist_items_cubit/wis
 import '../../presentation/wishlist/presentation/pages/wishlist_screen.dart';
 
 class AppRouter {
-  static const String initial = '/';
+  // static const String initial = '/';
+  static const String initial1 = '/';
   static const String wishlist = '/wishlist';
   static const String home = '/home';
   static const String advertise = '/advertise';
@@ -48,12 +52,26 @@ class AppRouter {
   static const String publishAd = "/publishAd";
   static const String paidAdsBasicInfo = '/paidAdsBasicInfo';
   static const String paidAdsAudience = '/paidAdsAudience';
+  static const String shareService = '/shareService/:cgy';
+  static const String selectServiceCategory = '/selectServiceCategory';
+  static const String shareServicePage2 = '/shareServicePage2';
+  static const String shareServicePage3 = '/shareServicePage3';
+  static const String shareServicePage4 = '/shareServicePage4';
+  static const String publishShareService = '/publishShareService';
+  static const String activatePromo = '/activatePromo';
+  static const String shareServiceSpecialty  = '/shareServiceSpecialty';
 
   static final routes = [
+    // GoRoute(
+    //   path: initial,
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     return const SplashScreen();
+    //   },
+    // ),
     GoRoute(
-      path: initial,
+      path: initial1,
       builder: (BuildContext context, GoRouterState state) {
-        return const SplashScreen();
+        return const PostContent();
       },
     ),
     GoRoute(
@@ -153,7 +171,7 @@ class AppRouter {
     GoRoute(
       path: selectCategory,
       builder: (BuildContext context, GoRouterState state) {
-        return const SelectCategory();
+        return const SelectAdCategory();
       },
     ),
     GoRoute(
@@ -186,6 +204,99 @@ class AppRouter {
         return const PaidAdsAudienceScreen(i: 1);
       },
     ),
+  
+    GoRoute(
+        path: createAd,
+        builder: (BuildContext context, GoRouterState state) {
+          return const CreateAd();
+        }),
+    GoRoute(
+        path: postJob,
+        builder: (BuildContext context, GoRouterState state) {
+          return const PostJob();
+        }),
+    GoRoute(
+        path: targetLocation,
+        builder: (BuildContext context, GoRouterState state) {
+          return const TargetLocation();
+        }),
+    GoRoute(
+        path: createCategory,
+        builder: (BuildContext context, GoRouterState state) {
+          return const CreateCategory();
+        }),
+    GoRoute(
+        path: selectCategory,
+        builder: (BuildContext context, GoRouterState state) {
+          return const SelectAdCategory();
+        }),
+    GoRoute(
+        path: createUserDetails,
+        builder: (BuildContext context, GoRouterState state) {
+          return const CreateUserDetails();
+        }),
+    GoRoute(
+        path: publishAd,
+        builder: (BuildContext context, GoRouterState state) {
+          return const PublishAd();
+        }),
+    GoRoute(
+      name: 'shareService',
+        path: '/shareService',
+        builder: (BuildContext context, GoRouterState state) {
+         SpecialtyType specialtyType = state.extra as SpecialtyType;
+  final category = state.queryParams['cgy'];
+          return   ShareService(
+             category: category,
+            );
+        }),
+    GoRoute(
+        path: selectServiceCategory,
+        builder: (BuildContext context, GoRouterState state) {
+          return const SelectServiceCategory();
+        }),
+    
+    GoRoute(
+      name: 'shareServicePage2',
+        path: shareServicePage2,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ShareServicePage2();
+        }),
+    GoRoute(
+      name: 'shareServicePage3',
+        path: shareServicePage3,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ShareServicePage3();
+        }),
+    GoRoute(
+      name: 'shareServicePage4',
+        path: shareServicePage4,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ShareServicePage4();
+        }),
+    
+    GoRoute(
+      name: 'publishShareService',
+        path: publishShareService,
+        builder: (BuildContext context, GoRouterState state) {
+          return const PublishShareService();
+        }),
+    
+    
+    GoRoute(
+        path: activatePromo,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ActivatePromo();
+        }),
+    GoRoute(
+      name: 'specialtyType',
+        path: shareServiceSpecialty,
+        builder: (BuildContext context, GoRouterState state) {
+        SpecialtyType specialtyType = state.extra as SpecialtyType;
+
+          return const ShareServiceSpecialty();
+        }),
+   
   ];
 
   static final GoRouter router = GoRouter(routes: routes);

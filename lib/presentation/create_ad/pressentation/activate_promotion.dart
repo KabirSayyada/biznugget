@@ -1,4 +1,3 @@
-import 'package:biznugget/features/create_ad/helpers/category_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,9 +7,12 @@ import 'package:getwidget/size/gf_size.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/utils/colors.dart';
-import '../../../general_widget/button.dart';
-import '../../../utils/colors.dart';
-import '../widgets/term_of_use.dart';
+import '../../../utils/colors_.dart';
+import '../../../widgets/button.dart';
+import '../../../widgets/widgets.dart';
+import '../../widgets/button.dart';
+import '../helpers/category_list.dart';
+import '/widgets/button.dart';
 
 class ActivatePromo extends StatefulWidget {
   const ActivatePromo({super.key});
@@ -219,6 +221,9 @@ class _PublishAdState extends State<ActivatePromo> {
     );
   }
 }
+
+
+
 
 class ActivatePromoCard extends StatelessWidget {
   const ActivatePromoCard(

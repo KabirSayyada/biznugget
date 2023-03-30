@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 import '../constant/constant.dart';
 
 class PaidAdsCustomAppBar extends StatelessWidget {

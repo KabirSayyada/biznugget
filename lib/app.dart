@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'app_config/app_routes/app_router.dart';
+import 'app_config/app_routes/app_router.dart' as  app_router;
 
 import 'core/utils/app_router.dart';
 import 'core/utils/app_theme.dart';

@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../widgets/widgets.dart';
 import '../../widgets/button.dart';
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 import '../data/constants.dart';
-import '../widgets/term_of_use.dart';
 
 class PublishAd extends StatefulWidget {
   const PublishAd({super.key});

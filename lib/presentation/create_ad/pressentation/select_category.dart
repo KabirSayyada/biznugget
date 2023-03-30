@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../general_widget/category_card.dart';
 import '../../widgets/input_field.dart';
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
+import '../../widgets/widgets.dart';
 import '../helpers/category_list.dart';
+import 'package:flutter/services.dart';
 
 class SelectAdCategory extends StatefulWidget {
   const SelectAdCategory({super.key});
@@ -124,3 +125,5 @@ class _SelectAdCategoryState extends State<SelectAdCategory> {
     );
   }
 }
+
+

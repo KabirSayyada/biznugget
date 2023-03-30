@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../widgets/input_field.dart';
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 
 class CreateAd extends StatefulWidget {
   const CreateAd({super.key});

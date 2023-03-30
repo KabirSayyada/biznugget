@@ -4,43 +4,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../utils/colors_.dart';
 import '../../../widgets/widgets.dart';
 import '../../widgets/button.dart';
-import '../../../utils/colors_.dart';
 import '../../widgets/input_field.dart';
 
-class CreateUserDetails extends StatefulWidget {
-  const CreateUserDetails({super.key});
+class ShareServicePage4 extends StatefulWidget {
+  const ShareServicePage4 ({super.key});
 
   @override
-  State<CreateUserDetails> createState() => _CreateUserDetailsState();
+  State<ShareServicePage4 > createState() => _ShareServicePage4State();
 }
 
-class _CreateUserDetailsState extends State<CreateUserDetails> {
+class _ShareServicePage4State extends State<ShareServicePage4 > {
   bool isWarrantyChecked = false;
   bool isNegotiableChecked = false;
-
-  String dropdown = '';
-  String productContidionValue = 'Product condition';
-  String exchangeValue = 'No';
-  String deliveryTimeValue = 'Select time';
-
-  List<String> productConditionList = [
-    "Product condition",
-    'New',
-    'Foreign used',
-    'Nigerian used'
-  ];
-  List<String> deliveryTimeList = [
-    "Select time",
-    'Instant',
-    '2-3 days',
-    '4-6 days'
-  ];
-  List<String> exchangeList = [
-    "No",
-    'Yes',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +47,7 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
             elevation: 4.0.h,
             centerTitle: true,
             title: Text(
-              "Create an ad",
+              "Share a service",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.sp,
@@ -92,31 +70,7 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                           "assets/svg/cancel.svg",
                           fit: BoxFit.fill,
                         )),
-                    // child: Container(
-                    //   margin: const EdgeInsets.symmetric(horizontal: 10),
-                    //   height: 34.h,
-                    //   width: 56.w,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: const BorderRadius.all(
-                    //       Radius.circular(5),
-                    //     ),
-                    //     gradient: LinearGradient(
-                    //       begin: Alignment.centerLeft,
-                    //       end: Alignment.centerRight,
-                    //       colors: [
-                    //         const Color(0xff01C3CC).withOpacity(0.3),
-                    //         const Color(0xff3F56F2).withOpacity(0.3),
-                    //       ],
-                    //     ),
-                    //   ),
-                    //   child: Center(
-                    //     child: Text(
-                    //       "Next",
-                    //       style: TextStyle(
-                    //           fontSize: 12.sp, fontWeight: FontWeight.w600),
-                    //     ),
-                    //   ),
-                    // ),
+             
                   ),
                 ],
               ),
@@ -133,10 +87,10 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                   children: [
                     SvgPicture.asset(
                       'assets/svg/progress_bar_3.svg',
-                      width: MediaQuery.of(context).size.width.w * 0.8,
+                      width: MediaQuery.of(context).size.width.w * 0.76,
                     ),
                     Text(
-                      '3/3',
+                      '4/4',
                       style: TextStyle(
                           fontSize: 14.sp, fontWeight: FontWeight.w500),
                     ),
@@ -163,7 +117,26 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                   hintText: 'Enter email',
                   keyBoardType: TextInputType.emailAddress,
 
-                  //
+                  
+                ),
+               
+                  InputField(
+                  title: "Location",
+                  //enabled: false,
+                  hintText: 'Enter your address',
+                  keyBoardType: TextInputType.name,
+                  prefixIcon: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    height: 30,
+                    width: 32,
+                    //decoration: const BoxDecoration(color: AppColor.grey002),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        'assets/svg/location_icon.svg',
+                        height: 30,
+                      ),
+                    ),
+                  ),
                 ),
                 InkWell(
                   onTap: () {},
@@ -175,7 +148,7 @@ class _CreateUserDetailsState extends State<CreateUserDetails> {
                   title: 'Preview',
                   width: MediaQuery.of(context).size.width * 0.7.w,
                   onTap: () {
-                    context.push('/publishAd');
+                    context.push('/publishShareService');
                   },
                 ),
                 SizedBox(

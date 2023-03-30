@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 import '../constant/constant.dart';
 import '../widget/Custom_hint_text.dart';
 import '../widget/custom_page_indicator.dart';

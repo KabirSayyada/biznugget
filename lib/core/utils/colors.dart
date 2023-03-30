@@ -57,6 +57,24 @@ class AppColors {
   //   );
   // }
 
+
+  ///this might not ne the exact color I had so many errors so i juist had to put this to be able to carry on. 
+  ///the exact file or color is missing ever since i pullled from the main branch
+  static Gradient primaryGradient () {
+    return  LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        primaryColor1,
+        primaryColor2.withOpacity(0.8),
+      ],
+      stops: const [
+        0.25,
+        1.0,
+      ],
+    );
+  }
+
   static customGradient({
     required Color color1,
     required Color color2,

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../utils/colors.dart';
+import '../../utils/colors_.dart';
 
 class CategoryCard extends StatelessWidget {
 
@@ -136,3 +135,5 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
+
+

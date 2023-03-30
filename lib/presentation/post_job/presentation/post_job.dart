@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 
 class PostJob extends StatefulWidget {
   const PostJob({super.key});

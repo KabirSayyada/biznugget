@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 
 class CustomPageIndicator extends StatelessWidget {
   final int index;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../utils/colors.dart';
+import '../../utils/colors_.dart';
 
 class InputField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
@@ -39,6 +39,7 @@ class InputField extends StatelessWidget {
   final String? initialValue;
   final Widget? suffixTitle;
   final String title;
+  final Color? titleColor;
 
   const InputField({
     super.key,
@@ -76,6 +77,7 @@ class InputField extends StatelessWidget {
     this.initialValue,
     this.suffixTitle,
     this.title = '',
+    this.titleColor
   });
 
   @override
@@ -88,7 +90,8 @@ class InputField extends StatelessWidget {
         ),
         Text(
           title,
-          style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, 
+          color:titleColor ?? Colors.black  ),
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
@@ -123,6 +126,7 @@ class InputField extends StatelessWidget {
             decoration: InputDecoration(
                 border: InputBorder.none,
                 suffixIcon: suffixIcon,
+                prefixIcon: prefixIcon,
                 hintText: hintText,
                 hintStyle: TextStyle(
                     fontSize: 14.sp,

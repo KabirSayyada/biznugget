@@ -1,11 +1,10 @@
-import 'package:biznugget/app_config/app_routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../general_widget/category_card.dart';
-import '../../../utils/colors.dart';
+import '../../../utils/colors_.dart';
 import '../../create_ad/helpers/category_list.dart';
+import '../../widgets/category_card.dart';
 
 class SelectServiceCategory extends StatefulWidget {
   const SelectServiceCategory({super.key});
@@ -17,7 +16,6 @@ class SelectServiceCategory extends StatefulWidget {
 class _SelectServiceCategoryState extends State<SelectServiceCategory> {
   String dropdown = '';
   String dropdownValue = 'New';
-
 
   String searchString = "";
 
@@ -61,7 +59,6 @@ class _SelectServiceCategoryState extends State<SelectServiceCategory> {
           padding: const EdgeInsets.all(15.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-           
             TextField(
               style: TextStyle(
                 fontSize: 16.sp,
@@ -82,11 +79,11 @@ class _SelectServiceCategoryState extends State<SelectServiceCategory> {
                   contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(color: Color.fromARGB(255, 21, 201, 225))),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 21, 201, 225))),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide:
-                          BorderSide(color: Colors.white, width: 3.0))),
+                      borderSide: BorderSide(color: Colors.white, width: 3.0))),
             ),
             FutureBuilder(
               builder:
@@ -101,21 +98,23 @@ class _SelectServiceCategoryState extends State<SelectServiceCategory> {
                     );
                   },
                   itemBuilder: (BuildContext context, int index) {
-                    final cateory = serviceCategoryList[index].title.toLowerCase();
+                    final cateory =
+                        serviceCategoryList[index].title.toLowerCase();
                     return cateory.toLowerCase().contains(searchString)
                         ? InkWell(
-                          onTap: () {
-                           context.go(RoutePath.shareService);
-                           Navigator.pop(context, 'Category 1');
-
-                          },
-                          child: CategoryCard(
+                            onTap: () {
+                             context.pushReplacementNamed('shareService',
+                             queryParams: {'cgy': cateory},
+                             //extra: cateory
+                             );
+                              //Navigator.pop(context, cateory);
+                            },
+                            child: CategoryCard(
                               hintColor: AppColor.appTextColor,
                               enabled: false,
                               hintText: cateory,
-                             
                             ),
-                        )
+                          )
                         : Container();
                   },
                 );

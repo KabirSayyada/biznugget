@@ -4,19 +4,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../utils/colors_.dart';
 import '../../../widgets/dropdown_widget.dart';
 import '../../../widgets/term_of_use.dart';
 import '../../widgets/input_field.dart';
-import '../../../utils/colors_.dart';
 
-class CreateCategory extends StatefulWidget {
-  const CreateCategory({super.key});
+class ShareServicePage3 extends StatefulWidget {
+  const ShareServicePage3({super.key});
 
   @override
-  State<CreateCategory> createState() => _CreateCategoryState();
+  State<ShareServicePage3> createState() => _ShareServicePage3State();
 }
 
-class _CreateCategoryState extends State<CreateCategory> {
+class _ShareServicePage3State extends State<ShareServicePage3> {
   bool isWarrantyChecked = false;
   bool isNegotiableChecked = false;
 
@@ -69,7 +69,7 @@ class _CreateCategoryState extends State<CreateCategory> {
             elevation: 4.0.h,
             centerTitle: true,
             title: Text(
-              "Create an ad",
+              "Share a service",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.sp,
@@ -81,7 +81,7 @@ class _CreateCategoryState extends State<CreateCategory> {
                 children: [
                   InkWell(
                     onTap: () {
-                      context.push('/createUserDetails');
+                      context.push('/shareServicePage4');
                     },
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -124,84 +124,37 @@ class _CreateCategoryState extends State<CreateCategory> {
                   children: [
                     SvgPicture.asset(
                       'assets/svg/progress_bar_2.svg',
-                      width: MediaQuery.of(context).size.width.w * 0.8,
+                      width: MediaQuery.of(context).size.width.w * 0.76,
                     ),
                     Text(
-                      '2/3',
+                      '3/4',
                       style: TextStyle(
                           fontSize: 14.sp, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
 
-                InkWell(
-                  onTap: () {
-                    context.push('/selectCategory');
-                  },
-                  child: const InputField(
-                    title: "Category",
+                 const InputField(
+                  title: "Title",
+                  // enabled: false,
+                  hintText: 'e.g I design great mobile and web interfaces.',
+                ),
+                 const InputField(
+                  title: "Target Location",
+                  // enabled: false,
+                  hintText: 'Enter the target location',
+                ),
+            const InputField(
+                    title: "Company Name",
                     enabled: false,
-                    hintText: 'Select Category',
+                    hintText: 'Input company name',
                     suffixIcon: Icon(
                       Icons.arrow_forward_ios_rounded,
                       color: AppColor.black,
                     ),
                   ),
-                ),
-
-                const InputField(
-                  title: "Brand",
-                  // enabled: false,
-                  hintText: 'Input Brand',
-                ),
-
-                SizedBox(
-                  height: 6.h,
-                ),
-
-                Text(
-                  "Exchange possible",
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  height: 6.h,
-                ),
-                DropDownWidget(
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      exchangeValue = newValue!;
-                    });
-                  },
-                  dropdownValue: exchangeValue,
-                  dropDownMenuItems: exchangeList,
-                ),
-                Row(
-                  children: [
-                    GFCheckbox(
-                      size: 25.sp,
-                      activeBgColor: Colors.white,
-                      activeIcon:
-                          const Icon(Icons.check, color: Color(0xff830D3F)),
-                      activeBorderColor: const Color(0xff830D3F),
-                      onChanged: (value) {
-                        setState(() {
-                          isWarrantyChecked = value;
-                        });
-                      },
-                      value: isWarrantyChecked,
-                    ),
-                    Text(
-                      "Warranty",
-                      style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff830D3F)),
-                    ),
-                  ],
-                ),
-
-                InputField(
+                
+                    InputField(
                   title: "Price",
                   hintText: 'Input Amount',
                   suffixIcon: Container(
@@ -217,8 +170,7 @@ class _CreateCategoryState extends State<CreateCategory> {
                     ),
                   ),
                 ),
-
-                Row(
+                   Row(
                   children: [
                     GFCheckbox(
                       size: 25.sp,
@@ -228,10 +180,10 @@ class _CreateCategoryState extends State<CreateCategory> {
                       activeBorderColor: const Color(0xff830D3F),
                       onChanged: (value) {
                         setState(() {
-                          isNegotiableChecked = value;
+                          isWarrantyChecked = value;
                         });
                       },
-                      value: isNegotiableChecked,
+                      value: isWarrantyChecked,
                     ),
                     Text(
                       "Negotiable",
@@ -242,28 +194,54 @@ class _CreateCategoryState extends State<CreateCategory> {
                     ),
                   ],
                 ),
-
+                    InputField(
+                  title: "Price",
+                  hintText: 'Input Amount',
+                  suffixIcon: Container(
+                    margin: const EdgeInsets.all(5),
+                    height: 30,
+                    width: 32,
+                    decoration: const BoxDecoration(color: AppColor.grey002),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        'assets/svg/naira_sign.svg',
+                        height: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                   Row(
+                  children: [
+                    GFCheckbox(
+                      size: 25.sp,
+                      activeBgColor: Colors.white,
+                      activeIcon:
+                          const Icon(Icons.check, color: Color(0xff830D3F)),
+                      activeBorderColor: const Color(0xff830D3F),
+                      onChanged: (value) {
+                        setState(() {
+                          isWarrantyChecked = value;
+                        });
+                      },
+                      value: isWarrantyChecked,
+                    ),
+                    Text(
+                      "Express delivery",
+                      style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xff830D3F)),
+                    ),
+                  ],
+                ),
+              
                 SizedBox(
-                  height: 7.h,
+                  height: 30.h,
                 ),
-
-                //work on the dropdown
-
-                DropDownWidget(
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      productContidionValue = newValue!;
-                    });
-                  },
-                  dropdownValue: productContidionValue,
-                  dropDownMenuItems: productConditionList,
-                ),
-                SizedBox(
-                  height: 15.sp,
-                ),
+             
 
                 Text(
-                  "Delivery Time",
+                  "Epected Delivery",
                   style:
                       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
                 ),
@@ -280,9 +258,7 @@ class _CreateCategoryState extends State<CreateCategory> {
                   dropDownMenuItems: deliveryTimeList,
                 ),
 
-                const SizedBox(
-                  height: 20,
-                ),
+               
                 // Text(
                 //   'Selected Value: $productContidionValue',
                 //   style: const TextStyle(
@@ -290,7 +266,7 @@ class _CreateCategoryState extends State<CreateCategory> {
                 // ),
 
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.3,
+                  height: MediaQuery.of(context).size.height * 0.1,
                 ),
                 const TermsOfUse(),
               ]),
