@@ -1,39 +1,41 @@
-import 'package:biznugget/presentation/account_type/presentation/acc_type_screen.dart';
-import 'package:biznugget/presentation/signin/auth_checker.dart';
-import 'package:biznugget/presentation/signin/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:go_router/go_router.dart';
 
-import '../../presentation/create_ad/pressentation/create_ad.dart';
-import '../../presentation/create_ad/pressentation/create_category.dart';
-import '../../presentation/create_ad/pressentation/create_user_details.dart';
-import '../../presentation/create_ad/pressentation/publish_ad.dart';
-import '../../presentation/create_ad/pressentation/select_category.dart';
-import '../../presentation/create_ad/pressentation/target_location.dart';
-import '../../presentation/details/presentation/pages/details_screen.dart';
-import '../../presentation/home/home_control/presentation/home_control_screen.dart';
-import '../../presentation/messages/message_screen.dart';
-import '../../presentation/messages/messages_screen.dart';
-import '../../presentation/paid_ads/paid_ads_view/paid_ads_audience_screen.dart';
-import '../../presentation/paid_ads/paid_ads_view/paid_ads_basic_info_screen.dart';
-import '../../presentation/payment/payment_view/payment_screen.dart';
-import '../../presentation/post_content/presentation/post_content.dart';
-import '../../presentation/post_job/presentation/post_job.dart';
-import '../../presentation/profile/presentation/pages/profile_screen.dart';
-import '../../presentation/splash/presentation/pages/splash_screen.dart';
-import '../../presentation/traders/trader_screen.dart';
-import '../../presentation/traders/traders_screen.dart';
-import '../../presentation/wishlist/data/repositories/local_storage.dart';
-import '../../presentation/wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
-import '../../presentation/wishlist/presentation/pages/wishlist_screen.dart';
+import '../../account_type/presentation/acc_type_screen.dart';
+import '../../create_ad/pressentation/create_ad.dart';
+import '../../create_ad/pressentation/create_category.dart';
+import '../../create_ad/pressentation/create_user_details.dart';
+import '../../create_ad/pressentation/publish_ad.dart';
+import '../../create_ad/pressentation/select_category.dart';
+import '../../create_ad/pressentation/target_location.dart';
+import '../../details/presentation/pages/details_screen.dart';
+import '../../home/home_control/presentation/home_control_screen.dart';
+import '../../messages/message_screen.dart';
+import '../../messages/messages_screen.dart';
+import '../../paid_ads/paid_ads_view/paid_ads_audience_screen.dart';
+import '../../paid_ads/paid_ads_view/paid_ads_basic_info_screen.dart';
+import '../../payment/payment_view/payment_screen.dart';
+import '../../post_content/presentation/post_content.dart';
+import '../../post_job/presentation/post_job.dart';
+import '../../profile/presentation/pages/profile_screen.dart';
+import '../../share_service/presentation/share_service.dart';
+import '../../share_service/presentation/share_service_specialty.dart';
+import '../../signin/auth_checker.dart';
+import '../../signin/sign_in_screen.dart';
+import '../../splash/presentation/pages/splash_screen.dart';
+import '../../traders/trader_screen.dart';
+import '../../traders/traders_screen.dart';
+import '../../wishlist/data/repositories/local_storage.dart';
+import '../../wishlist/presentation/cubits/wishlist_items_cubit/wishlist_items_cubit.dart';
+import '../../wishlist/presentation/pages/wishlist_screen.dart';
 
 class AppRouter {
   static const String initial = '/';
   static const String wishlist = '/wishlist';
   static const String home = '/home';
-  static const String advertise = '/advertise';
+  static const String advertise = '/advertisement';
   static const String messages = '/messages';
   static const String message = '/message';
   static const String profile = '/profile';
@@ -42,18 +44,20 @@ class AppRouter {
   static const String trader = '/trader';
   static const String payment = '/payment';
   static const String postContent = "/postContent";
-  static const String createAd = "/createAd";
+  static const String createAd = "/advertisement/create";
   static const String postJob = "/postJob";
   static const String targetLocation = "/targetLocation";
   static const String createCategory = "/createCategory";
   static const String selectCategory = "/selectCategory";
   static const String createUserDetails = "/createUserDetails";
-  static const String publishAd = "/publishAd";
+  static const String publishAd = "/advertisement/publish";
   static const String paidAdsBasicInfo = '/paidAdsBasicInfo';
   static const String paidAdsAudience = '/paidAdsAudience';
-  static const String authChecker = '/authChecker';
-  static const String signInScreen = '/signInScreen';
+  static const String authChecker = '/auth/checker';
+  static const String signInScreen = '/auth';
   static const String accTypeScreen = '/accTypeScreen';
+  static const String shareService = '/share-service';
+  static const String shareServiceSpecialty = '/share-service/specialty';
 
   static final routes = [
     GoRoute(
@@ -211,7 +215,19 @@ class AppRouter {
         return const AccountTypeScreen();
       },
     ),
-  ];
+    GoRoute(
+      path: shareService,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ShareService();
+      },
+    ),
+    GoRoute(
+      path: shareServiceSpecialty,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ShareServiceSpecialty();
+      },
+    ),
+  ]..sort((a, b) => a.path.compareTo(b.path));
 
   static final GoRouter router = GoRouter(routes: routes);
 }

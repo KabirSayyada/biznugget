@@ -1,6 +1,6 @@
 class AppStrings {
   // app data
-  static const String appName = 'Biznugget-App';
+  static const String appName = 'Biznugget';
 
   // Wishlist local storage
   static const String kWishlistBoxInLocalStorage = 'wishlist_box';
