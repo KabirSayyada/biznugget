@@ -18,10 +18,7 @@ class TraderItem extends StatelessWidget {
     return Card(
       elevation: 2,
       child: InkWell(
-        onTap: () => context.goNamed(
-          AppRouter.trader,
-          queryParams: {"id": trader.id},
-        ),
+        onTap: () => context.push("${AppRouter.traders}/${trader.id}"),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(

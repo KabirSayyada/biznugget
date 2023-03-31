@@ -1,8 +1,9 @@
 import 'package:biznugget/core/utils/app_constants.dart';
 
 class Dimensions {
-  static final double height = AppConstants.screenHeight;
-  static final double width = AppConstants.screenWidth;
+  static double get height => AppConstants.screenHeight;
+
+  static double get width => AppConstants.screenWidth;
 
   /**
    *
@@ -15,8 +16,9 @@ class Dimensions {
 
   /// custom heights
 
-  static final double itemCardRatio =
-      (width / width160) / (height / height250) * 0.8;
+  static double get itemCardRatio {
+    return (width / width160) / (height / height250) * 0.8;
+  }
 
   /// height and width
 

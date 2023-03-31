@@ -1,6 +1,11 @@
 import 'package:biznugget/core/common/widgets/account_type_card.dart';
 import 'package:flutter/material.dart';
 
+import '../../signup/business_account.dart';
+import '../../signup/consumer_account.dart';
+import '../../signup/job_creator.dart';
+import '../../signup/service_provider.dart';
+import '../../signup/vendor_account.dart';
 import 'inner_pages/freelancer_jobs.dart';
 
 class AccountTypeScreen extends StatelessWidget {
@@ -29,17 +34,20 @@ class AccountTypeScreen extends StatelessWidget {
               accountType: 'Businesses',
               cardColor: const Color(0xFF830D3F),
               accountImage: 'assets/images/acc_type_logos/handshake.png',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const BusinessScreen()));
+              },
             ),
             AccountTypeCard(
               accountType: 'Service Providers',
               cardColor: const Color(0xFF01C3CC),
               accountImage: 'assets/images/acc_type_logos/Service.png',
               onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (_) => ServiceProviders(jobType: '', jobImage: '')));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const ServiceProviderScreen()));
               },
             ),
             AccountTypeCard(
@@ -55,19 +63,30 @@ class AccountTypeScreen extends StatelessWidget {
               accountType: 'Vendors',
               cardColor: const Color(0xFF830D3F),
               accountImage: 'assets/images/acc_type_logos/reseller.png',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const VendorScreen()));
+              },
             ),
             AccountTypeCard(
               accountType: 'Shoppers',
               cardColor: const Color(0xFF01C3CC),
               accountImage: 'assets/images/acc_type_logos/shopping_bag.png',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const ConsumerScreen()));
+              },
             ),
             AccountTypeCard(
               accountType: 'Job Creator',
               cardColor: const Color(0xFF3F56F2),
               accountImage: 'assets/images/acc_type_logos/home_office.png',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const JobCreatorScreen()));
+              },
             ),
           ],
         ),

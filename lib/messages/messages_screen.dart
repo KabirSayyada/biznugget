@@ -23,16 +23,13 @@ class MessagesScreen extends StatelessWidget {
         child: ListView.separated(
           itemCount: MessageService.messages.length,
           itemBuilder: (_, index) {
+            final message = MessageService.messages[index];
+
             return InkWell(
-              onTap: () => context.goNamed(
-                AppRouter.message,
-                extra: MessageService.messages[index].author,
-              ),
+              onTap: () => context.push('${AppRouter.messages}/${message.id}'),
               child: Padding(
                 padding: const EdgeInsets.all(12),
-                child: MessageItem(
-                  message: MessageService.messages[index],
-                ),
+                child: MessageItem(message: message),
               ),
             );
           },

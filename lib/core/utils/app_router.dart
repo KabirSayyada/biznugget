@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:go_router/go_router.dart';
 
 import '../../account_type/presentation/acc_type_screen.dart';
@@ -37,11 +36,9 @@ class AppRouter {
   static const String home = '/home';
   static const String advertise = '/advertisement';
   static const String messages = '/messages';
-  static const String message = '/message';
   static const String profile = '/profile';
   static const String details = '/details';
   static const String traders = '/traders';
-  static const String trader = '/trader';
   static const String payment = '/payment';
   static const String postContent = "/postContent";
   static const String createAd = "/advertisement/create";
@@ -89,9 +86,9 @@ class AppRouter {
       },
     ),
     GoRoute(
-      path: message,
+      path: '$messages/:id',
       builder: (BuildContext context, GoRouterState state) {
-        return MessageScreen(user: state.extra as types.User);
+        return MessageScreen(messageId: state.params["id"] as String);
       },
     ),
     GoRoute(
@@ -113,9 +110,9 @@ class AppRouter {
       },
     ),
     GoRoute(
-      path: trader,
+      path: '$traders/:id',
       builder: (BuildContext context, GoRouterState state) {
-        return TraderScreen(traderId: state.queryParams["id"] as String);
+        return TraderScreen(traderId: state.params["id"] as String);
       },
     ),
     GoRoute(

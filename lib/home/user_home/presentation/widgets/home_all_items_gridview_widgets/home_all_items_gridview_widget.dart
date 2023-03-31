@@ -18,7 +18,7 @@ class HomeAllItemsGridview extends StatelessWidget {
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: Dimensions.itemCardRatio,
+        // childAspectRatio: Dimensions.itemCardRatio,
         mainAxisSpacing: Dimensions.height25,
         crossAxisSpacing: Dimensions.width30,
       ),

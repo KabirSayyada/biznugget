@@ -1,17 +1,21 @@
 import 'package:biznugget/core/services/message_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 class MessageScreen extends StatelessWidget {
-  const MessageScreen({Key? key, required this.user}) : super(key: key);
+  const MessageScreen({Key? key, required this.messageId}) : super(key: key);
 
-  final types.User user;
+  final String messageId;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final user = MessageService.messages.firstWhere((message) {
+      return message.id == messageId;
+    }).author;
+    final messages = MessageService.getMessages(user);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -79,7 +83,7 @@ class MessageScreen extends StatelessWidget {
           theme: DefaultChatTheme(
             primaryColor: theme.colorScheme.primary,
           ),
-          messages: MessageService.getMessages(user),
+          messages: messages,
           onSendPressed: (text) {},
           user: user,
         ),

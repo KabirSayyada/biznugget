@@ -7,7 +7,7 @@ class HomeControlScreen extends StatelessWidget {
   const HomeControlScreen({Key? key}) : super(key: key);
 
   /// receive user type from auth bloc
-  final String userType = 'business';
+  final String userType = 'user';
 
   @override
   Widget build(BuildContext context) {
