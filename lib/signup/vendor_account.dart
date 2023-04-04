@@ -1,24 +1,53 @@
+import 'package:biznugget/core/common/models/user_model/user_model.dart';
+import 'package:biznugget/core/helpers/Providers/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class VendorScreen extends StatefulWidget {
-  const VendorScreen({super.key});
+class VendorSignupScreen extends StatefulHookConsumerWidget {
+  VendorSignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<VendorScreen> createState() => _VendorScreenState();
+  ConsumerState<VendorSignupScreen> createState() => _VendorSignupScreenState();
 }
 
-class _VendorScreenState extends State<VendorScreen> {
+class _VendorSignupScreenState extends ConsumerState<VendorSignupScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final UserType type = UserType.vendor;
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _addressController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  // confirm password field
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final auth = ref.watch(authenticationProvider);
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         height: height,
@@ -96,6 +125,7 @@ class _VendorScreenState extends State<VendorScreen> {
                         child: Column(
                           children: [
                             TextFormField(
+                              controller: _nameController,
                               keyboardType: TextInputType.name,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -104,6 +134,13 @@ class _VendorScreenState extends State<VendorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Name',
                                 hintStyle: TextStyle(
@@ -119,6 +156,7 @@ class _VendorScreenState extends State<VendorScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
+                              controller: _addressController,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Enter an Address';
@@ -126,6 +164,13 @@ class _VendorScreenState extends State<VendorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Address',
                                 hintStyle: TextStyle(
@@ -141,6 +186,7 @@ class _VendorScreenState extends State<VendorScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
+                              controller: _emailController,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -149,6 +195,13 @@ class _VendorScreenState extends State<VendorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Email',
                                 hintStyle: TextStyle(
@@ -164,6 +217,7 @@ class _VendorScreenState extends State<VendorScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
+                              controller: _phoneNumberController,
                               keyboardType: TextInputType.phone,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -172,6 +226,13 @@ class _VendorScreenState extends State<VendorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Phone number',
                                 hintStyle: TextStyle(
@@ -195,6 +256,13 @@ class _VendorScreenState extends State<VendorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Password',
                                 hintStyle: const TextStyle(
@@ -210,7 +278,7 @@ class _VendorScreenState extends State<VendorScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _confirmPasswordController,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Make sure password matches';
@@ -218,6 +286,13 @@ class _VendorScreenState extends State<VendorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Confirm Password',
                                 hintStyle: const TextStyle(

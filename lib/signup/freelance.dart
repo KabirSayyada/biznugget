@@ -1,24 +1,54 @@
+import 'package:biznugget/core/common/models/user_model/user_model.dart';
+import 'package:biznugget/core/helpers/Providers/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class FreelanceScreen extends StatefulWidget {
-  const FreelanceScreen({super.key});
+class FreelanceSignupScreen extends StatefulHookConsumerWidget {
+  const FreelanceSignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<FreelanceScreen> createState() => _FreelanceScreenState();
+  ConsumerState<FreelanceSignupScreen> createState() =>
+      _FreelanceSignupScreenState();
 }
 
-class _FreelanceScreenState extends State<FreelanceScreen> {
+class _FreelanceSignupScreenState extends ConsumerState<FreelanceSignupScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final UserType type = UserType.freelance;
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  // confirm password fields  use if condition on the signUp method to confirm
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final auth = ref.watch(authenticationProvider);
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         height: height,
@@ -259,7 +289,7 @@ class _FreelanceScreenState extends State<FreelanceScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _confirmPasswordController,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Make sure password matches';
@@ -364,7 +394,3 @@ class _FreelanceScreenState extends State<FreelanceScreen> {
     );
   }
 }
-
-/*
-
-*/

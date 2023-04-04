@@ -1,24 +1,50 @@
+import 'package:biznugget/core/common/models/user_model/user_model.dart';
+import 'package:biznugget/core/helpers/Providers/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BusinessScreen extends StatefulWidget {
-  const BusinessScreen({super.key});
+class BusinessSignupScreen extends StatefulHookConsumerWidget {
+  const BusinessSignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<BusinessScreen> createState() => _BusinessScreenState();
+  ConsumerState<BusinessSignupScreen> createState() =>
+      _BusinessSignupScreenState();
 }
 
-class _BusinessScreenState extends State<BusinessScreen> {
+class _BusinessSignupScreenState extends ConsumerState<BusinessSignupScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _companyNameController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _companyEmailController = TextEditingController();
-  final TextEditingController _rcNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _companyNameController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _companyEmailController = TextEditingController();
+  final _rcNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final UserType type = UserType.business;
+
+  bool _isLoading = false;
+  void loading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
+  // confirm password
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final auth = ref.watch(authenticationProvider);
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         height: height,
@@ -104,6 +130,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Company name',
                                 hintStyle: const TextStyle(
@@ -127,6 +160,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Company Address',
                                 hintStyle: const TextStyle(
@@ -151,6 +191,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Company Email',
                                 hintStyle: const TextStyle(
@@ -174,6 +221,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'RC or Bn Number',
                                 hintStyle: const TextStyle(
@@ -197,6 +251,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Password',
                                 hintStyle: const TextStyle(
@@ -212,7 +273,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _confirmPasswordController,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Make sure the password match';
@@ -220,6 +281,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Confirm Password',
                                 hintStyle: const TextStyle(
@@ -317,7 +385,3 @@ class _BusinessScreenState extends State<BusinessScreen> {
     );
   }
 }
-
-/*
-
-*/
