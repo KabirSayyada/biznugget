@@ -27,35 +27,9 @@ class Authentication {
       )
           .then(
         (value) {
-          if (UserType == UserType.consumer) {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => ConsumerProfile()),
-            );
-          } else if (User == UserType.business) {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => BusinessProfile()),
-            );
-          } else if (User == UserType.freelance) {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => FreelanceProfile()),
-            );
-          } else if (User == UserType.vendor) {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => VendorProfile()),
-            );
-          } else if (User == UserType.jobCreator) {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => JobCreatorProfile()),
-            );
-          } else if (User == UserType.serviceProvider) {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => ServiceProviderProfile()),
-            );
-          } else {
-            return ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Please select an account type!!')),
-            );
-          }
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => ConsumerProfile()),
+          );
         },
       );
     } on FirebaseAuthException catch (e) {
