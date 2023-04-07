@@ -1,3 +1,6 @@
+import 'package:biznugget/profile/Profile_Edit/consumer_edit.dart';
+import 'package:biznugget/profile/Profile_Page/Features/Favorite/favorite.dart';
+import 'package:biznugget/profile/Profile_Page/Features/History/history.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +27,7 @@ import '../../share_service/presentation/share_service_specialty.dart';
 import '../../signin/auth_checker.dart';
 import '../../signin/sign_in_screen.dart';
 import '../../splash/presentation/pages/splash_screen.dart';
+import '../../start_up/presentation/onboarding_screen.dart';
 import '../../traders/trader_screen.dart';
 import '../../traders/traders_screen.dart';
 import '../../wishlist/data/repositories/local_storage.dart';
@@ -55,6 +59,14 @@ class AppRouter {
   static const String accTypeScreen = '/accTypeScreen';
   static const String shareService = '/share-service';
   static const String shareServiceSpecialty = '/share-service/specialty';
+
+  static const String favourites = '/profile/favourites';
+  static const String history = '/profile/history';
+  static const String editProfile = '/profile/edit';
+  static const String setting = '/profile/edit';
+  static const String onboardingScreen = '/onBoarding';
+  static const String splashScreen = '/welcome';
+  static const String orders = '/orders';
 
   static final routes = [
     GoRoute(
@@ -222,6 +234,153 @@ class AppRouter {
       path: shareServiceSpecialty,
       builder: (BuildContext context, GoRouterState state) {
         return const ShareServiceSpecialty();
+      },
+    ),
+    GoRoute(
+      path: onboardingScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const OnboardingScreen();
+      },
+    ),
+    GoRoute(
+      path: splashScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const SplashScreen();
+      },
+    ),
+    //TODO: Navigate to orders screen
+    GoRoute(
+      path: orders,
+      builder: (BuildContext context, GoRouterState state) {
+        return const Placeholder();
+      },
+    ),
+    GoRoute(
+      path: editProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ConsumerProfileEdit();
+      },
+    ),
+    GoRoute(
+      path: history,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HistoryPage();
+      },
+    ),
+    GoRoute(
+      path: favourites,
+      builder: (BuildContext context, GoRouterState state) {
+        return const Favorite();
+      },
+    ),
+    GoRoute(
+      path: setting,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ConsumerProfileEdit();
+      },
+    ),
+  ]..sort((a, b) => a.path.compareTo(b.path));
+
+  static final List<GoRoute> splashRoutes = [
+    GoRoute(
+      path: onboardingScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const OnboardingScreen();
+      },
+    ),
+    //checks if user is authenticated
+    GoRoute(
+      path: authChecker,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AuthChecker();
+      },
+    ),
+    GoRoute(
+      path: signInScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const SigninScreen();
+      },
+    ),
+
+    /// Using splash screen as welcome screen for now
+    GoRoute(
+      path: splashScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const SplashScreen();
+      },
+    ),
+    GoRoute(
+      path: home,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeControlScreen();
+      },
+    ),
+  ]..sort((a, b) => a.path.compareTo(b.path));
+
+  static final List<GoRoute> bottomNavRoutes = [
+    GoRoute(
+      path: home,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeControlScreen();
+      },
+    ),
+    //TODO: Navigate to orders screen
+    GoRoute(
+      path: orders,
+      builder: (BuildContext context, GoRouterState state) {
+        return const Placeholder();
+      },
+    ),
+    GoRoute(
+      path: createAd,
+      builder: (BuildContext context, GoRouterState state) {
+        return const CreateAd();
+      },
+    ),
+    GoRoute(
+      path: createCategory,
+      builder: (BuildContext context, GoRouterState state) {
+        return const CreateCategory();
+      },
+    ),
+    GoRoute(
+      path: messages,
+      builder: (BuildContext context, GoRouterState state) {
+        return const MessagesScreen();
+      },
+    ),
+    GoRoute(
+      path: profile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ProfileScreen();
+      },
+    ),
+  ]..sort((a, b) => a.path.compareTo(b.path));
+
+  /// All profile actions already exist in lib/profile/Profile_Page/Features/features.dart
+  static final profileRoutes = [
+    GoRoute(
+      path: editProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ConsumerProfileEdit();
+      },
+    ),
+    GoRoute(
+      path: history,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HistoryPage();
+      },
+    ),
+    GoRoute(
+      path: favourites,
+      builder: (BuildContext context, GoRouterState state) {
+        return const Favorite();
+      },
+    ),
+    GoRoute(
+      path: setting,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ConsumerProfileEdit();
       },
     ),
   ]..sort((a, b) => a.path.compareTo(b.path));

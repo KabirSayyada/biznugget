@@ -14,12 +14,12 @@ class SplashScreen extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (_, index) {
             return ListTile(
-              title: Text(AppRouter.routes[index].path),
-              onTap: () => context.push(AppRouter.routes[index].path),
+              title: Text(AppRouter.splashRoutes[index].path),
+              onTap: () => context.push(AppRouter.splashRoutes[index].path),
             );
           },
           separatorBuilder: (_, __) => const DashedDivider(),
-          itemCount: AppRouter.routes.length,
+          itemCount: AppRouter.splashRoutes.length,
         ),
       ),
     );

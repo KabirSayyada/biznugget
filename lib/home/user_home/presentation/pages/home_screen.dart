@@ -2,7 +2,10 @@ import 'package:biznugget/core/helpers/network_helper/bloc/network_bloc.dart';
 import 'package:biznugget/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/utils/app_router.dart';
+import '../../../../core/widgets/dashed_divider.dart';
 import '../widgets/home_custom_app_bar_widget.dart';
 import '../widgets/hs_drawer.dart';
 import 'home_items_screen.dart';
@@ -34,6 +37,30 @@ class HomeScreen extends StatelessWidget {
                 const Expanded(child: HomeItemsScreen()),
               ],
             ),
+          ),
+        ),
+        /// Temporary bottom nav bar
+        bottomNavigationBar: Container(
+          height: 100.0 /*Dimensions.height20*/,
+          width: Dimensions.width,
+          color: Colors.white,
+          child: ListView.separated(
+            itemBuilder: (_, index) {
+              return GestureDetector(
+                onTap: () =>
+                    context.push(AppRouter.bottomNavRoutes[index].path),
+                child: SizedBox(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                        child: Text(AppRouter.bottomNavRoutes[index].path)),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (_, __) => const DashedDividerVertical(),
+            itemCount: AppRouter.bottomNavRoutes.length,
+            scrollDirection: Axis.horizontal,
           ),
         ),
       ),
