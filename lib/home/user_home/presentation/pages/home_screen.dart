@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        /// Temporary bottom nav bar
+        /// Temporary bottom nav bar.
         bottomNavigationBar: Container(
           height: 100.0 /*Dimensions.height20*/,
           width: Dimensions.width,
