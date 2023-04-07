@@ -15,6 +15,15 @@ class HomeScreen extends StatelessWidget {
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
+  static final routes = [
+    AppRouter.home,
+    AppRouter.orders,
+    AppRouter.createAd,
+    AppRouter.createCategory,
+    AppRouter.messages,
+    AppRouter.profile,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,6 +48,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+
         /// Temporary bottom nav bar.
         bottomNavigationBar: Container(
           height: 100.0 /*Dimensions.height20*/,
@@ -47,19 +57,22 @@ class HomeScreen extends StatelessWidget {
           child: ListView.separated(
             itemBuilder: (_, index) {
               return GestureDetector(
-                onTap: () =>
-                    context.push(AppRouter.bottomNavRoutes[index].path),
+                onTap: () => context.push(routes[index]),
                 child: SizedBox(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                        child: Text(AppRouter.bottomNavRoutes[index].path)),
+                    child:
+                        Center(child: Text(routes[index].replaceAll("/", ""))),
                   ),
                 ),
               );
             },
-            separatorBuilder: (_, __) => const DashedDividerVertical(),
-            itemCount: AppRouter.bottomNavRoutes.length,
+            separatorBuilder: (_, __) => const DashedDivider(
+              width: 1,
+              height: 5,
+              direction: Axis.vertical,
+            ),
+            itemCount: routes.length,
             scrollDirection: Axis.horizontal,
           ),
         ),

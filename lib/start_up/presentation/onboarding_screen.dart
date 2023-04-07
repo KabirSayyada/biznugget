@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../core/utils/app_router.dart';
 import '../../core/utils/colors.dart';
 import '../model/onboarding_model.dart';
 import 'widgets/onboarding_tile.dart';
@@ -27,6 +29,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void _onPageChanged(int index) => setState(() {
         _currentPage = index;
       });
+
+  void _toNextPage() => context.push(AppRouter.home);
 
   @override
   Widget build(BuildContext context) {
@@ -89,19 +93,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-                    onTap: () => _pageController.jumpToPage(
-                      onboardingModelData.length,
-                    ),
+                    onTap: _toNextPage,
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                       child: Text('Skip'),
                     ),
                   ),
                   InkWell(
-                    onTap: () => _pageController.nextPage(
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.bounceInOut,
-                    ),
+                    onTap: () {
+                      if (_currentPage == onboardingModelData.length - 1) {
+                        _toNextPage();
+                      } else {
+                        _pageController.nextPage(
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.bounceInOut,
+                        );
+                      }
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 18, vertical: 8),
