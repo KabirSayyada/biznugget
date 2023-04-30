@@ -1,6 +1,9 @@
 import 'package:biznugget/core/common/models/user_model/user_model.dart';
 import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Business/business_profile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BusinessSignupScreen extends StatefulHookConsumerWidget {
@@ -41,6 +44,48 @@ class _BusinessSignupScreenState extends ConsumerState<BusinessSignupScreen> {
   @override
   Widget build(BuildContext context) {
     final auth = ref.watch(authenticationProvider);
+
+    // add user details
+    Future<void> addUserDetails(String companyName, String companyAddress,
+        String companyEmail, String rcNumber) async {
+      await firestore.collection('users').add({
+        'companyName': companyName,
+        'companyAddress': companyAddress,
+        'companyEmail': companyEmail,
+        'rcNumber': rcNumber,
+      });
+    }
+
+    Future<void> _onPressedFunction() async {
+      if (_formKey.currentState!.validate()) {
+        const CircularProgressIndicator();
+        loading();
+
+        if (passwordConfirmed()) {
+          // create user with email and password
+          await auth
+              .signUpWithEmailAndPassword(_companyEmailController.text,
+                  _passwordController.text, context)
+              .whenComplete(() => auth.authStateChange.listen((event) async {
+                    if (event == null) {
+                      loading();
+                      return;
+                    }
+                  }))
+              .then(
+            (value) {
+              context.go('/businessProfile');
+            },
+          );
+
+          // add user details
+          addUserDetails(_companyNameController.text, _addressController.text,
+              _companyEmailController.text, _rcNumberController.text);
+        }
+      }
+      print(_companyEmailController.text);
+      print(_passwordController.text);
+    }
 
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -185,8 +230,8 @@ class _BusinessSignupScreenState extends ConsumerState<BusinessSignupScreen> {
                               controller: _companyEmailController,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'kindly enter the company email';
+                                if (value!.isEmpty || !value.contains('@')) {
+                                  return 'Invalid email!';
                                 }
                                 return null;
                               },
@@ -245,8 +290,8 @@ class _BusinessSignupScreenState extends ConsumerState<BusinessSignupScreen> {
                             TextFormField(
                               controller: _passwordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Enter a strong password';
+                                if (value!.isEmpty || value.length < 8) {
+                                  return 'Password is too short!';
                                 }
                                 return null;
                               },
@@ -275,8 +320,8 @@ class _BusinessSignupScreenState extends ConsumerState<BusinessSignupScreen> {
                             TextFormField(
                               controller: _confirmPasswordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Make sure the password match';
+                                if (value != _passwordController.text) {
+                                  return 'Passwords do not match!';
                                 }
                                 return null;
                               },
@@ -325,14 +370,7 @@ class _BusinessSignupScreenState extends ConsumerState<BusinessSignupScreen> {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text('Processing Data')),
-                                    );
-                                  }
-                                },
+                                onPressed: _onPressedFunction,
                               ),
                             ),
                             SizedBox(height: height * 0.02),

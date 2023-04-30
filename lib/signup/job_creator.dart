@@ -1,6 +1,8 @@
 import 'package:biznugget/core/common/models/user_model/user_model.dart';
 import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Job_creator/job_creator_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class JobCreatorSignupScreen extends StatefulHookConsumerWidget {
@@ -31,6 +33,13 @@ class _JobCreatorSignupScreenState
     super.dispose();
   }
 
+  bool _isLoading = false;
+  void loading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
   // confirm password fields  use if condition on the signUp method to confirm
   bool passwordConfirmed() {
     if (_passwordController.text.trim() ==
@@ -44,6 +53,47 @@ class _JobCreatorSignupScreenState
   @override
   Widget build(BuildContext context) {
     final auth = ref.watch(authenticationProvider);
+
+    // add user details
+    Future<void> addUserDetails(
+        String name, String email, String phoneNumber) async {
+      await firestore.collection('users').add({
+        'name': name,
+        'email': email,
+        'phoneNumber': phoneNumber,
+      });
+    }
+
+    Future<void> _onPressedFunction() async {
+      if (_formKey.currentState!.validate()) {
+        const CircularProgressIndicator();
+        loading();
+
+        if (passwordConfirmed()) {
+          // create user with email and password
+          await auth
+              .signUpWithEmailAndPassword(
+                  _emailController.text, _passwordController.text, context)
+              .whenComplete(() => auth.authStateChange.listen((event) async {
+                    if (event == null) {
+                      loading();
+                      return;
+                    }
+                  }))
+              .then(
+            (value) {
+              context.go('/jobCreatorProfile');
+            },
+          );
+
+          // add user details
+          addUserDetails(_nameController.text, _emailController.text,
+              _phoneNumberController.text);
+        }
+      }
+      print(_emailController.text);
+      print(_passwordController.text);
+    }
 
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -159,8 +209,8 @@ class _JobCreatorSignupScreenState
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter email';
+                                if (value!.isEmpty || !value.contains('@')) {
+                                  return 'Invalid email!';
                                 }
                                 return null;
                               },
@@ -245,8 +295,8 @@ class _JobCreatorSignupScreenState
                             TextFormField(
                               controller: _passwordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter a strong password';
+                                if (value!.isEmpty || value.length < 8) {
+                                  return 'Password is too short!';
                                 }
                                 return null;
                               },
@@ -275,8 +325,8 @@ class _JobCreatorSignupScreenState
                             TextFormField(
                               controller: _confirmPasswordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Password must match';
+                                if (value != _passwordController.text) {
+                                  return 'Passwords do not match!';
                                 }
                                 return null;
                               },
@@ -325,13 +375,38 @@ class _JobCreatorSignupScreenState
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                           content: Text('Processing Data')),
                                     );
                                   }
+                                  loading();
+                                  await auth
+                                      .signUpWithEmailAndPassword(
+                                          _emailController.text,
+                                          _passwordController.text,
+                                          context)
+                                      .whenComplete(
+                                        () => auth.authStateChange.listen(
+                                          (event) async {
+                                            if (event == null) {
+                                              loading();
+                                              return;
+                                            }
+                                          },
+                                        ),
+                                      )
+                                      .then(
+                                    (value) {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const JobCreatorProfile()),
+                                      );
+                                    },
+                                  );
                                 },
                               ),
                             ),

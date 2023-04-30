@@ -1,6 +1,8 @@
 import 'package:biznugget/core/common/models/user_model/user_model.dart';
 import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Service_Provider/service_provider_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ServiceProviderSignupScreen extends StatefulHookConsumerWidget {
@@ -31,6 +33,13 @@ class _ServiceProviderSignupScreenState
     super.dispose();
   }
 
+  bool _isLoading = false;
+  void loading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
   bool passwordConfirmed() {
     if (_passwordController.text.trim() ==
         _confirmPasswordController.text.trim()) {
@@ -43,6 +52,47 @@ class _ServiceProviderSignupScreenState
   @override
   Widget build(BuildContext context) {
     final auth = ref.watch(authenticationProvider);
+
+    // add user details
+    Future<void> addUserDetails(
+        String name, String email, String phoneNumber) async {
+      await firestore.collection('users').add({
+        'name': name,
+        'email': email,
+        'phoneNumber': phoneNumber,
+      });
+    }
+
+    Future<void> _onPressedFunction() async {
+      if (_formKey.currentState!.validate()) {
+        const CircularProgressIndicator();
+        loading();
+
+        if (passwordConfirmed()) {
+          // create user with email and password
+          await auth
+              .signUpWithEmailAndPassword(
+                  _emailController.text, _passwordController.text, context)
+              .whenComplete(() => auth.authStateChange.listen((event) async {
+                    if (event == null) {
+                      loading();
+                      return;
+                    }
+                  }))
+              .then(
+            (value) {
+              context.go('/serviceProviderProfile');
+            },
+          );
+
+          // add user details
+          addUserDetails(_nameController.text, _emailController.text,
+              _phoneNumberController.text);
+        }
+      }
+      print(_emailController.text);
+      print(_passwordController.text);
+    }
 
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -158,8 +208,8 @@ class _ServiceProviderSignupScreenState
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Enter your email';
+                                if (value!.isEmpty || !value.contains('@')) {
+                                  return 'Invalid email!';
                                 }
                                 return null;
                               },
@@ -244,8 +294,8 @@ class _ServiceProviderSignupScreenState
                             TextFormField(
                               controller: _passwordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Enter a strong password';
+                                if (value!.isEmpty || value.length < 8) {
+                                  return 'Password is too short!';
                                 }
                                 return null;
                               },
@@ -274,8 +324,8 @@ class _ServiceProviderSignupScreenState
                             TextFormField(
                               controller: _confirmPasswordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Password must match';
+                                if (value != _passwordController.text) {
+                                  return 'Passwords do not match!';
                                 }
                                 return null;
                               },
@@ -324,14 +374,7 @@ class _ServiceProviderSignupScreenState
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text('Processing Data')),
-                                    );
-                                  }
-                                },
+                                onPressed: _onPressedFunction,
                               ),
                             ),
                             SizedBox(height: height * 0.02),

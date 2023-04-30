@@ -1,6 +1,8 @@
 import 'package:biznugget/core/common/models/user_model/user_model.dart';
 import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Freelance/freelance_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FreelanceSignupScreen extends StatefulHookConsumerWidget {
@@ -32,6 +34,13 @@ class _FreelanceSignupScreenState extends ConsumerState<FreelanceSignupScreen> {
     super.dispose();
   }
 
+  bool _isLoading = false;
+  void loading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
   // confirm password fields  use if condition on the signUp method to confirm
   bool passwordConfirmed() {
     if (_passwordController.text.trim() ==
@@ -45,6 +54,48 @@ class _FreelanceSignupScreenState extends ConsumerState<FreelanceSignupScreen> {
   @override
   Widget build(BuildContext context) {
     final auth = ref.watch(authenticationProvider);
+
+    // add user details
+    Future<void> addUserDetails(String firstName, String lastName, String email,
+        String phoneNumber) async {
+      await firestore.collection('users').add({
+        'firstName': firstName,
+        'lastName': lastName,
+        'email': email,
+        'phoneNumber': phoneNumber,
+      });
+    }
+
+    Future<void> _onPressedFunction() async {
+      if (_formKey.currentState!.validate()) {
+        const CircularProgressIndicator();
+        loading();
+
+        if (passwordConfirmed()) {
+          // create user with email and password
+          await auth
+              .signUpWithEmailAndPassword(
+                  _emailController.text, _passwordController.text, context)
+              .whenComplete(() => auth.authStateChange.listen((event) async {
+                    if (event == null) {
+                      loading();
+                      return;
+                    }
+                  }))
+              .then(
+            (value) {
+              context.go('/freelanceProfile');
+            },
+          );
+
+          // add user details
+          addUserDetails(_firstNameController.text, _lastNameController.text,
+              _emailController.text, _phoneNumberController.text);
+        }
+      }
+      print(_emailController.text);
+      print(_passwordController.text);
+    }
 
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -196,8 +247,8 @@ class _FreelanceSignupScreenState extends ConsumerState<FreelanceSignupScreen> {
                               controller: _emailController,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your email';
+                                if (value!.isEmpty || !value.contains('@')) {
+                                  return 'Invalid email!';
                                 }
                                 return null;
                               },
@@ -268,8 +319,8 @@ class _FreelanceSignupScreenState extends ConsumerState<FreelanceSignupScreen> {
                             TextFormField(
                               controller: _passwordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter a secure password';
+                                if (value!.isEmpty || value.length < 8) {
+                                  return 'Password is too short!';
                                 }
                                 return null;
                               },
@@ -291,8 +342,8 @@ class _FreelanceSignupScreenState extends ConsumerState<FreelanceSignupScreen> {
                             TextFormField(
                               controller: _confirmPasswordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Make sure password matches';
+                                if (value != _passwordController.text) {
+                                  return 'Passwords do not match!';
                                 }
                                 return null;
                               },
@@ -334,14 +385,7 @@ class _FreelanceSignupScreenState extends ConsumerState<FreelanceSignupScreen> {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text('Processing Data')),
-                                    );
-                                  }
-                                },
+                                onPressed: _onPressedFunction,
                               ),
                             ),
                             SizedBox(height: height * 0.02),

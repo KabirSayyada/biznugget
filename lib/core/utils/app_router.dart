@@ -1,3 +1,11 @@
+import 'package:biznugget/profile/Profile_Page/Business/business_profile.dart';
+import 'package:biznugget/profile/Profile_Page/Freelance/freelance_profile.dart';
+import 'package:biznugget/profile/Profile_Page/Job_creator/job_creator_profile.dart';
+import 'package:biznugget/profile/Profile_Page/Service_Provider/service_provider_profile.dart';
+import 'package:biznugget/profile/Profile_Page/Vendor/vendor_profile.dart';
+import 'package:biznugget/profile/Profile_Page/consumer_profile.dart';
+import 'package:biznugget/signup/business_account.dart';
+import 'package:biznugget/signup/consumer_account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -55,12 +63,18 @@ class AppRouter {
   static const String accTypeScreen = '/accTypeScreen';
   static const String shareService = '/share-service';
   static const String shareServiceSpecialty = '/share-service/specialty';
+  static const String consumerProfile = '/consumerProfile';
+  static const String businessProfile = '/businessProfile';
+  static const String freelanceProfile = '/freelanceProfile';
+  static const String jobCreatorProile = '/jobCreatorProfile';
+  static const String serviceProviderProfile = '/serviceProviderProfile';
+  static const String vendorProfile = '/vendorProfile';
 
   static final routes = [
     GoRoute(
       path: initial,
       builder: (BuildContext context, GoRouterState state) {
-        return const SplashScreen();
+        return ConsumerSignupScreen();
       },
     ),
     GoRoute(
@@ -222,6 +236,42 @@ class AppRouter {
       path: shareServiceSpecialty,
       builder: (BuildContext context, GoRouterState state) {
         return const ShareServiceSpecialty();
+      },
+    ),
+    GoRoute(
+      path: consumerProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ConsumerProfile();
+      },
+    ),
+    GoRoute(
+      path: businessProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const BusinessProfile();
+      },
+    ),
+    GoRoute(
+      path: freelanceProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const FreelanceProfile();
+      },
+    ),
+    GoRoute(
+      path: jobCreatorProile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const JobCreatorProfile();
+      },
+    ),
+    GoRoute(
+      path: serviceProviderProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ServiceProviderProfile();
+      },
+    ),
+    GoRoute(
+      path: vendorProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const VendorProfile();
       },
     ),
   ]..sort((a, b) => a.path.compareTo(b.path));

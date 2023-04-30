@@ -1,16 +1,21 @@
 import 'package:biznugget/core/common/models/user_model/user_model.dart';
+import 'package:biznugget/core/helpers/Providers/providers.dart';
 import 'package:biznugget/profile/Profile_Page/Business/business_profile.dart';
 import 'package:biznugget/profile/Profile_Page/Freelance/freelance_profile.dart';
 import 'package:biznugget/profile/Profile_Page/Job_creator/job_creator_profile.dart';
 import 'package:biznugget/profile/Profile_Page/Service_Provider/service_provider_profile.dart';
 import 'package:biznugget/profile/Profile_Page/Vendor/vendor_profile.dart';
 import 'package:biznugget/profile/Profile_Page/consumer_profile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Authentication {
   // For Authentication related functions you need an instance of FirebaseAuth
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  UserType? type;
 
   //  This getter will be returning a Stream of User object.
   //  It will be used to check if the user is logged in or not.
@@ -20,17 +25,9 @@ class Authentication {
   Future<void> signUpWithEmailAndPassword(
       String email, String password, BuildContext context) async {
     try {
-      _auth
-          .createUserWithEmailAndPassword(
+      _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
-      )
-          .then(
-        (value) {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => ConsumerProfile()),
-          );
-        },
       );
     } on FirebaseAuthException catch (e) {
       await showDialog(
@@ -82,3 +79,40 @@ class Authentication {
     await _auth.signOut();
   }
 }
+
+/*
+switch (type) {
+            case UserType.consumer:
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ConsumerProfile()),
+              );
+              break;
+            case UserType.business:
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => BusinessProfile()),
+              );
+              break;
+            case UserType.freelance:
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => FreelanceProfile()),
+              );
+              break;
+            case UserType.vendor:
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => VendorProfile()),
+              );
+              break;
+            case UserType.jobCreator:
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => JobCreatorProfile()),
+              );
+              break;
+            case UserType.serviceProvider:
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => ServiceProviderProfile()),
+              );
+              break;
+            default:
+          }
+*/

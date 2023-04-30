@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'auth_model.dart';
 
@@ -21,3 +20,5 @@ final fireBaseAuthProvider = Provider<FirebaseAuth>((ref) {
 
 final firebaseFirestoreProvider =
     Provider<FirebaseFirestore>((ref) => FirebaseFirestore.instance);
+
+final FirebaseFirestore firestore = FirebaseFirestore.instance;

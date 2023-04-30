@@ -1,3 +1,4 @@
+import 'package:biznugget/signup/consumer_account.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,9 +14,9 @@ class AuthChecker extends ConsumerWidget {
     final authState = ref.watch(authStateProvider);
 
     return authState.when(
-        data: (user) {
-          if (user != null) return ConsumerProfile();
-          return ConsumerProfile();
+        data: (data) {
+          if (data != null) return ConsumerProfile();
+          return ConsumerSignupScreen();
         },
         loading: () => const SplashScreen2(),
         error: (e, trace) => ErrorScreen(e, trace));
