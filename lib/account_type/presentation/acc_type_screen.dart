@@ -75,10 +75,8 @@ class AccountTypeScreen extends StatelessWidget {
               cardColor: const Color(0xFF01C3CC),
               accountImage: 'assets/images/acc_type_logos/shopping_bag.png',
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => const ConsumerSignupScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => ConsumerSignupScreen()));
               },
             ),
             AccountTypeCard(
