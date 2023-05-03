@@ -1,3 +1,4 @@
+
 import 'package:biznugget/profile/Profile_Page/Business/business_profile.dart';
 import 'package:biznugget/profile/Profile_Page/Freelance/freelance_profile.dart';
 import 'package:biznugget/profile/Profile_Page/Job_creator/job_creator_profile.dart';
@@ -6,6 +7,9 @@ import 'package:biznugget/profile/Profile_Page/Vendor/vendor_profile.dart';
 import 'package:biznugget/profile/Profile_Page/consumer_profile.dart';
 import 'package:biznugget/signup/business_account.dart';
 import 'package:biznugget/signup/consumer_account.dart';
+import 'package:biznugget/profile/Profile_Edit/consumer_edit.dart';
+import 'package:biznugget/profile/Profile_Page/Features/Favorite/favorite.dart';
+import 'package:biznugget/profile/Profile_Page/Features/History/history.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -32,6 +36,7 @@ import '../../share_service/presentation/share_service_specialty.dart';
 import '../../signin/auth_checker.dart';
 import '../../signin/sign_in_screen.dart';
 import '../../splash/presentation/pages/splash_screen.dart';
+import '../../start_up/presentation/onboarding_screen.dart';
 import '../../traders/trader_screen.dart';
 import '../../traders/traders_screen.dart';
 import '../../wishlist/data/repositories/local_storage.dart';
@@ -69,6 +74,14 @@ class AppRouter {
   static const String jobCreatorProile = '/jobCreatorProfile';
   static const String serviceProviderProfile = '/serviceProviderProfile';
   static const String vendorProfile = '/vendorProfile';
+
+  static const String favourites = '/profile/favourites';
+  static const String history = '/profile/history';
+  static const String editProfile = '/profile/edit';
+  static const String setting = '/profile/edit';
+  static const String onboardingScreen = '/onBoarding';
+  static const String splashScreen = '/welcome';
+  static const String orders = '/orders';
 
   static final routes = [
     GoRoute(
@@ -272,6 +285,48 @@ class AppRouter {
       path: vendorProfile,
       builder: (BuildContext context, GoRouterState state) {
         return const VendorProfile();
+
+      path: onboardingScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const OnboardingScreen();
+      },
+    ),
+    GoRoute(
+      path: splashScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const SplashScreen();
+      },
+    ),
+    //TODO: Navigate to orders screen
+    GoRoute(
+      path: orders,
+      builder: (BuildContext context, GoRouterState state) {
+        return const Placeholder();
+      },
+    ),
+    GoRoute(
+      path: editProfile,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ConsumerProfileEdit();
+      },
+    ),
+    GoRoute(
+      path: history,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HistoryPage();
+      },
+    ),
+    GoRoute(
+      path: favourites,
+      builder: (BuildContext context, GoRouterState state) {
+        return const Favorite();
+      },
+    ),
+    GoRoute(
+      path: setting,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ConsumerProfileEdit();
+
       },
     ),
   ]..sort((a, b) => a.path.compareTo(b.path));
