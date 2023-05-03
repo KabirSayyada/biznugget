@@ -1,24 +1,95 @@
+import 'package:biznugget/core/common/models/user_model/user_model.dart';
+import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Business/business_profile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BusinessScreen extends StatefulWidget {
-  const BusinessScreen({super.key});
+class BusinessSignupScreen extends StatefulHookConsumerWidget {
+  const BusinessSignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<BusinessScreen> createState() => _BusinessScreenState();
+  ConsumerState<BusinessSignupScreen> createState() =>
+      _BusinessSignupScreenState();
 }
 
-class _BusinessScreenState extends State<BusinessScreen> {
+class _BusinessSignupScreenState extends ConsumerState<BusinessSignupScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _companyNameController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _companyEmailController = TextEditingController();
-  final TextEditingController _rcNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _companyNameController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _companyEmailController = TextEditingController();
+  final _rcNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final UserType type = UserType.business;
+
+  bool _isLoading = false;
+  void loading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
+  // confirm password
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final auth = ref.watch(authenticationProvider);
+
+    // add user details
+    Future<void> addUserDetails(String companyName, String companyAddress,
+        String companyEmail, String rcNumber) async {
+      await firestore.collection('users').add({
+        'companyName': companyName,
+        'companyAddress': companyAddress,
+        'companyEmail': companyEmail,
+        'rcNumber': rcNumber,
+      });
+    }
+
+    Future<void> _onPressedFunction() async {
+      if (_formKey.currentState!.validate()) {
+        const CircularProgressIndicator();
+        loading();
+
+        if (passwordConfirmed()) {
+          // create user with email and password
+          await auth
+              .signUpWithEmailAndPassword(_companyEmailController.text,
+                  _passwordController.text, context)
+              .whenComplete(() => auth.authStateChange.listen((event) async {
+                    if (event == null) {
+                      loading();
+                      return;
+                    }
+                  }))
+              .then(
+            (value) {
+              context.go('/businessProfile');
+            },
+          );
+
+          // add user details
+          addUserDetails(_companyNameController.text, _addressController.text,
+              _companyEmailController.text, _rcNumberController.text);
+        }
+      }
+      print(_companyEmailController.text);
+      print(_passwordController.text);
+    }
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         height: height,
@@ -104,6 +175,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Company name',
                                 hintStyle: const TextStyle(
@@ -127,6 +205,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Company Address',
                                 hintStyle: const TextStyle(
@@ -145,12 +230,19 @@ class _BusinessScreenState extends State<BusinessScreen> {
                               controller: _companyEmailController,
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'kindly enter the company email';
+                                if (value!.isEmpty || !value.contains('@')) {
+                                  return 'Invalid email!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Company Email',
                                 hintStyle: const TextStyle(
@@ -174,6 +266,13 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'RC or Bn Number',
                                 hintStyle: const TextStyle(
@@ -191,12 +290,19 @@ class _BusinessScreenState extends State<BusinessScreen> {
                             TextFormField(
                               controller: _passwordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Enter a strong password';
+                                if (value!.isEmpty || value.length < 8) {
+                                  return 'Password is too short!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Password',
                                 hintStyle: const TextStyle(
@@ -212,14 +318,21 @@ class _BusinessScreenState extends State<BusinessScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _confirmPasswordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Make sure the password match';
+                                if (value != _passwordController.text) {
+                                  return 'Passwords do not match!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Confirm Password',
                                 hintStyle: const TextStyle(
@@ -257,14 +370,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text('Processing Data')),
-                                    );
-                                  }
-                                },
+                                onPressed: _onPressedFunction,
                               ),
                             ),
                             SizedBox(height: height * 0.02),
@@ -317,7 +423,3 @@ class _BusinessScreenState extends State<BusinessScreen> {
     );
   }
 }
-
-/*
-
-*/

@@ -1,23 +1,103 @@
+import 'package:biznugget/core/common/models/user_model/user_model.dart';
+import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Job_creator/job_creator_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class JobCreatorScreen extends StatefulWidget {
-  const JobCreatorScreen({super.key});
+class JobCreatorSignupScreen extends StatefulHookConsumerWidget {
+  JobCreatorSignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<JobCreatorScreen> createState() => _JobCreatorScreenState();
+  ConsumerState<JobCreatorSignupScreen> createState() =>
+      _JobCreatorSignupScreenState();
 }
 
-class _JobCreatorScreenState extends State<JobCreatorScreen> {
+class _JobCreatorSignupScreenState
+    extends ConsumerState<JobCreatorSignupScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final UserType type = UserType.jobCreator;
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  bool _isLoading = false;
+  void loading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
+  // confirm password fields  use if condition on the signUp method to confirm
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final auth = ref.watch(authenticationProvider);
+
+    // add user details
+    Future<void> addUserDetails(
+        String name, String email, String phoneNumber) async {
+      await firestore.collection('users').add({
+        'name': name,
+        'email': email,
+        'phoneNumber': phoneNumber,
+      });
+    }
+
+    Future<void> _onPressedFunction() async {
+      if (_formKey.currentState!.validate()) {
+        const CircularProgressIndicator();
+        loading();
+
+        if (passwordConfirmed()) {
+          // create user with email and password
+          await auth
+              .signUpWithEmailAndPassword(
+                  _emailController.text, _passwordController.text, context)
+              .whenComplete(() => auth.authStateChange.listen((event) async {
+                    if (event == null) {
+                      loading();
+                      return;
+                    }
+                  }))
+              .then(
+            (value) {
+              context.go('/jobCreatorProfile');
+            },
+          );
+
+          // add user details
+          addUserDetails(_nameController.text, _emailController.text,
+              _phoneNumberController.text);
+        }
+      }
+      print(_emailController.text);
+      print(_passwordController.text);
+    }
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         height: height,
@@ -104,6 +184,13 @@ class _JobCreatorScreenState extends State<JobCreatorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Name',
                                 hintStyle: TextStyle(
@@ -122,12 +209,19 @@ class _JobCreatorScreenState extends State<JobCreatorScreen> {
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter email';
+                                if (value!.isEmpty || !value.contains('@')) {
+                                  return 'Invalid email!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Email',
                                 hintStyle: TextStyle(
@@ -177,6 +271,13 @@ class _JobCreatorScreenState extends State<JobCreatorScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Phone number',
                                 hintStyle: TextStyle(
@@ -194,12 +295,19 @@ class _JobCreatorScreenState extends State<JobCreatorScreen> {
                             TextFormField(
                               controller: _passwordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter a strong password';
+                                if (value!.isEmpty || value.length < 8) {
+                                  return 'Password is too short!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Password',
                                 hintStyle: const TextStyle(
@@ -215,14 +323,21 @@ class _JobCreatorScreenState extends State<JobCreatorScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _confirmPasswordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Password must match';
+                                if (value != _passwordController.text) {
+                                  return 'Passwords do not match!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Confirm Password',
                                 hintStyle: const TextStyle(
@@ -260,13 +375,38 @@ class _JobCreatorScreenState extends State<JobCreatorScreen> {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                           content: Text('Processing Data')),
                                     );
                                   }
+                                  loading();
+                                  await auth
+                                      .signUpWithEmailAndPassword(
+                                          _emailController.text,
+                                          _passwordController.text,
+                                          context)
+                                      .whenComplete(
+                                        () => auth.authStateChange.listen(
+                                          (event) async {
+                                            if (event == null) {
+                                              loading();
+                                              return;
+                                            }
+                                          },
+                                        ),
+                                      )
+                                      .then(
+                                    (value) {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const JobCreatorProfile()),
+                                      );
+                                    },
+                                  );
                                 },
                               ),
                             ),

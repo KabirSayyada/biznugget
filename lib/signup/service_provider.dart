@@ -1,23 +1,102 @@
+import 'package:biznugget/core/common/models/user_model/user_model.dart';
+import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Service_Provider/service_provider_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ServiceProviderScreen extends StatefulWidget {
-  const ServiceProviderScreen({super.key});
+class ServiceProviderSignupScreen extends StatefulHookConsumerWidget {
+  const ServiceProviderSignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<ServiceProviderScreen> createState() => _ServiceProviderScreenState();
+  ConsumerState<ServiceProviderSignupScreen> createState() =>
+      _ServiceProviderSignupScreenState();
 }
 
-class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
+class _ServiceProviderSignupScreenState
+    extends ConsumerState<ServiceProviderSignupScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final UserType type = UserType.serviceProvider;
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  bool _isLoading = false;
+  void loading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final auth = ref.watch(authenticationProvider);
+
+    // add user details
+    Future<void> addUserDetails(
+        String name, String email, String phoneNumber) async {
+      await firestore.collection('users').add({
+        'name': name,
+        'email': email,
+        'phoneNumber': phoneNumber,
+      });
+    }
+
+    Future<void> _onPressedFunction() async {
+      if (_formKey.currentState!.validate()) {
+        const CircularProgressIndicator();
+        loading();
+
+        if (passwordConfirmed()) {
+          // create user with email and password
+          await auth
+              .signUpWithEmailAndPassword(
+                  _emailController.text, _passwordController.text, context)
+              .whenComplete(() => auth.authStateChange.listen((event) async {
+                    if (event == null) {
+                      loading();
+                      return;
+                    }
+                  }))
+              .then(
+            (value) {
+              context.go('/serviceProviderProfile');
+            },
+          );
+
+          // add user details
+          addUserDetails(_nameController.text, _emailController.text,
+              _phoneNumberController.text);
+        }
+      }
+      print(_emailController.text);
+      print(_passwordController.text);
+    }
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         height: height,
@@ -104,6 +183,13 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Name',
                                 hintStyle: TextStyle(
@@ -122,12 +208,19 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Enter your email';
+                                if (value!.isEmpty || !value.contains('@')) {
+                                  return 'Invalid email!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Email',
                                 hintStyle: TextStyle(
@@ -177,6 +270,13 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Phone number',
                                 hintStyle: const TextStyle(
@@ -194,12 +294,19 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                             TextFormField(
                               controller: _passwordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Enter a strong password';
+                                if (value!.isEmpty || value.length < 8) {
+                                  return 'Password is too short!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Password',
                                 hintStyle: const TextStyle(
@@ -215,14 +322,21 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                             ),
                             SizedBox(height: height * 0.02),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _confirmPasswordController,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Password must match';
+                                if (value != _passwordController.text) {
+                                  return 'Passwords do not match!';
                                 }
                                 return null;
                               },
                               decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color(0xFF830D3F).withOpacity(0.3)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
                                 contentPadding: EdgeInsets.all(10),
                                 hintText: 'Confirm Password',
                                 hintStyle: const TextStyle(
@@ -260,14 +374,7 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text('Processing Data')),
-                                    );
-                                  }
-                                },
+                                onPressed: _onPressedFunction,
                               ),
                             ),
                             SizedBox(height: height * 0.02),

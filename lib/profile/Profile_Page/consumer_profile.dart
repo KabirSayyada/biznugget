@@ -1,14 +1,25 @@
+import 'package:biznugget/core/helpers/Providers/providers.dart';
+import 'package:biznugget/profile/Profile_Page/Business/grid_item.dart';
+import 'package:biznugget/profile/Profile_Page/Features/History/history.dart';
+import 'package:biznugget/profile/Profile_Page/Features/features.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/utils/curve_image.dart';
 import 'profile_pic.dart';
 import 'user_details.dart';
 
-class ConsumerProfile extends StatelessWidget {
+class ConsumerProfile extends ConsumerWidget {
   const ConsumerProfile({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // first variable is to get the data of Authenticated User
+    final data = ref.watch(fireBaseAuthProvider);
+
+    //  Second variable to access the Logout Function
+    final _auth = ref.watch(authenticationProvider);
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -62,12 +73,59 @@ class ConsumerProfile extends StatelessWidget {
                       imagePath: 'assets/images/image1.png',
                     ),
                     UserDetails(
-                      name: 'Jennifer Orya',
+                      name: data.currentUser!.email ?? 'Jeniffer Orya',
                       userAccount: 'Consumer',
                     ),
                   ],
                 ),
               ),
+            ),
+            Positioned.directional(
+              textDirection: TextDirection.ltr,
+              top: 260,
+              child: Container(
+                width: width,
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Recent',
+                        style: TextStyle(
+                          color: Color(0xff830d3f),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const HistoryPage()));
+                      },
+                      child: const Text(
+                        'See all',
+                        style: TextStyle(
+                          color: Color(0xff8e8585),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned.directional(
+              textDirection: TextDirection.ltr,
+              top: 290,
+              child: GridItem(),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: FeatureItems(),
             ),
           ],
         ),

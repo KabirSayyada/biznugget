@@ -35,8 +35,10 @@ class AccountTypeScreen extends StatelessWidget {
               cardColor: const Color(0xFF830D3F),
               accountImage: 'assets/images/acc_type_logos/handshake.png',
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const BusinessScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const BusinessSignupScreen()));
               },
             ),
             AccountTypeCard(
@@ -47,7 +49,7 @@ class AccountTypeScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => const ServiceProviderScreen()));
+                        builder: (_) => const ServiceProviderSignupScreen()));
               },
             ),
             AccountTypeCard(
@@ -65,7 +67,7 @@ class AccountTypeScreen extends StatelessWidget {
               accountImage: 'assets/images/acc_type_logos/reseller.png',
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const VendorScreen()));
+                    MaterialPageRoute(builder: (_) => VendorSignupScreen()));
               },
             ),
             AccountTypeCard(
@@ -74,7 +76,7 @@ class AccountTypeScreen extends StatelessWidget {
               accountImage: 'assets/images/acc_type_logos/shopping_bag.png',
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const ConsumerScreen()));
+                    MaterialPageRoute(builder: (_) => ConsumerSignupScreen()));
               },
             ),
             AccountTypeCard(
@@ -85,7 +87,7 @@ class AccountTypeScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => const JobCreatorScreen()));
+                        builder: (_) => JobCreatorSignupScreen()));
               },
             ),
           ],
